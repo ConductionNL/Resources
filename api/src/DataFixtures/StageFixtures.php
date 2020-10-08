@@ -154,18 +154,18 @@ class StageFixtures extends Fixture implements DependentFixtureInterface
                 @media only screen and (max-width: 768px) {
                     .studenthome{
                            display: none;
-                    }   
-    
+                    }
+
                     .about {
                            text-align: initial;
                            width: 200%;
                     }
-    
+
                     .description {
                            width: initial;
                            text-align: initial;
                     }
-    
+
                     #headtext {
                            position: absolute;
                            top: -6%;
@@ -173,11 +173,6 @@ class StageFixtures extends Fixture implements DependentFixtureInterface
                            font-size: 20px;
                     }
                 }
-    
-                    .footer4 {
-                           position: absolute;
-                           margin-top: -170px;
-                    }
                ');
 
         $style->addOrganization($organization);
@@ -190,7 +185,7 @@ class StageFixtures extends Fixture implements DependentFixtureInterface
         $configuration->setOrganization($organization);
         $configuration->setConfiguration(
             [
-                'mainMenu'    => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'menus', 'id' => 'fccb7e65-2b56-49a2-8720-724f823f2b00']),
+                'mainMenu'    => 'fccb7e65-2b56-49a2-8720-724f823f2b00',
                 'loggedIn'    => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'menus', 'id' => '58873338-3ef1-4764-a1a8-72a8787625f4']),
                 'home'        => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'templates', 'id' => 'd6127f56-c334-4eb7-bade-c70e97631aec']),
                 'footer1'     => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'templates', 'id' => 'afa4c1f6-17b7-40a2-b289-57640bb141d9']),
