@@ -19,6 +19,9 @@
     "api-platform/schema-generator": {
         "version": "v2.1.0"
     },
+    "bacon/bacon-qr-code": {
+        "version": "2.0.2"
+    },
     "beberlei/doctrineextensions": {
         "version": "v1.2.7"
     },
@@ -41,7 +44,7 @@
         "version": "dev-master"
     },
     "dasprid/enum": {
-        "version": "1.0.2"
+        "version": "1.0.3"
     },
     "doctrine/annotations": {
         "version": "1.0",
@@ -147,10 +150,10 @@
         "version": "1.2.3"
     },
     "endroid/qr-code": {
-        "version": "3.9.1"
+        "version": "3.9.3"
     },
     "endroid/qr-code-bundle": {
-        "version": "3.4.2"
+        "version": "3.4.3"
     },
     "fig/link-util": {
         "version": "1.0.0"
@@ -178,6 +181,9 @@
     },
     "guzzlehttp/psr7": {
         "version": "1.5.2"
+    },
+    "khanamiryan/qrcode-detector-decoder": {
+        "version": "1.0.3"
     },
     "knplabs/knp-markdown-bundle": {
         "version": "1.8.1"
