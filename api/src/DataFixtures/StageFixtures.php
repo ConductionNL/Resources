@@ -199,7 +199,7 @@ class StageFixtures extends Fixture implements DependentFixtureInterface
                 'googleTagId'      => 'G-2PYCJ13YC4',
                 'studentenPage'    => 'studenten',
                 'bedrijvenPage'    => 'bedrijven',
-                'login'            => ['facebook' => true, 'github' => true],
+                'login'            => ['user'=>true, 'facebook' => true, 'github' => true],
                 'header'           => false,
                 'stickyMenu'       => true,
             ]
