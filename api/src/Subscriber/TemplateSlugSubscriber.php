@@ -8,7 +8,7 @@ use App\Entity\Template;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
+use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Twig_Environment as Environment;
 
@@ -35,7 +35,7 @@ class TemplateSlugSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function template(GetResponseForControllerResultEvent $event)
+    public function template(ViewEvent $event)
     {
         $result = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
