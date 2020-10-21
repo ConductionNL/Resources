@@ -15,7 +15,7 @@ use App\Entity\TemplateGroup;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
@@ -189,18 +189,19 @@ class StageFixtures extends Fixture implements DependentFixtureInterface
         $configuration->setOrganization($organization);
         $configuration->setConfiguration(
             [
-                'mainMenu'    => 'fccb7e65-2b56-49a2-8720-724f823f2b00',
-                'loggedIn'    => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'menus', 'id' => '58873338-3ef1-4764-a1a8-72a8787625f4']),
-                'home'        => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'templates', 'id' => 'd6127f56-c334-4eb7-bade-c70e97631aec']),
-                'footer1'     => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'templates', 'id' => 'afa4c1f6-17b7-40a2-b289-57640bb141d9']),
-                'footer2'     => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'templates', 'id' => 'ddeb11ba-7205-44ae-bfe9-4bd4fbb9265a']),
-                'footer3'     => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'templates', 'id' => 'f668379b-0b93-4cf7-b243-7035e7728466']),
-                'footer4'     => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'templates', 'id' => '0c663ab8-f9d5-42c5-8866-1a51fcf74a12']),
-                'googleTagId' => 'G-2PYCJ13YC4',
-                'userPage'    => 'me',
-                'login'       => ['facebook' => true, 'github' => true],
-                'header'      => false,
-                'stickyMenu'  => true,
+                'mainMenu'         => 'fccb7e65-2b56-49a2-8720-724f823f2b00',
+                'loggedIn'         => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'menus', 'id' => '58873338-3ef1-4764-a1a8-72a8787625f4']),
+                'home'             => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'templates', 'id' => 'd6127f56-c334-4eb7-bade-c70e97631aec']),
+                'footer1'          => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'templates', 'id' => 'afa4c1f6-17b7-40a2-b289-57640bb141d9']),
+                'footer2'          => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'templates', 'id' => 'ddeb11ba-7205-44ae-bfe9-4bd4fbb9265a']),
+                'footer3'          => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'templates', 'id' => 'f668379b-0b93-4cf7-b243-7035e7728466']),
+                'footer4'          => $this->commonGroundService->cleanUrl(['component' => 'wrc', 'type' => 'templates', 'id' => '0c663ab8-f9d5-42c5-8866-1a51fcf74a12']),
+                'googleTagId'      => 'G-2PYCJ13YC4',
+                'studentenPage'    => 'studenten',
+                'bedrijvenPage'    => 'bedrijven',
+                'login'            => ['user'=>true, 'facebook' => true, 'github' => true],
+                'header'           => false,
+                'stickyMenu'       => true,
             ]
         );
         $manager->persist($configuration);
