@@ -14,7 +14,7 @@ use App\Entity\Template;
 use App\Entity\TemplateGroup;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
@@ -36,7 +36,6 @@ class PinkFixtures extends Fixture
     {
         // Lets make sure we only run these fixtures on larping enviroment
         if (
-            !$this->params->get('app_build_all_fixtures') &&
             $this->params->get('app_domain') != 'mijncluster.nl' && strpos($this->params->get('app_domain'), 'mijncluster.nl') == false
         ) {
             return false;
