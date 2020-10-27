@@ -126,6 +126,84 @@ class IdVaultFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
         $application = $manager->getRepository('App:Application')->findOneBy(['id'=> $id]);
 
+        // id-vault test case
+        $id = Uuid::fromString('cecce655-e91c-42f6-840e-8ca30ea4fb5c');
+        $organization = new Organization();
+        $organization->setName('Id-vault test case');
+        $organization->setDescription('Id-vault test case');
+        $organization->setRsin('');
+        $manager->persist($organization);
+        $organization->setId($id);
+        $manager->persist($organization);
+        $manager->flush();
+        $organization = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('71280e0c-6ee5-444c-961e-6f9878e97987');
+        $favicon = new Image();
+        $favicon->setName('Id-vault test case Favicon');
+        $favicon->setDescription('Id-vault test case Favicon');
+        $favicon->setBase64('data:image/gif;base64,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');
+        $favicon->setOrganization($organization);
+        $manager->persist($favicon);
+        $favicon->setId($id);
+        $manager->persist($favicon);
+        $manager->flush();
+        $favicon = $manager->getRepository('App:Image')->findOneBy(['id'=> $id]);
+
+        $style = new Style();
+        $style->setName('Id-vault test case');
+        $style->setDescription('Huistlijl id vault');
+        $style->setCss('
+        :root {
+                --primary: #01689b;
+                --primary-color: white;
+                --background: #01689b;
+                --secondary: #cce0f1;
+                --secondary-color: #2b2b2b;
+
+                --menu: #01689b;
+                --menu-over: #3669A5;
+                --menu-color: white;
+                --footer: #01689b;
+                --footer-color: white;
+         }
+
+         oauth-background {
+            background-color: #01689b !important;
+         }
+
+        ');
+        $style->setfavicon($favicon);
+        $style->addOrganization($organization);
+        $manager->persist($style);
+        $manager->flush();
+
+        $configuration = new Configuration();
+        $configuration->setName('id-vault.com test case configuration');
+        $configuration->setDescription('De configuratie van id vault test case');
+        $configuration->setOrganization($organization);
+        $configuration->setConfiguration(
+            [
+                'secret'              => 'JJoEbHp8yHcONQepORvC',
+                'authorization_url'   => 'dev.conduction.academy/auth/id-vault',
+            ]
+        );
+        $manager->persist($configuration);
+
+        $id = Uuid::fromString('c1f6b98b-9e37-42c0-9b22-17a738a52f8e');
+        $application = new Application();
+        $application->setName('Id-vault test case');
+        $application->setDescription('This is a testcase for id-vault');
+        $application->setDomain('id-vault.com');
+        $application->setStyle($style);
+        $application->setOrganization($organization);
+        $application->setDefaultConfiguration($configuration);
+        $manager->persist($application);
+        $application->setId($id);
+        $manager->persist($application);
+        $manager->flush();
+        $application = $manager->getRepository('App:Application')->findOneBy(['id'=> $id]);
+
         // Menu
         $id = Uuid::fromString('2295c6d5-8800-4a70-8011-d377b0b69ddf');
         $menu = new Menu();
