@@ -15,7 +15,7 @@ use App\Entity\TemplateGroup;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
@@ -199,7 +199,7 @@ class StageFixtures extends Fixture implements DependentFixtureInterface
                 'googleTagId'      => 'G-2PYCJ13YC4',
                 'studentenPage'    => 'studenten',
                 'bedrijvenPage'    => 'bedrijven',
-                'login'            => ['facebook' => true, 'github' => true],
+                'login'            => ['user'=>true, 'facebook' => true, 'github' => true],
                 'header'           => false,
                 'stickyMenu'       => true,
             ]
