@@ -171,6 +171,7 @@ class IdVaultFixtures extends Fixture implements DependentFixtureInterface
          body {
             background-color: #0948B3 !important;
             font-family: "Nunito Sans", sans-serif;
+            color: white;
          }
 
         ');
