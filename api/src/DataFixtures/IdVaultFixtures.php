@@ -186,7 +186,7 @@ class IdVaultFixtures extends Fixture implements DependentFixtureInterface
         $configuration->setConfiguration(
             [
                 'secret'              => 'JJoEbHp8yHcONQepORvC',
-                'authorization_url'   => 'dev.conduction.academy/auth/id-vault'
+                'authorization_url'   => 'dev.conduction.academy/auth/id-vault',
             ]
         );
         $manager->persist($configuration);
