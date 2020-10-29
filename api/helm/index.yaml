@@ -3,14 +3,14 @@ entries:
   wrc:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2020-10-20T13:53:14.252215748Z"
+    created: "2020-10-29T11:22:10.0136716Z"
     description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql)
       interface beschikbaar.&#039;'
-    digest: 554ce5d00f9c8e4716d5d88620bd7d9b66b3190643350f486eed40258465efae
+    digest: 2d9df02e8589c7edfe295b84047e930212b5c34b996d684ccbf36a88918f74ef
     home: wrc.zaakonline.nl
     icon: wrc.zaakonline.nl
     name: wrc
     urls:
     - wrc-0.1.0.tgz
     version: 0.1.0
-generated: "2020-10-20T13:53:14.245098549Z"
+generated: "2020-10-29T11:22:10.0038809Z"
