@@ -1,0 +1,25 @@
+<table align="center"  style="background-color: #F5F5F5; width: 100%; padding: 5px; max-width: 1200px;">
+    <tr>
+        <td align="center" style="text-align: -webkit-center">
+            <table style="width: 80%; background-color: white;">
+                <tr>
+                    <td style="width: 100%; height: fit-content; background-color: #01689B">
+                        <h1 style=" margin: 15px 0 15px 30px; color: white; font-family: Verdana,serif; ">Checking</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="margin: 15px 30px 0 30px"><strong>Word developer voor {% if sender.name is defined and sender.name is not empty %}{{ sender.name }}{% endif %}</strong></p>
+
+                        <p>U bent uitgenodigd om deel te nemen aan {% if sender.name is defined and sender.name is not empty %}{{ sender.name }}{% endif %} als developer</p>
+                        <p>Klik <a href="https://dev.id-vault.com">hier</a> om deze uitnodiging te accepteren.</p>
+
+                        <p style="margin: 15px 30px 0 30px">Met vriendelijke groet,</p>
+                        <p style="margin: 15px 30px 0 30px">{% if sender.name is defined  %}{{ sender.name }}{% endif %}</p>
+                        <p></p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>

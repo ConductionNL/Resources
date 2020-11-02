@@ -11,6 +11,7 @@ use App\Entity\Organization;
 use App\Entity\Slug;
 use App\Entity\Style;
 use App\Entity\Template;
+use App\Entity\TemplateGroup;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -233,6 +234,39 @@ class IdVaultFixtures extends Fixture implements DependentFixtureInterface
         $menuItem->setName('Home');
         $menuItem->setDescription('Go back to the main page');
         $manager->persist($menuItem);
+
+        // Template groups
+        // E-mails
+        $groupEmails = new TemplateGroup();
+        $groupEmails->setOrganization($organization);
+        $groupEmails->setApplication($application);
+        $groupEmails->setName('E-mails');
+        $groupEmails->setDescription('E-mails die verstuurd worden');
+        $manager->persist($groupEmails);
+        $manager->flush();
+        $groupEmails->setTranslatableLocale('en'); // change locale
+        $groupEmails->setName('E-mails');
+        $groupEmails->setDescription('E-mails that are send out');
+        $manager->persist($groupEmails);
+
+        // E-mail templates
+        $id = Uuid::fromString('61162867-9811-451c-ac41-e38cb58698af');
+        $template = new Template();
+        $template->setTranslatableLocale('nl'); // change locale
+        $template->setTemplateEngine('twig');
+        $template->setName('Developer invite');
+        $template->setTitle('Uitnodiging tot deelname van een organisatie');
+        $template->setDescription('Uitnodiging om deel te nemen aan een organisatie op ID-Vault');
+        $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/IdVault/emails/developerInvite.html.twig', 'r'));
+        $template->setTemplateEngine('twig');
+        $manager->persist($template);
+        $template->setId($id);
+        $manager->persist($template);
+        $manager->flush();
+        $template = $manager->getRepository('App:Template')->findOneBy(['id'=> $id]);
+        $template->addTemplateGroup($groupEmails);
+        $manager->persist($template);
+        $manager->flush();
 
         // Pages
         $id = Uuid::fromString('e3d39a03-eb43-42ae-a756-136429b8c350');
