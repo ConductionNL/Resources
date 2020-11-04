@@ -50,6 +50,7 @@ class ZuiddrechtFixtures extends Fixture
         $organization->setName('Zuid Drecht');
         $organization->setDescription('De meest inovatieve gemeenten van nederland');
         $organization->setRsin('809642451');
+        $organization->setContact($this->commonGroundService->cleanUrl(['component'=>'cc', 'type'=>'organizations', 'id'=>'344867d7-d71d-44d6-90ff-8603c2422058']));
         $manager->persist($organization);
         $organization->setId($id);
         $manager->persist($organization);
