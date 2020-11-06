@@ -207,6 +207,144 @@ class IdVaultFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
         $application = $manager->getRepository('App:Application')->findOneBy(['id'=> $id]);
 
+        // Organizations and Applications used as issuers for proof on claims
+        // google
+        $id = Uuid::fromString('779e3c6f-bbf9-4a6a-aed3-c119cbea199b');
+        $organization = new Organization();
+        $organization->setName('google');
+        $organization->setDescription('google');
+        $organization->setRsin('');
+        $manager->persist($organization);
+        $organization->setId($id);
+        $manager->persist($organization);
+        $manager->flush();
+        $organization = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
+
+        // Application image (gmail)
+        $id = Uuid::fromString('9a85020c-ddf9-4ef0-b6f0-3652c5e27919');
+        $favicon = new Image();
+        $favicon->setName('google gmail Favicon');
+        $favicon->setDescription('google gmail Favicon');
+        $favicon->setBase64('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIzLjEuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA3NCAxMTAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDc0IDExMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiNGRkZGRkY7fQoJLnN0MXtmaWxsOiNFRTUwNTA7fQo8L3N0eWxlPgo8ZyBpZD0iWE1MSURfMTkzOF8iPgoJPGcgaWQ9IlhNTElEXzQyMTRfIj4KCQk8cGF0aCBpZD0iWE1MSURfNDI3OV8iIGNsYXNzPSJzdDAiIGQ9Ik02Mi42LDUzYy0wLjctMS40LTEuNi0yLjQtMi4zLTMuMWw1LTkuMWMzLjItNS43LDQuOS0xMC45LDUuNi0xNS40CgkJCWMwLjEtMC4yLDAuMS0wLjQsMC4xLTAuNWMwLjctNC42LDAuNC04LjQtMC4xLTExLjRDNjkuNyw3LDY2LjcsMy4zLDY2LjYsMy4xYy0wLjQtMC41LTEtMC44LTEuNi0wLjljLTAuMiwwLTQuOS0wLjYtMTEuMSwxLjgKCQkJYy0yLjgsMS4xLTYuMiwyLjktOS43LDUuOWMtMC4xLDAuMS0wLjMsMC4yLTAuNCwwLjNjLTMuNCwzLTYuOSw3LjItMTAuMSwxMi45bC01LDkuMWMtMS0wLjMtMi40LTAuNS0zLjktMC4zCgkJCWMtMy4yLDAuMy03LjcsMS45LTExLjQsOC42bC0zLDUuNWMtMC43LDEuMi0wLjIsMi43LDEsMy40bDcuMyw0LjFsMi4xLDcuNWMwLjIsMC42LDAuNiwxLjIsMS4yLDEuNWwxNi40LDkuMQoJCQljMC42LDAuMywxLjMsMC40LDEuOSwwLjJsNy41LTIuMWw3LjMsNC4xYzEuMiwwLjcsMi43LDAuMiwzLjQtMWwzLTUuNUM2NSw2MC42LDY0LjEsNTUuOSw2Mi42LDUzeiBNMTkuNyw0OC4zbC0zLjgtMi4xbDEuOC0zLjMKCQkJYzIuOS01LjIsNi4yLTYuMSw4LjQtNkwxOS43LDQ4LjN6IE01NS40LDguOGMzLjUtMS40LDYuNC0xLjYsNy45LTEuN2MwLjgsMS4zLDIuMSwzLjksMi43LDcuNmMwLjMsMS45LDAuNSwzLjksMC40LDZsLTE2LjMtOS4xCgkJCUM1MS44LDEwLjUsNTMuNiw5LjUsNTUuNCw4Ljh6IE01NC45LDQ5LjNsLTguNiwxNS41bC02LjUsMS45bC0xNC42LTguMUwyMy4zLDUybDguNi0xNS41TDM4LDI1LjZjMi40LTQuMiw1LTcuOCw4LTEwLjZsMTkuOCwxMQoJCQljLTAuOCw0LTIuNSw4LjEtNC44LDEyLjNMNTQuOSw0OS4zeiBNNTUuMiw2OC4xTDUxLjMsNjZsNi40LTExLjRjMC4yLDAuMywwLjQsMC42LDAuNiwxYzEuMiwyLjUsMC44LDUuNi0xLjMsOS4zTDU1LjIsNjguMXoiLz4KCTwvZz4KPC9nPgo8cGF0aCBpZD0iWE1MSURfNDM3OF8iIGNsYXNzPSJzdDEiIGQ9Ik0xOC43LDY2LjRjLTAuNi0wLjMtMS40LTAuNC0yLTAuMmMtMC4zLDAuMS02LjYsMi4zLTkuNSw5LjNjLTIuNiw2LjItMS44LDE0LjEsMi42LDIzLjMKCWMwLjIsMC41LDAuNiwwLjksMSwxLjFjMC40LDAuMiwxLDAuNCwxLjUsMC4zYzEwLjEtMS4yLDE3LjItNC41LDIxLjEtMTAuMWM0LjQtNi4yLDIuOS0xMi43LDIuOS0xM2MtMC4yLTAuNy0wLjYtMS4zLTEuMi0xLjYKCUwxOC43LDY2LjR6IE0yOS4zLDg3LjNjLTIuOCw0LTguMiw2LjYtMTUuOCw3LjdjLTMuMS03LjEtMy43LTEzLTEuOC0xNy41YzEuNS0zLjYsNC4yLTUuNCw1LjYtNi4ybDQuOSwyLjdsLTQuOSw4LjcKCWMtMC43LDEuMi0wLjIsMi43LDEsMy40YzEuMiwwLjcsMi43LDAuMiwzLjQtMWw0LjktOC43bDQuOSwyLjdDMzEuNiw4MC45LDMxLjUsODQuMiwyOS4zLDg3LjN6Ii8+CjxwYXRoIGlkPSJYTUxJRF80MzQ1XyIgY2xhc3M9InN0MCIgZD0iTTQ0LDQyLjRjNC4yLDIuMyw5LjYsMC44LDExLjktMy40YzIuMy00LjIsMC44LTkuNi0zLjQtMTEuOXMtOS42LTAuOC0xMS45LDMuNAoJQzM4LjMsMzQuNywzOS44LDQwLDQ0LDQyLjR6IE01MC4xLDMxLjRjMS44LDEsMi41LDMuMywxLjUsNS4xYy0xLDEuOC0zLjMsMi41LTUuMSwxLjVTNDQsMzQuNyw0NSwzMi45QzQ2LDMxLjEsNDguMywzMC40LDUwLjEsMzEuNAoJeiIvPgo8L3N2Zz4K');
+        $favicon->setOrganization($organization);
+        $manager->persist($favicon);
+        $favicon->setId($id);
+        $manager->persist($favicon);
+        $manager->flush();
+        $favicon = $manager->getRepository('App:Image')->findOneBy(['id'=> $id]);
+
+        $style = new Style();
+        $style->setName('google');
+        $style->setDescription('Huisstijl google');
+        $style->setCss('
+        :root {
+                --primary: #01689b;
+                --primary-color: white;
+                --background: #01689b;
+                --secondary: #cce0f1;
+                --secondary-color: #2b2b2b;
+
+                --menu: #01689b;
+                --menu-over: #3669A5;
+                --menu-color: white;
+                --footer: #01689b;
+                --footer-color: white;
+         }
+
+         body {
+            background-color: #0948B3 !important;
+            font-family: "Nunito Sans", sans-serif;
+            color: white;
+         }
+
+        ');
+        $style->setfavicon($favicon);
+        $style->addOrganization($organization);
+        $manager->persist($style);
+        $manager->flush();
+
+        // Gmail
+        $id = Uuid::fromString('4fd96e70-efb9-4e6d-8bbc-dc7b7e9ef144');
+        $application = new Application();
+        $application->setName('gmail');
+        $application->setDescription('gmail');
+        $application->setDomain('google.com');
+        $application->setStyle($style);
+        $application->setOrganization($organization);
+        $manager->persist($application);
+        $application->setId($id);
+        $manager->persist($application);
+        $manager->flush();
+        $application = $manager->getRepository('App:Application')->findOneBy(['id'=> $id]);
+
+        // Facebook
+        $id = Uuid::fromString('9fb287d7-c65b-4c2d-8db5-de8a0b954325');
+        $organization = new Organization();
+        $organization->setName('facebook');
+        $organization->setDescription('facebook');
+        $organization->setRsin('');
+        $manager->persist($organization);
+        $organization->setId($id);
+        $manager->persist($organization);
+        $manager->flush();
+        $organization = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('a2e0ebe1-b889-41e4-99b5-56d403231cf4');
+        $favicon = new Image();
+        $favicon->setName('facebook Favicon');
+        $favicon->setDescription('facebook Favicon');
+        $favicon->setBase64('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIzLjEuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA3NCAxMTAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDc0IDExMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiNGRkZGRkY7fQoJLnN0MXtmaWxsOiNFRTUwNTA7fQo8L3N0eWxlPgo8ZyBpZD0iWE1MSURfMTkzOF8iPgoJPGcgaWQ9IlhNTElEXzQyMTRfIj4KCQk8cGF0aCBpZD0iWE1MSURfNDI3OV8iIGNsYXNzPSJzdDAiIGQ9Ik02Mi42LDUzYy0wLjctMS40LTEuNi0yLjQtMi4zLTMuMWw1LTkuMWMzLjItNS43LDQuOS0xMC45LDUuNi0xNS40CgkJCWMwLjEtMC4yLDAuMS0wLjQsMC4xLTAuNWMwLjctNC42LDAuNC04LjQtMC4xLTExLjRDNjkuNyw3LDY2LjcsMy4zLDY2LjYsMy4xYy0wLjQtMC41LTEtMC44LTEuNi0wLjljLTAuMiwwLTQuOS0wLjYtMTEuMSwxLjgKCQkJYy0yLjgsMS4xLTYuMiwyLjktOS43LDUuOWMtMC4xLDAuMS0wLjMsMC4yLTAuNCwwLjNjLTMuNCwzLTYuOSw3LjItMTAuMSwxMi45bC01LDkuMWMtMS0wLjMtMi40LTAuNS0zLjktMC4zCgkJCWMtMy4yLDAuMy03LjcsMS45LTExLjQsOC42bC0zLDUuNWMtMC43LDEuMi0wLjIsMi43LDEsMy40bDcuMyw0LjFsMi4xLDcuNWMwLjIsMC42LDAuNiwxLjIsMS4yLDEuNWwxNi40LDkuMQoJCQljMC42LDAuMywxLjMsMC40LDEuOSwwLjJsNy41LTIuMWw3LjMsNC4xYzEuMiwwLjcsMi43LDAuMiwzLjQtMWwzLTUuNUM2NSw2MC42LDY0LjEsNTUuOSw2Mi42LDUzeiBNMTkuNyw0OC4zbC0zLjgtMi4xbDEuOC0zLjMKCQkJYzIuOS01LjIsNi4yLTYuMSw4LjQtNkwxOS43LDQ4LjN6IE01NS40LDguOGMzLjUtMS40LDYuNC0xLjYsNy45LTEuN2MwLjgsMS4zLDIuMSwzLjksMi43LDcuNmMwLjMsMS45LDAuNSwzLjksMC40LDZsLTE2LjMtOS4xCgkJCUM1MS44LDEwLjUsNTMuNiw5LjUsNTUuNCw4Ljh6IE01NC45LDQ5LjNsLTguNiwxNS41bC02LjUsMS45bC0xNC42LTguMUwyMy4zLDUybDguNi0xNS41TDM4LDI1LjZjMi40LTQuMiw1LTcuOCw4LTEwLjZsMTkuOCwxMQoJCQljLTAuOCw0LTIuNSw4LjEtNC44LDEyLjNMNTQuOSw0OS4zeiBNNTUuMiw2OC4xTDUxLjMsNjZsNi40LTExLjRjMC4yLDAuMywwLjQsMC42LDAuNiwxYzEuMiwyLjUsMC44LDUuNi0xLjMsOS4zTDU1LjIsNjguMXoiLz4KCTwvZz4KPC9nPgo8cGF0aCBpZD0iWE1MSURfNDM3OF8iIGNsYXNzPSJzdDEiIGQ9Ik0xOC43LDY2LjRjLTAuNi0wLjMtMS40LTAuNC0yLTAuMmMtMC4zLDAuMS02LjYsMi4zLTkuNSw5LjNjLTIuNiw2LjItMS44LDE0LjEsMi42LDIzLjMKCWMwLjIsMC41LDAuNiwwLjksMSwxLjFjMC40LDAuMiwxLDAuNCwxLjUsMC4zYzEwLjEtMS4yLDE3LjItNC41LDIxLjEtMTAuMWM0LjQtNi4yLDIuOS0xMi43LDIuOS0xM2MtMC4yLTAuNy0wLjYtMS4zLTEuMi0xLjYKCUwxOC43LDY2LjR6IE0yOS4zLDg3LjNjLTIuOCw0LTguMiw2LjYtMTUuOCw3LjdjLTMuMS03LjEtMy43LTEzLTEuOC0xNy41YzEuNS0zLjYsNC4yLTUuNCw1LjYtNi4ybDQuOSwyLjdsLTQuOSw4LjcKCWMtMC43LDEuMi0wLjIsMi43LDEsMy40YzEuMiwwLjcsMi43LDAuMiwzLjQtMWw0LjktOC43bDQuOSwyLjdDMzEuNiw4MC45LDMxLjUsODQuMiwyOS4zLDg3LjN6Ii8+CjxwYXRoIGlkPSJYTUxJRF80MzQ1XyIgY2xhc3M9InN0MCIgZD0iTTQ0LDQyLjRjNC4yLDIuMyw5LjYsMC44LDExLjktMy40YzIuMy00LjIsMC44LTkuNi0zLjQtMTEuOXMtOS42LTAuOC0xMS45LDMuNAoJQzM4LjMsMzQuNywzOS44LDQwLDQ0LDQyLjR6IE01MC4xLDMxLjRjMS44LDEsMi41LDMuMywxLjUsNS4xYy0xLDEuOC0zLjMsMi41LTUuMSwxLjVTNDQsMzQuNyw0NSwzMi45QzQ2LDMxLjEsNDguMywzMC40LDUwLjEsMzEuNAoJeiIvPgo8L3N2Zz4K');
+        $favicon->setOrganization($organization);
+        $manager->persist($favicon);
+        $favicon->setId($id);
+        $manager->persist($favicon);
+        $manager->flush();
+        $favicon = $manager->getRepository('App:Image')->findOneBy(['id'=> $id]);
+
+        $style = new Style();
+        $style->setName('facebook');
+        $style->setDescription('Huisstijl facebook');
+        $style->setCss('
+        :root {
+                --primary: #01689b;
+                --primary-color: white;
+                --background: #01689b;
+                --secondary: #cce0f1;
+                --secondary-color: #2b2b2b;
+
+                --menu: #01689b;
+                --menu-over: #3669A5;
+                --menu-color: white;
+                --footer: #01689b;
+                --footer-color: white;
+         }
+
+         body {
+            background-color: #0948B3 !important;
+            font-family: "Nunito Sans", sans-serif;
+            color: white;
+         }
+
+        ');
+        $style->setfavicon($favicon);
+        $style->addOrganization($organization);
+        $manager->persist($style);
+        $manager->flush();
+
+        // Facebook
+        $id = Uuid::fromString('da6463e7-b345-4d7d-b644-b9b1991ae616');
+        $application = new Application();
+        $application->setName('facebook');
+        $application->setDescription('facebook');
+        $application->setDomain('facebook.com');
+        $application->setStyle($style);
+        $application->setOrganization($organization);
+        $manager->persist($application);
+        $application->setId($id);
+        $manager->persist($application);
+        $manager->flush();
+        $application = $manager->getRepository('App:Application')->findOneBy(['id'=> $id]);
+
         // Menu
         $id = Uuid::fromString('2295c6d5-8800-4a70-8011-d377b0b69ddf');
         $menu = new Menu();
