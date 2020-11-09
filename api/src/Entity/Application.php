@@ -155,7 +155,7 @@ class Application
     /**
      * @Groups({"read","write"})
      * @MaxDepth(1)
-     * @ORM\ManyToOne(targetEntity="App\Entity\Style")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Style", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $style;
