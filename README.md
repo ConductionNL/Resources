@@ -16,6 +16,8 @@ Copyright &copy; [Gemeente Utrecht](https://www.utrecht.nl/)  2019
 
 [Licensed under the EUPL](LICENCE.md)
 
-
+Requesting features
+-------
+Do you need a feature that is not on this list? don't hesitate to send us a [feature request](https://github.com/ConductionNL/commonground-component/issues/new?assignees=&labels=&template=feature_request.md&title=).  
 
 

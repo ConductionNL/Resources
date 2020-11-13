@@ -11,7 +11,7 @@ use PhpOffice\PhpWord\Settings;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
+use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Twig_Environment as Environment;
 
@@ -38,7 +38,7 @@ class TemplateSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function template(GetResponseForControllerResultEvent $event)
+    public function template(ViewEvent $event)
     {
         $result = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
@@ -58,7 +58,7 @@ class TemplateSubscriber implements EventSubscriberInterface
         $query = $request->query->all();
         $body = json_decode($request->getContent(), true); /*@todo hier zouden we eigenlijk ook xml moeten ondersteunen */
 
-        $variables = array_merge($query, $body);
+        $variables = array_merge($query, $result->getVariables());
 
         switch ($result->getTemplateEngine()) {
             case 'twig':

@@ -466,13 +466,13 @@ paths:
           schema:
             type: string
         -
-          name: id
+          name: organization
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'id[]'
+          name: 'organization[]'
           in: query
           required: false
           schema:
@@ -481,78 +481,6 @@ paths:
               type: string
           style: form
           explode: true
-        -
-          name: name
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'name[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: description
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'description[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: domain
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'domain[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: dateCreated
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: dateModified
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[]'
-          in: query
-          required: false
-          schema:
-            type: string
         -
           name: page
           in: query
@@ -1531,13 +1459,13 @@ paths:
           schema:
             type: string
         -
-          name: id
+          name: organization
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'id[]'
+          name: 'organization[]'
           in: query
           required: false
           schema:
@@ -1546,78 +1474,6 @@ paths:
               type: string
           style: form
           explode: true
-        -
-          name: name
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'name[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: description
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'description[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: domain
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'domain[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: dateCreated
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: dateModified
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[]'
-          in: query
-          required: false
-          schema:
-            type: string
         -
           name: page
           in: query
@@ -5495,121 +5351,29 @@ paths:
           style: form
           explode: true
         -
+          name: menu.id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'menu.id[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
           name: name
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'name[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
           name: description
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'description[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: order
-          in: query
-          required: false
-          schema:
-            type: integer
-        -
-          name: 'order[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: integer
-          style: form
-          explode: true
-        -
-          name: icon
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'icon[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: type
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'type[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: href
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'href[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: dateCreated
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: dateModified
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[]'
           in: query
           required: false
           schema:
@@ -11999,18 +11763,23 @@ components:
         route:
           description: 'The moment this request was created'
           type: string
+          nullable: true
         endpoint:
           description: 'The endpoint that the request was made to'
           type: string
+          nullable: true
         method:
           description: 'The method that was used'
           type: string
+          nullable: true
         accept:
           description: 'The contentType that was reqousted'
           type: string
+          nullable: true
         contentType:
           description: 'The contentType that was suplieds'
           type: string
+          nullable: true
         content:
           description: 'The moment this request was created'
           type: string
@@ -12018,6 +11787,7 @@ components:
         ip:
           description: 'The moment this request was created'
           type: string
+          nullable: true
         session:
           description: 'The moment this request was created'
           type: string
@@ -12129,18 +11899,23 @@ components:
         route:
           description: 'The moment this request was created'
           type: string
+          nullable: true
         endpoint:
           description: 'The endpoint that the request was made to'
           type: string
+          nullable: true
         method:
           description: 'The method that was used'
           type: string
+          nullable: true
         accept:
           description: 'The contentType that was reqousted'
           type: string
+          nullable: true
         contentType:
           description: 'The contentType that was suplieds'
           type: string
+          nullable: true
         content:
           description: 'The moment this request was created'
           type: string
@@ -12148,6 +11923,7 @@ components:
         ip:
           description: 'The moment this request was created'
           type: string
+          nullable: true
         session:
           description: 'The moment this request was created'
           type: string
@@ -12973,6 +12749,7 @@ components:
         description:
           description: 'The description of this organisation.'
           type: string
+          nullable: true
         style:
           nullable: true
           anyOf:
@@ -12989,16 +12766,24 @@ components:
           format: date-time
           nullable: true
         contact:
-          description: 'The contact for this organization'
+          description: 'The contact information for this organization'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
           nullable: true
+        parentOrganization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization-read'
+        childOrganizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organization-read'
       required:
         - rsin
         - chamberOfComerce
         - name
-        - description
     Organization-write:
       type: object
       description: 'An organization as active on commonground.'
@@ -13006,7 +12791,6 @@ components:
         - rsin
         - chamberOfComerce
         - name
-        - description
       properties:
         rsin:
           description: 'The rsin of this organisations.'
@@ -13022,17 +12806,23 @@ components:
         description:
           description: 'The description of this organisation.'
           type: string
+          nullable: true
         style:
           nullable: true
           anyOf:
             -
               $ref: '#/components/schemas/Style-write'
         contact:
-          description: 'The contact for this organization'
+          description: 'The contact information for this organization'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
           nullable: true
+        parentOrganization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization-write'
     'Organization:jsonld-read':
       type: object
       description: 'An organization as active on commonground.'
@@ -13067,6 +12857,7 @@ components:
         description:
           description: 'The description of this organisation.'
           type: string
+          nullable: true
         style:
           nullable: true
           anyOf:
@@ -13083,16 +12874,24 @@ components:
           format: date-time
           nullable: true
         contact:
-          description: 'The contact for this organization'
+          description: 'The contact information for this organization'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
           nullable: true
+        parentOrganization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization:jsonld-read'
+        childOrganizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organization:jsonld-read'
       required:
         - rsin
         - chamberOfComerce
         - name
-        - description
     'Organization:jsonld-write':
       type: object
       description: 'An organization as active on commonground.'
@@ -13100,7 +12899,6 @@ components:
         - rsin
         - chamberOfComerce
         - name
-        - description
       properties:
         '@context':
           readOnly: true
@@ -13125,17 +12923,23 @@ components:
         description:
           description: 'The description of this organisation.'
           type: string
+          nullable: true
         style:
           nullable: true
           anyOf:
             -
               $ref: '#/components/schemas/Style:jsonld-write'
         contact:
-          description: 'The contact for this organization'
+          description: 'The contact information for this organization'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
           nullable: true
+        parentOrganization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization:jsonld-write'
     Slug-read:
       type: object
       description: 'Your slug connects your application with your pages.'
@@ -13305,6 +13109,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization-read'
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application-read'
         dateCreated:
           description: 'The moment this request was created'
           type: string
@@ -13339,6 +13147,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization-write'
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application-write'
     'Style:jsonld-read':
       type: object
       description: 'Your style provides ccs and a favicon for an organisation.'
@@ -13373,6 +13185,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization:jsonld-read'
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application:jsonld-read'
         dateCreated:
           description: 'The moment this request was created'
           type: string
@@ -13416,6 +13232,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization:jsonld-write'
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application:jsonld-write'
     Template-read:
       type: object
       description: 'Templates holds information your pages or include in messages.'
@@ -13441,6 +13261,11 @@ components:
         content:
           description: 'The Content of this template.'
           type: string
+        variables:
+          description: 'Optional variables ussed during rendering'
+          type: array
+          items:
+            type: string
         templateEngine:
           description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
           type: string
@@ -13498,6 +13323,11 @@ components:
         content:
           description: 'The Content of this template.'
           type: string
+        variables:
+          description: 'Optional variables ussed during rendering'
+          type: array
+          items:
+            type: string
         templateEngine:
           description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
           type: string
@@ -13548,6 +13378,11 @@ components:
         content:
           description: 'The Content of this template.'
           type: string
+        variables:
+          description: 'Optional variables ussed during rendering'
+          type: array
+          items:
+            type: string
         templateEngine:
           description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
           type: string
@@ -13614,6 +13449,11 @@ components:
         content:
           description: 'The Content of this template.'
           type: string
+        variables:
+          description: 'Optional variables ussed during rendering'
+          type: array
+          items:
+            type: string
         templateEngine:
           description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
           type: string
@@ -13888,16 +13728,17 @@ definitions:
         description: 'The moment this request last Modified'
         type: \Datetime
       contact:
-        description: 'The contact for this organization'
+        description: 'The contact information for this organization'
         type: string
         format: url
         maxLength: 255
       style: []
+      parentOrganization: []
+      childOrganizations: []
     required:
       - rsin
       - chamberOfComerce
       - name
-      - description
   Organization-write:
     properties:
       rsin:
@@ -13921,16 +13762,16 @@ definitions:
         example: 'This is the manucipality of Utrecht'
         maxLength: 255
       contact:
-        description: 'The contact for this organization'
+        description: 'The contact information for this organization'
         type: string
         format: url
         maxLength: 255
       style: []
+      parentOrganization: []
     required:
       - rsin
       - chamberOfComerce
       - name
-      - description
   Style-read:
     properties:
       id:
@@ -13957,6 +13798,7 @@ definitions:
         type: \Datetime
       favicon: []
       organizations: []
+      applications: []
     required:
       - name
       - description
@@ -13975,6 +13817,7 @@ definitions:
       css: []
       favicon: []
       organizations: []
+      applications: []
     required:
       - name
       - description
@@ -14426,12 +14269,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-09-17 15:12:45'
+        example: '2020-11-13 10:35:02'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-09-17 15:12:45'
+        example: '2020-11-13 10:35:02'
     required: []
   ChangeLog-write:
     properties:
@@ -14545,12 +14388,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-09-17 15:12:45'
+        example: '2020-11-13 10:35:02'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-09-17 15:12:45'
+        example: '2020-11-13 10:35:02'
     required: []
   AuditTrail-write:
     properties:

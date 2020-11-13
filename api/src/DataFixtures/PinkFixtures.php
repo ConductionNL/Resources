@@ -14,7 +14,7 @@ use App\Entity\Template;
 use App\Entity\TemplateGroup;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
@@ -36,7 +36,6 @@ class PinkFixtures extends Fixture
     {
         // Lets make sure we only run these fixtures on larping enviroment
         if (
-            !$this->params->get('app_build_all_fixtures') &&
             $this->params->get('app_domain') != 'mijncluster.nl' && strpos($this->params->get('app_domain'), 'mijncluster.nl') == false
         ) {
             return false;
@@ -54,10 +53,16 @@ class PinkFixtures extends Fixture
         $manager->flush();
         $organisation = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('6635f156-9d88-46c2-976e-0bc31043c4b2');
         $favicon = new Image();
         $favicon->setName('Pink Roccade');
         $favicon->setDescription('Pink Roccade');
         $favicon->setOrganization($organisation);
+        $manager->persist($favicon);
+        $favicon->setId($id);
+        $manager->persist($favicon);
+        $manager->flush();
+        $favicon = $manager->getRepository('App:Image')->findOneBy(['id'=> $id]);
 
         $logo = new Image();
         $logo->setName('Pink Roccade Logo');
@@ -93,7 +98,6 @@ class PinkFixtures extends Fixture
         $style->addOrganization($organisation);
 
         $manager->persist($organisation);
-        $manager->persist($favicon);
         $manager->persist($logo);
         $manager->persist($style);
 
