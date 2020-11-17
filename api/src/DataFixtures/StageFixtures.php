@@ -272,12 +272,45 @@ class StageFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($menuItem);
 
         // Template groups
+        // E-mails
+        $groupEmails = new TemplateGroup();
+        $groupEmails->setOrganization($organization);
+        $groupEmails->setApplication($application);
+        $groupEmails->setName('E-mails');
+        $groupEmails->setDescription('E-mails die verstuurd worden');
+        $manager->persist($groupEmails);
+        $manager->flush();
+        $groupEmails->setTranslatableLocale('en'); // change locale
+        $groupEmails->setName('E-mails');
+        $groupEmails->setDescription('E-mails that are send out');
+        $manager->persist($groupEmails);
+
+        // Pages
         $groupPages = new TemplateGroup();
         $groupPages->setOrganization($organization);
         $groupPages->setApplication($application);
         $groupPages->setName('Pages');
         $groupPages->setDescription('Webpages that are presented to visitors');
         $manager->persist($groupPages);
+
+        // E-mail templates
+        $id = Uuid::fromString('c1e5e409-63d5-4590-ba35-415aa002384b');
+        $template = new Template();
+        $template->setTranslatableLocale('nl'); // change locale
+        $template->setTemplateEngine('twig');
+        $template->setName('Inschrijving bij een stage');
+        $template->setTitle('Een student heeft zich ingeschreven voor een van uw stages');
+        $template->setDescription('Update over een student die zicht heeft ingeschreven voor een van uw stages');
+        $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/Stage/emails/internshipApplication.html.twig', 'r'));
+        $template->setTemplateEngine('twig');
+        $manager->persist($template);
+        $template->setId($id);
+        $manager->persist($template);
+        $manager->flush();
+        $template = $manager->getRepository('App:Template')->findOneBy(['id'=> $id]);
+        $template->addTemplateGroup($groupEmails);
+        $manager->persist($template);
+        $manager->flush();
 
         // Pages
         $id = Uuid::fromString('d6127f56-c334-4eb7-bade-c70e97631aec');
