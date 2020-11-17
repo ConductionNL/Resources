@@ -13109,6 +13109,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization-read'
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application-read'
         dateCreated:
           description: 'The moment this request was created'
           type: string
@@ -13143,6 +13147,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization-write'
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application-write'
     'Style:jsonld-read':
       type: object
       description: 'Your style provides ccs and a favicon for an organisation.'
@@ -13177,6 +13185,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization:jsonld-read'
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application:jsonld-read'
         dateCreated:
           description: 'The moment this request was created'
           type: string
@@ -13220,6 +13232,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization:jsonld-write'
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application:jsonld-write'
     Template-read:
       type: object
       description: 'Templates holds information your pages or include in messages.'
@@ -14069,6 +14085,7 @@ definitions:
         type: \Datetime
       favicon: []
       organizations: []
+      applications: []
     required:
       - name
       - description
@@ -14087,6 +14104,7 @@ definitions:
       css: []
       favicon: []
       organizations: []
+      applications: []
     required:
       - name
       - description
@@ -14317,12 +14335,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-11-10 15:21:53'
+        example: '2020-11-16 15:10:37'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-11-10 15:21:53'
+        example: '2020-11-16 15:10:37'
     required: []
   AuditTrail-write:
     properties:
@@ -14370,12 +14388,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-11-10 15:21:53'
+        example: '2020-11-16 15:10:37'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-11-10 15:21:53'
+        example: '2020-11-16 15:10:37'
     required: []
   ChangeLog-write:
     properties:
