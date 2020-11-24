@@ -112,7 +112,7 @@ class WaardepapierenFixtures extends Fixture implements DependentFixtureInterfac
                 'footer3'                          => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'9fd3a481-064f-4095-bdd5-8c97061c3665']),
                 'footer4'                          => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'eb50c6a1-6e30-4467-a903-e34bd722e98f']),
                 'userPage'                         => 'me',
-                'login'                            => ['user'=>true, 'facebook'=>true, 'gmail'=>true],
+                'login'                            => ['digid'=>true],
                 'header'                           => false,
                 'stickyMenu'                       => true,
             ]
@@ -164,7 +164,7 @@ class WaardepapierenFixtures extends Fixture implements DependentFixtureInterfac
         $menuItem = new MenuItem();
         $menuItem->setOrder(2);
         $menuItem->setType('slug');
-        $menuItem->setHref('/certificate');
+        $menuItem->setHref('/waardepapieren/certificate');
         $menuItem->setMenu($menu);
         $menuItem->setTranslatableLocale('nl'); // change locale
         $menuItem->setName('Waardepapier');
