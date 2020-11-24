@@ -3,7 +3,7 @@ entries:
   postgresql:
   - apiVersion: v1
     appVersion: 11.7.0
-    created: "2020-11-16T15:08:20.2757629Z"
+    created: "2020-11-24T13:41:31.9703751Z"
     deprecated: true
     description: DEPRECATED Chart for PostgreSQL, an object-relational database management
       system (ORDBMS) with an emphasis on extensibility and on standards-compliance.
@@ -26,14 +26,14 @@ entries:
   wrc:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2020-11-16T15:08:20.2348157Z"
+    created: "2020-11-24T13:41:31.9508319Z"
     description: Naast deze JSON rest API is er ook een [graphql](/graphql) interface
       beschikbaar.
-    digest: 2957529a17526bb9c0985f18a26532a3b69b1195312a911bec78d285e42610e1
+    digest: 6deb0119458ce4b66b5dd8b9b5456e9ba88922af8f1b0aea45b19e2c9e17747b
     home: wrc.zaakonline.nl
     icon: wrc.zaakonline.nl
     name: wrc
     urls:
     - wrc-0.1.0.tgz
     version: 0.1.0
-generated: "2020-11-16T15:08:20.2190474Z"
+generated: "2020-11-24T13:41:31.9420337Z"
