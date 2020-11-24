@@ -7,11 +7,9 @@ use App\Entity\Configuration;
 use App\Entity\Image;
 use App\Entity\Menu;
 use App\Entity\MenuItem;
-use App\Entity\Organization;
 use App\Entity\Slug;
 use App\Entity\Style;
 use App\Entity\Template;
-use App\Entity\TemplateGroup;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -113,10 +111,10 @@ class WaardepapierenFixtures extends Fixture implements DependentFixtureInterfac
                 'footer2'                          => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'1bc94395-544f-4b63-b69f-9ba87d0f1e4b']),
                 'footer3'                          => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'9fd3a481-064f-4095-bdd5-8c97061c3665']),
                 'footer4'                          => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'eb50c6a1-6e30-4467-a903-e34bd722e98f']),
-                'userPage'              => 'me',
-                'login'                 => ['user'=>true, 'facebook'=>true, 'gmail'=>true],
-                'header'                => false,
-                'stickyMenu'            => true,
+                'userPage'                         => 'me',
+                'login'                            => ['user'=>true, 'facebook'=>true, 'gmail'=>true],
+                'header'                           => false,
+                'stickyMenu'                       => true,
             ]
         );
         $manager->persist($configuration);
