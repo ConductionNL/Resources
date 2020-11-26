@@ -7,6 +7,7 @@ use App\Entity\Configuration;
 use App\Entity\Image;
 use App\Entity\Menu;
 use App\Entity\MenuItem;
+use App\Entity\Organization;
 use App\Entity\Slug;
 use App\Entity\Style;
 use App\Entity\Template;
@@ -17,7 +18,7 @@ use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-class WaardepapierenFixtures extends Fixture implements DependentFixtureInterface
+class WaardepapierenFixtures extends Fixture
 {
     private $params;
     /**
@@ -31,25 +32,25 @@ class WaardepapierenFixtures extends Fixture implements DependentFixtureInterfac
         $this->commonGroundService = $commonGroundService;
     }
 
-    public function getDependencies()
-    {
-        return [
-            ConductionFixtures::class,
-            ZuiddrechtFixtures::class,
-        ];
-    }
-
     public function load(ObjectManager $manager)
     {
         if (
             !$this->params->get('app_build_all_fixtures') &&
-            $this->params->get('app_domain') != 'zuiddrecht.nl' && strpos($this->params->get('app_domain'), 'zuiddrecht.nl') == false &&
-            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false
+            $this->params->get('app_domain') != 'waardepapieren-gemeentehoorn.commonground.nu' && strpos($this->params->get('app_domain'), 'waardepapieren-gemeentehoorn.commonground.nu') == false
         ) {
             return false;
         }
 
-        $organization = $this->getReference(ZuiddrechtFixtures::ORGANIZATION_ZUIDDRECHT);
+        $id = Uuid::fromString('f42478fc-0499-4823-b79a-a1efa02fc742');
+        $organization = new Organization();
+        $organization->setName('Waardepapieren');
+        $organization->setDescription('Waardepapieren');
+        $organization->setRsin('');
+        $manager->persist($organization);
+        $organization->setId($id);
+        $manager->persist($organization);
+        $manager->flush();
+        $organization = $manager->getRepository('App:Organization')->findOneBy(['id' => $id]);
 
         $id = Uuid::fromString('825e705c-5d05-4501-afa7-eb592c703ebf');
         $favicon = new Image();
