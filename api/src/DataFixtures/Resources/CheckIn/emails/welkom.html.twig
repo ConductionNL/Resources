@@ -11,56 +11,11 @@
                     <td>
                         <p style="margin: 15px 30px 0 30px"><strong>Welkom bij Checking!</strong></p>
                         <p style="margin: 15px 30px 0 30px">Je aanmelding is compleet! Je kunt nu zonder zorgen bezoekers ontvangen in de weet dat hun gegevens veilig zijn en dat je aan de gestelde verplichtingen door de overheid voldoet :) </p>
-                        {% if resource.properties['organization'] is defined  %}{% set organization = commonground_resource(resource.properties['organization']) %}{% endif %}
-                        <p style="margin: 15px 30px 0 30px">We hebben de volgende gegevens geregistreerd:</p>
-                        <ul style="margin: 15px 30px 0 30px">
-                            {% if organization.name is defined and organization.name is not empty %}
-                                <li>{{ organization.name }}</li>
-                            {% endif %}
-                            {% if organization.coc is defined and organization.coc is not empty %}
-                                <li>{{ organization.coc }}</li>
-                            {% endif %}
-                            {% if organization.vat is defined and organization.vat is not empty %}
-                                <li>{{ organization.vat }}</li>
-                            {% endif %}
-                            {% if organization.adresses.0.street is defined
-                                and organization.adresses.0.street is not empty
-                                and organization.adresses.0.houseNumber is defined
-                                and organization.adresses.0.houseNumber is not empty %}
-                                <li>{{ organization.adresses.0.street }} {{ organization.adresses.0.houseNumber }}</li>
-                            {% endif %}
-                            {% if organization.adresses.0.postalCode is defined
-                                and organization.adresses.0.postalCode is not empty %}
-                                <li>{{ organization.adresses.0.postalCode }}, {% if organization.adresses.0.locality is defined and organization.adresses.0.locality is not empty%} {{ organization.adresses.0.locality }}{% endif %}</li>
-                            {% endif %}
-                            {% if organization.persons.0.name is defined and organization.persons.0.name  is not empty %}
-                                <li>{{ organization.persons.0.name }}</li>
-                            {% endif %}
-                            {% if organization.telephones.0 is defined or organization.emails.0 is defined %}
-                                <li>{% if organization.emails.0.email is defined and organization.emails.0.email is not empty%}{{ organization.emails.0.email }}{% endif%} {% if organization.telephones.0.telephone is defined and organization.telephones.0.telephone is not empty %}{{ organization.telephones.0.telephone }}{% endif %}</li>
-                            {% endif %}
-                            {% if resource.properties['iban'].iban is defined and resource.properties['iban'].iban is not empty %}
-                                <li>{{ resource.properties['iban'].iban }}</li>
-                            {% endif %}
-                        </ul>
-                        <br>
-                        <p style="margin: 15px 30px 0 30px"><strong>Jouw account</strong></p>
-                        <p style="margin: 15px 30px 0 30px">
-                            We hebben maar meteen een gebruikersnaam voor je aangemaakt met als gebruikersnaam: <br>
-                            {% if receiver.emails is defined and receiver.emails|length >0 %}{% set receiverEmail = receiver.emails[0] %}{% endif %}
-                            {% if receiverEmail is defined and receiverEmail is not empty %}{{ receiverEmail.email }}{% endif %}<br>
-                            Je ontvangt jouw wachtwoord echter via een aparte mail, dit in verband met veiligheid.
-                        </p>
-                        <p style="margin: 15px 30px 0 30px">
-                            Via jouw account heb je een overzicht van al je opgegeven gegevens en het aantal check-ins.
-                        </p>
-
-                        <br>
 
                         <p style="margin: 15px 30px 0 30px"><strong>Jouw QR Code</strong></p>
 
                         <p style="margin: 15px 30px 0 30px">
-                            En dan hier ook meteen je QR-code die je kunt gebruiken voor bezoekers, <br>
+                            hier ook meteen je QR-code die je kunt gebruiken voor bezoekers, <br>
                             mocht je meer QR-codes nodig hebben (bijvoorbeeld omdat je meerdere locaties hebt)
                             dan kan je ze zelf gemakkelijk via de website aanmaken. <br>
                             {% if app.environment == 'prod' %}
