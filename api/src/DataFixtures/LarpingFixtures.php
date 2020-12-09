@@ -44,6 +44,7 @@ class LarpingFixtures extends Fixture
         $organization->setName('Larping');
         $organization->setDescription('Larping organization');
         $organization->setRsin('');
+        $organization->setContact($this->commonGroundService->cleanUrl(['component'=>'cc', 'type'=>'organizations', 'id'=>'51178e23-62e8-42f1-a96b-f60e7513a694']));
         $manager->persist($organization);
         $organization->setId($id);
         $manager->persist($organization);
