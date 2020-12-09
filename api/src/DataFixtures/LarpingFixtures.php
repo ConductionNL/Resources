@@ -66,8 +66,6 @@ class LarpingFixtures extends Fixture
 
         $manager->flush();
 
-
-
         // Image
 //        $id = Uuid::fromString('50e8a292-078a-4569-8ca7-f8a21ddcb8b6');
 //        $image = new Image();
