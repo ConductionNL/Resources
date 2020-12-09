@@ -131,6 +131,39 @@ class Organization
     private $description;
 
     /**
+     * @var string The technicalContact of this application
+     *
+     * @example https://example.org/organizations/1
+     *
+     * @Groups({"read","write"})
+     * @Assert\Url
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $technicalContact;
+
+    /**
+     * @var string The privacyContact of this application
+     *
+     * @example https://example.org/organizations/1
+     *
+     * @Groups({"read","write"})
+     * @Assert\Url
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $privacyContact;
+
+    /**
+     * @var string The administrationContact of this application
+     *
+     * @example https://example.org/organizations/1
+     *
+     * @Groups({"read","write"})
+     * @Assert\Url
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $administrationContact;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Image")
      */
     private $logo;
@@ -275,6 +308,51 @@ class Organization
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTechnicalContact(): ?string
+    {
+        return $this->technicalContact;
+    }
+
+    public function setTechnicalContact(string $technicalContact): self
+    {
+        $this->technicalContact = $technicalContact;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrivacyContact(): ?string
+    {
+        return $this->privacyContact;
+    }
+
+    public function setPrivacyContact(string $privacyContact): self
+    {
+        $this->privacyContact = $privacyContact;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdministrationContact(): ?string
+    {
+        return $this->administrationContact;
+    }
+
+    public function setAdministrationContact(string $administrationContact): self
+    {
+        $this->administrationContact = $administrationContact;
 
         return $this;
     }
