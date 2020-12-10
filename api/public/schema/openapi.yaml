@@ -6787,6 +6787,33 @@ paths:
               - asc
               - desc
         -
+          name: 'order[technicalContact]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[privacyContact]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[administrationContact]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[dateCreated]'
           in: query
           required: false
@@ -6933,6 +6960,54 @@ paths:
             type: string
         -
           name: 'description[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: technicalContact
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'technicalContact[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: privacyContact
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'privacyContact[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: administrationContact
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'administrationContact[]'
           in: query
           required: false
           schema:
@@ -12750,6 +12825,24 @@ components:
           description: 'The description of this organisation.'
           type: string
           nullable: true
+        technicalContact:
+          description: 'The technicalContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        privacyContact:
+          description: 'The privacyContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        administrationContact:
+          description: 'The administrationContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
         style:
           nullable: true
           anyOf:
@@ -12807,6 +12900,24 @@ components:
           description: 'The description of this organisation.'
           type: string
           nullable: true
+        technicalContact:
+          description: 'The technicalContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        privacyContact:
+          description: 'The privacyContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        administrationContact:
+          description: 'The administrationContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
         style:
           nullable: true
           anyOf:
@@ -12856,6 +12967,24 @@ components:
           type: string
         description:
           description: 'The description of this organisation.'
+          type: string
+          nullable: true
+        technicalContact:
+          description: 'The technicalContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        privacyContact:
+          description: 'The privacyContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        administrationContact:
+          description: 'The administrationContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
           type: string
           nullable: true
         style:
@@ -12922,6 +13051,24 @@ components:
           type: string
         description:
           description: 'The description of this organisation.'
+          type: string
+          nullable: true
+        technicalContact:
+          description: 'The technicalContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        privacyContact:
+          description: 'The privacyContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        administrationContact:
+          description: 'The administrationContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
           type: string
           nullable: true
         style:
@@ -13963,6 +14110,21 @@ definitions:
         type: string
         example: 'This is the manucipality of Utrecht'
         maxLength: 255
+      technicalContact:
+        description: 'The technicalContact of this application'
+        type: string
+        example: 'https://example.org/organizations/1'
+        format: url
+      privacyContact:
+        description: 'The privacyContact of this application'
+        type: string
+        example: 'https://example.org/organizations/1'
+        format: url
+      administrationContact:
+        description: 'The administrationContact of this application'
+        type: string
+        example: 'https://example.org/organizations/1'
+        format: url
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
@@ -14003,6 +14165,21 @@ definitions:
         type: string
         example: 'This is the manucipality of Utrecht'
         maxLength: 255
+      technicalContact:
+        description: 'The technicalContact of this application'
+        type: string
+        example: 'https://example.org/organizations/1'
+        format: url
+      privacyContact:
+        description: 'The privacyContact of this application'
+        type: string
+        example: 'https://example.org/organizations/1'
+        format: url
+      administrationContact:
+        description: 'The administrationContact of this application'
+        type: string
+        example: 'https://example.org/organizations/1'
+        format: url
       contact:
         description: 'The contact information for this organization'
         type: string
@@ -14335,12 +14512,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-11-16 15:10:37'
+        example: '2020-12-09 13:53:49'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-11-16 15:10:37'
+        example: '2020-12-09 13:53:49'
     required: []
   AuditTrail-write:
     properties:
@@ -14388,12 +14565,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-11-16 15:10:37'
+        example: '2020-12-09 13:53:49'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-11-16 15:10:37'
+        example: '2020-12-09 13:53:49'
     required: []
   ChangeLog-write:
     properties:
