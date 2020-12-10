@@ -108,7 +108,7 @@ class UtrechtFixtures extends Fixture
         $configuration->setOrganization($organization);
         $configuration->setConfiguration(
             [
-                'mainMenu'            => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'menus', 'id'=>'afea3e07-ba59-4318-a6f3-3fad9a044584']),
+                'mainMenu'            => 'afea3e07-ba59-4318-a6f3-3fad9a044584',
                 'home'                => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'8b630178-85a8-4f10-b19c-c421fdfa5299']),
                 'footer1'             => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'9be5ac5d-35ce-4056-b5a9-ae6a7cf24ef8']),
                 'footer2'             => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'2a85bdc1-3370-4847-b330-e8e6d9cd82b1']),
