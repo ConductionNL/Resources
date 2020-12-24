@@ -34,7 +34,7 @@ class LarpingFixtures extends Fixture
         // Lets make sure we only run these fixtures on larping enviroment
         if (
             !$this->params->get('app_build_all_fixtures') &&
-            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false
+            $this->params->get('app_domain') != 'larping.eu' && strpos($this->params->get('app_domain'), 'larping.eu') == false
         ) {
             return false;
         }
@@ -63,6 +63,20 @@ class LarpingFixtures extends Fixture
         $manager->persist($application);
         $manager->flush();
         $application = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
+
+        $manager->flush();
+
+        $id = Uuid::fromString('6677d727-a57f-4405-8da0-4f53b20094ca');
+        $organization = new Organization();
+        $organization->setName('Vortex Adventures');
+        $organization->setDescription('Vortex Adventures organization');
+        $organization->setRsin('');
+        $organization->setContact($this->commonGroundService->cleanUrl(['component'=>'cc', 'type'=>'organizations', 'id'=>'c69a9073-9d72-4743-ad33-3c4c7fb34589']));
+        $manager->persist($organization);
+        $organization->setId($id);
+        $manager->persist($organization);
+        $manager->flush();
+        $organization = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
 
         $manager->flush();
 
