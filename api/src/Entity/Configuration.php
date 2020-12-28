@@ -81,7 +81,7 @@ class Configuration
      * )
      * @Gedmo\Versioned
      * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
@@ -91,7 +91,6 @@ class Configuration
      * @example Is the best site ever
      *
      * @Gedmo\Versioned
-     * @Assert\NotNull
      * @Assert\Length(
      *      max = 255
      * )
@@ -119,6 +118,8 @@ class Configuration
     private $organization;
 
     /**
+     * @var array array of configurations that will be provided to the application
+     *
      * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="json")

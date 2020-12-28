@@ -74,7 +74,7 @@ class Organization
     /**
      * @var string The rsin of this organisations.
      *
-     * @example About
+     * @example 44123124
      *
      * @Gedmo\Versioned
      * @Assert\NotNull
@@ -82,14 +82,14 @@ class Organization
      *     max = 255
      * )
      * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $rsin;
 
     /**
      * @var string The Chamber of Comerce ID of this organisations.
      *
-     * @example About
+     * @example 4123124
      *
      * @Gedmo\Versioned
      * @Assert\NotNull
@@ -97,7 +97,7 @@ class Organization
      *     max = 255
      * )
      * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $chamberOfComerce;
 
