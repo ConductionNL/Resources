@@ -74,10 +74,9 @@ class Organization
     /**
      * @var string The rsin of this organisations.
      *
-     * @example About
+     * @example 44123124
      *
      * @Gedmo\Versioned
-     * @Assert\NotNull
      * @Assert\Length(
      *     max = 255
      * )
@@ -89,10 +88,9 @@ class Organization
     /**
      * @var string The Chamber of Comerce ID of this organisations.
      *
-     * @example About
+     * @example 4123124
      *
      * @Gedmo\Versioned
-     * @Assert\NotNull
      * @Assert\Length(
      *     max = 255
      * )

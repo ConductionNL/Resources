@@ -95,7 +95,6 @@ class TemplateGroup implements Translatable
      *
      * @Gedmo\Translatable
      * @Gedmo\Versioned
-     * @Assert\NotNull
      * @Assert\Length(
      *     max = 255
      * )
