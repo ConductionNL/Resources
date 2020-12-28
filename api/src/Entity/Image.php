@@ -100,7 +100,7 @@ class Image
     private $description;
 
     /**
-     * @var string The alt of of this image for people with poor eyesight
+     * @var string The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)
      *
      * @example flowers
      *
@@ -128,6 +128,8 @@ class Image
     private $href;
 
     /**
+     * @var string the base64 version of the image
+     *
      * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="text", nullable=true)
