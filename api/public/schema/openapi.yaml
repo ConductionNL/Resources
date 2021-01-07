@@ -10,7 +10,7 @@ info:
     - Version: V1.0
     - Repository: [online](https://github.com/ConductionNL/webresourcecatalogus) / [zip](https://github.com/ConductionNL/webresourcecatalogus/archive/master.zip)
     - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/wrc-php) 
-    - Datamodel: [postman](/schema/wrc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [modelio (zip)](/schema/Datamodel_Modelio.zip) 
+    - Datamodel: [postman](schema/wrc.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
     
     Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
     
@@ -294,7 +294,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Application:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -304,7 +304,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Application:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -1287,7 +1287,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Application:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -1297,7 +1297,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Application:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -1581,7 +1581,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/AuditTrail:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -1591,7 +1591,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/AuditTrail:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -2602,7 +2602,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/ChangeLog:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -2612,7 +2612,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/ChangeLog:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -3508,7 +3508,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Configuration:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -3518,7 +3518,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Configuration:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -4283,7 +4283,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Image:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -4293,7 +4293,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Image:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -5136,7 +5136,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/MenuItem:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -5146,7 +5146,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/MenuItem:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -5922,7 +5922,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Menu:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -5932,7 +5932,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Menu:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -6672,7 +6672,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Organization:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -6682,7 +6682,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Organization:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -6884,158 +6884,6 @@ paths:
             type: string
         -
           name: 'dateModified[strictly_after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: id
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'id[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: rsin
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'rsin[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: chamberOfComerce
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'chamberOfComerce[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: name
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'name[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: description
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'description[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: technicalContact
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'technicalContact[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: privacyContact
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'privacyContact[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: administrationContact
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'administrationContact[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: dateCreated
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: dateModified
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[]'
           in: query
           required: false
           schema:
@@ -7600,7 +7448,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Slug:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -7610,7 +7458,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Slug:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -8622,7 +8470,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Style:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -8632,7 +8480,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Style:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -9355,7 +9203,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/TemplateGroup:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -9365,7 +9213,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/TemplateGroup:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -10367,7 +10215,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Template:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -10377,7 +10225,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Template:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -12192,6 +12040,7 @@ components:
             -
               $ref: '#/components/schemas/Application-read'
         configuration:
+          description: 'array of configurations that will be provided to the application'
           type: array
           items:
             type: string
@@ -12205,16 +12054,9 @@ components:
           type: string
           format: date-time
           nullable: true
-      required:
-        - name
-        - description
     Configuration-write:
       type: object
       description: 'Configurations hold a specific organisation configruation for an application.'
-      required:
-        - name
-        - description
-        - organization
       properties:
         name:
           description: 'The name of this application.'
@@ -12232,9 +12074,12 @@ components:
         organization:
           $ref: '#/components/schemas/Organization-write'
         configuration:
+          description: 'array of configurations that will be provided to the application'
           type: array
           items:
             type: string
+      required:
+        - organization
     'Configuration:jsonld-read':
       type: object
       description: 'Configurations hold a specific organisation configruation for an application.'
@@ -12269,6 +12114,7 @@ components:
             -
               $ref: '#/components/schemas/Application:jsonld-read'
         configuration:
+          description: 'array of configurations that will be provided to the application'
           type: array
           items:
             type: string
@@ -12282,16 +12128,9 @@ components:
           type: string
           format: date-time
           nullable: true
-      required:
-        - name
-        - description
     'Configuration:jsonld-write':
       type: object
       description: 'Configurations hold a specific organisation configruation for an application.'
-      required:
-        - name
-        - description
-        - organization
       properties:
         '@context':
           readOnly: true
@@ -12318,9 +12157,12 @@ components:
         organization:
           $ref: '#/components/schemas/Organization:jsonld-write'
         configuration:
+          description: 'array of configurations that will be provided to the application'
           type: array
           items:
             type: string
+      required:
+        - organization
     Image-read:
       type: object
       description: 'Image speaks for itself.'
@@ -12339,7 +12181,7 @@ components:
           description: 'The description of this organisation.'
           type: string
         alt:
-          description: 'The alt of of this image for people with poor eyesight'
+          description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
           type: string
           nullable: true
         href:
@@ -12347,6 +12189,7 @@ components:
           type: string
           nullable: true
         base64:
+          description: 'the base64 version of the image'
           type: string
           nullable: true
         organization:
@@ -12381,7 +12224,7 @@ components:
           description: 'The description of this organisation.'
           type: string
         alt:
-          description: 'The alt of of this image for people with poor eyesight'
+          description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
           type: string
           nullable: true
         href:
@@ -12389,6 +12232,7 @@ components:
           type: string
           nullable: true
         base64:
+          description: 'the base64 version of the image'
           type: string
           nullable: true
         organization:
@@ -12423,7 +12267,7 @@ components:
           description: 'The description of this organisation.'
           type: string
         alt:
-          description: 'The alt of of this image for people with poor eyesight'
+          description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
           type: string
           nullable: true
         href:
@@ -12431,6 +12275,7 @@ components:
           type: string
           nullable: true
         base64:
+          description: 'the base64 version of the image'
           type: string
           nullable: true
         organization:
@@ -12474,7 +12319,7 @@ components:
           description: 'The description of this organisation.'
           type: string
         alt:
-          description: 'The alt of of this image for people with poor eyesight'
+          description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
           type: string
           nullable: true
         href:
@@ -12482,6 +12327,7 @@ components:
           type: string
           nullable: true
         base64:
+          description: 'the base64 version of the image'
           type: string
           nullable: true
         organization:
@@ -12640,7 +12486,7 @@ components:
           type: string
           nullable: true
         order:
-          description: 'The order in wichs this menu item is shown in relation to other items of the same menu'
+          description: 'The order in which this menu item is shown in relation to other items of the same menu'
           type: integer
           nullable: true
         icon:
@@ -12666,14 +12512,12 @@ components:
           nullable: true
       required:
         - name
-        - order
         - href
     MenuItem-write:
       type: object
       description: 'MenuItem is a part of a menu and can be a link or submenu.'
       required:
         - name
-        - order
         - href
         - menu
       properties:
@@ -12685,7 +12529,7 @@ components:
           type: string
           nullable: true
         order:
-          description: 'The order in wichs this menu item is shown in relation to other items of the same menu'
+          description: 'The order in which this menu item is shown in relation to other items of the same menu'
           type: integer
           nullable: true
         icon:
@@ -12729,7 +12573,7 @@ components:
           type: string
           nullable: true
         order:
-          description: 'The order in wichs this menu item is shown in relation to other items of the same menu'
+          description: 'The order in which this menu item is shown in relation to other items of the same menu'
           type: integer
           nullable: true
         icon:
@@ -12755,14 +12599,12 @@ components:
           nullable: true
       required:
         - name
-        - order
         - href
     'MenuItem:jsonld-write':
       type: object
       description: 'MenuItem is a part of a menu and can be a link or submenu.'
       required:
         - name
-        - order
         - href
         - menu
       properties:
@@ -12783,7 +12625,7 @@ components:
           type: string
           nullable: true
         order:
-          description: 'The order in wichs this menu item is shown in relation to other items of the same menu'
+          description: 'The order in which this menu item is shown in relation to other items of the same menu'
           type: integer
           nullable: true
         icon:
@@ -12874,16 +12716,10 @@ components:
           items:
             $ref: '#/components/schemas/Organization-read'
       required:
-        - rsin
-        - chamberOfComerce
         - name
     Organization-write:
       type: object
       description: 'An organization as active on commonground.'
-      required:
-        - rsin
-        - chamberOfComerce
-        - name
       properties:
         rsin:
           description: 'The rsin of this organisations.'
@@ -12934,6 +12770,8 @@ components:
           anyOf:
             -
               $ref: '#/components/schemas/Organization-write'
+      required:
+        - name
     'Organization:jsonld-read':
       type: object
       description: 'An organization as active on commonground.'
@@ -13018,16 +12856,10 @@ components:
           items:
             $ref: '#/components/schemas/Organization:jsonld-read'
       required:
-        - rsin
-        - chamberOfComerce
         - name
     'Organization:jsonld-write':
       type: object
       description: 'An organization as active on commonground.'
-      required:
-        - rsin
-        - chamberOfComerce
-        - name
       properties:
         '@context':
           readOnly: true
@@ -13087,6 +12919,8 @@ components:
           anyOf:
             -
               $ref: '#/components/schemas/Organization:jsonld-write'
+      required:
+        - name
     Slug-read:
       type: object
       description: 'Your slug connects your application with your pages.'
@@ -13249,6 +13083,7 @@ components:
           description: 'The description of this style.'
           type: string
         css:
+          description: 'the css body of this style'
           type: string
         favicon:
           $ref: '#/components/schemas/Image-read'
@@ -13287,6 +13122,7 @@ components:
           description: 'The description of this style.'
           type: string
         css:
+          description: 'the css body of this style'
           type: string
         favicon:
           $ref: '#/components/schemas/Image-write'
@@ -13325,6 +13161,7 @@ components:
           description: 'The description of this style.'
           type: string
         css:
+          description: 'the css body of this style'
           type: string
         favicon:
           $ref: '#/components/schemas/Image:jsonld-read'
@@ -13372,6 +13209,7 @@ components:
           description: 'The description of this style.'
           type: string
         css:
+          description: 'the css body of this style'
           type: string
         favicon:
           $ref: '#/components/schemas/Image:jsonld-write'
@@ -13441,7 +13279,6 @@ components:
           nullable: true
       required:
         - name
-        - description
         - content
         - templateEngine
     Template-write:
@@ -13449,7 +13286,6 @@ components:
       description: 'Templates holds information your pages or include in messages.'
       required:
         - name
-        - description
         - content
         - templateEngine
       properties:
@@ -13558,7 +13394,6 @@ components:
           nullable: true
       required:
         - name
-        - description
         - content
         - templateEngine
     'Template:jsonld-write':
@@ -13566,7 +13401,6 @@ components:
       description: 'Templates holds information your pages or include in messages.'
       required:
         - name
-        - description
         - content
         - templateEngine
       properties:
@@ -13657,13 +13491,11 @@ components:
           nullable: true
       required:
         - name
-        - description
     TemplateGroup-write:
       type: object
       description: 'Groups are a way of orginzing templates.'
       required:
         - name
-        - description
       properties:
         name:
           description: 'The internal name of this menu'
@@ -13735,13 +13567,11 @@ components:
           nullable: true
       required:
         - name
-        - description
     'TemplateGroup:jsonld-write':
       type: object
       description: 'Groups are a way of orginzing templates.'
       required:
         - name
-        - description
       properties:
         '@context':
           readOnly: true
@@ -13858,7 +13688,9 @@ definitions:
         type: string
         example: 'Is the best site ever'
         maxLength: 255
-      configuration: []
+      configuration:
+        description: 'array of configurations that will be provided to the application'
+        type: array
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
@@ -13866,9 +13698,7 @@ definitions:
         description: 'The moment this request last Modified'
         type: \Datetime
       application: []
-    required:
-      - name
-      - description
+    required: []
   Configuration-write:
     properties:
       name:
@@ -13881,12 +13711,12 @@ definitions:
         type: string
         example: 'Is the best site ever'
         maxLength: 255
-      configuration: []
+      configuration:
+        description: 'array of configurations that will be provided to the application'
+        type: array
       application: []
       organization: []
     required:
-      - name
-      - description
       - organization
   Image-read:
     properties:
@@ -13906,7 +13736,7 @@ definitions:
         example: 'This is the manucipality of Utrecht'
         maxLength: 255
       alt:
-        description: 'The alt of of this image for people with poor eyesight'
+        description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
         type: string
         example: flowers
         maxLength: 255
@@ -13915,7 +13745,9 @@ definitions:
         type: string
         example: app_img_flowers
         maxLength: 255
-      base64: []
+      base64:
+        description: 'the base64 version of the image'
+        type: string
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
@@ -13939,7 +13771,7 @@ definitions:
         example: 'This is the manucipality of Utrecht'
         maxLength: 255
       alt:
-        description: 'The alt of of this image for people with poor eyesight'
+        description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
         type: string
         example: flowers
         maxLength: 255
@@ -13948,7 +13780,9 @@ definitions:
         type: string
         example: app_img_flowers
         maxLength: 255
-      base64: []
+      base64:
+        description: 'the base64 version of the image'
+        type: string
       organization: []
     required:
       - name
@@ -14016,7 +13850,7 @@ definitions:
         example: 'This MenuItem links to the about page'
         maxLength: 2555
       order:
-        description: 'The order in wichs this menu item is shown in relation to other items of the same menu'
+        description: 'The order in which this menu item is shown in relation to other items of the same menu'
         type: int
         example: '1'
         maxLength: 3
@@ -14043,7 +13877,6 @@ definitions:
         type: \Datetime
     required:
       - name
-      - order
       - href
   MenuItem-write:
     properties:
@@ -14058,7 +13891,7 @@ definitions:
         example: 'This MenuItem links to the about page'
         maxLength: 2555
       order:
-        description: 'The order in wichs this menu item is shown in relation to other items of the same menu'
+        description: 'The order in which this menu item is shown in relation to other items of the same menu'
         type: int
         example: '1'
         maxLength: 3
@@ -14080,7 +13913,6 @@ definitions:
       menu: []
     required:
       - name
-      - order
       - href
       - menu
   Organization-read:
@@ -14093,12 +13925,12 @@ definitions:
       rsin:
         description: 'The rsin of this organisations.'
         type: string
-        example: About
+        example: '44123124'
         maxLength: 255
       chamberOfComerce:
         description: 'The Chamber of Comerce ID of this organisations.'
         type: string
-        example: About
+        example: '4123124'
         maxLength: 255
       name:
         description: 'The name of this organization.'
@@ -14140,20 +13972,18 @@ definitions:
       parentOrganization: []
       childOrganizations: []
     required:
-      - rsin
-      - chamberOfComerce
       - name
   Organization-write:
     properties:
       rsin:
         description: 'The rsin of this organisations.'
         type: string
-        example: About
+        example: '44123124'
         maxLength: 255
       chamberOfComerce:
         description: 'The Chamber of Comerce ID of this organisations.'
         type: string
-        example: About
+        example: '4123124'
         maxLength: 255
       name:
         description: 'The name of this organization.'
@@ -14188,8 +14018,6 @@ definitions:
       style: []
       parentOrganization: []
     required:
-      - rsin
-      - chamberOfComerce
       - name
   Slug-read:
     properties:
@@ -14253,7 +14081,9 @@ definitions:
         type: string
         example: 'This page holds info about this style'
         maxLength: 255
-      css: []
+      css:
+        description: 'the css body of this style'
+        type: \text
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
@@ -14278,7 +14108,9 @@ definitions:
         type: string
         example: 'This page holds info about this style'
         maxLength: 255
-      css: []
+      css:
+        description: 'the css body of this style'
+        type: \text
       favicon: []
       organizations: []
       applications: []
@@ -14326,7 +14158,6 @@ definitions:
       templateGroups: []
     required:
       - name
-      - description
       - content
       - templateEngine
   Template-write:
@@ -14359,7 +14190,6 @@ definitions:
       templateGroups: []
     required:
       - name
-      - description
       - content
       - templateEngine
   TemplateGroup-read:
@@ -14389,7 +14219,6 @@ definitions:
       organization: []
     required:
       - name
-      - description
   TemplateGroup-write:
     properties:
       name:
@@ -14407,7 +14236,6 @@ definitions:
       organization: []
     required:
       - name
-      - description
   AuditTrail-read:
     properties:
       id:
@@ -14512,12 +14340,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-12-09 13:53:49'
+        example: '2021-01-07 12:25:47'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-12-09 13:53:49'
+        example: '2021-01-07 12:25:47'
     required: []
   AuditTrail-write:
     properties:
@@ -14565,12 +14393,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-12-09 13:53:49'
+        example: '2021-01-07 12:25:47'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-12-09 13:53:49'
+        example: '2021-01-07 12:25:47'
     required: []
   ChangeLog-write:
     properties:
