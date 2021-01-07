@@ -14,7 +14,7 @@ use App\Entity\Template;
 use App\Entity\TemplateGroup;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
@@ -108,7 +108,7 @@ class UtrechtFixtures extends Fixture
         $configuration->setOrganization($organization);
         $configuration->setConfiguration(
             [
-                'mainMenu'            => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'menus', 'id'=>'afea3e07-ba59-4318-a6f3-3fad9a044584']),
+                'mainMenu'            => 'afea3e07-ba59-4318-a6f3-3fad9a044584',
                 'home'                => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'8b630178-85a8-4f10-b19c-c421fdfa5299']),
                 'footer1'             => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'9be5ac5d-35ce-4056-b5a9-ae6a7cf24ef8']),
                 'footer2'             => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'2a85bdc1-3370-4847-b330-e8e6d9cd82b1']),
@@ -118,6 +118,9 @@ class UtrechtFixtures extends Fixture
                 'about'               => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'template_groups', 'id'=>'99764e34-3c49-4550-8cbd-0b7e2683e4c5']),
                 'newsimg'             => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'images', 'id'=>'726da4ad-9979-4c04-9048-2c0fa7bdb800']),
                 'headerimg'           => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'images', 'id'=>'76b4c601-68a3-462b-a5fe-421c795d67bc']),
+                'header'              => true,
+                'search'              => true,
+                'login'               => ['digid' => true],
                 'favicon'             => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'images', 'id'=>'bb8a51a5-3cb5-49ac-9e00-61c6b1c32b9b']), ]
         );
         $manager->persist($configuration);
@@ -209,16 +212,16 @@ class UtrechtFixtures extends Fixture
         $menuItem->setDescription('Doe een aanvraag');
         $menuItem->setOrder(4);
         $menuItem->setType('slug');
-        $menuItem->setHref('/process');
+        $menuItem->setHref('/ptc');
         $menuItem->setMenu($menu);
         $manager->persist($menuItem);
 
         $menuItem = new MenuItem();
-        $menuItem->setName('Nieuws');
-        $menuItem->setDescription('Nieuws overzicht');
+        $menuItem->setName('Over');
+        $menuItem->setDescription('informatie');
         $menuItem->setOrder(2);
         $menuItem->setType('slug');
-        $menuItem->setHref('/nieuwsoverzicht');
+        $menuItem->setHref('/informatie');
         $menuItem->setMenu($menu);
         $manager->persist($menuItem);
 
@@ -388,6 +391,50 @@ class UtrechtFixtures extends Fixture
         $slug->setApplication($application);
         $slug->setName('privacy');
         $slug->setSlug('privacy');
+        $manager->persist($slug);
+
+        $id = Uuid::fromString('e94ca8e5-8a3c-4d81-8504-e5302781d5bb');
+        $template = new Template();
+        $template->setName('informatie');
+        $template->setDescription('informatie');
+        $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/Utrecht/website/about/informatie.html.twig', 'r'));
+        $template->setTemplateEngine('twig');
+        $manager->persist($template);
+        $template->setId($id);
+        $manager->persist($template);
+        $manager->flush();
+        $template = $manager->getRepository('App:Template')->findOneBy(['id'=> $id]);
+        $template->addTemplateGroup($groupPages);
+        $manager->persist($template);
+        $manager->flush();
+
+        $slug = new Slug();
+        $slug->setTemplate($template);
+        $slug->setApplication($application);
+        $slug->setName('informatie');
+        $slug->setSlug('informatie');
+        $manager->persist($slug);
+
+        $id = Uuid::fromString('2442075a-0134-4475-b553-ced772f4730d');
+        $template = new Template();
+        $template->setName('about');
+        $template->setDescription('about');
+        $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/Utrecht/website/about/about.html.twig', 'r'));
+        $template->setTemplateEngine('twig');
+        $manager->persist($template);
+        $template->setId($id);
+        $manager->persist($template);
+        $manager->flush();
+        $template = $manager->getRepository('App:Template')->findOneBy(['id'=> $id]);
+        $template->addTemplateGroup($groupPages);
+        $manager->persist($template);
+        $manager->flush();
+
+        $slug = new Slug();
+        $slug->setTemplate($template);
+        $slug->setApplication($application);
+        $slug->setName('about');
+        $slug->setSlug('about');
         $manager->persist($slug);
 
         // Template groups

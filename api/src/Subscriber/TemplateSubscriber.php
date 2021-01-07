@@ -11,7 +11,7 @@ use PhpOffice\PhpWord\Settings;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
+use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Twig_Environment as Environment;
 
@@ -38,7 +38,7 @@ class TemplateSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function template(GetResponseForControllerResultEvent $event)
+    public function template(ViewEvent $event)
     {
         $result = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
@@ -58,7 +58,7 @@ class TemplateSubscriber implements EventSubscriberInterface
         $query = $request->query->all();
         $body = json_decode($request->getContent(), true); /*@todo hier zouden we eigenlijk ook xml moeten ondersteunen */
 
-        $variables = array_merge($query, $body);
+        $variables = array_merge($query, $result->getVariables());
 
         switch ($result->getTemplateEngine()) {
             case 'twig':
@@ -101,8 +101,10 @@ class TemplateSubscriber implements EventSubscriberInterface
                 $section = $phpWord->addSection();
                 \PhpOffice\PhpWord\Shared\Html::addHtml($section, $response);
                 $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
+
                 $filenameDocx = dirname(__FILE__, 3)."/var/{$template->getTemplateName()}_$stamp.docx";
                 $objWriter->save($filenameDocx);
+
                 $phpWord = \PhpOffice\PhpWord\IOFactory::load($filenameDocx);
                 $rendererName = Settings::PDF_RENDERER_DOMPDF;
                 $rendererLibraryPath = realpath('../vendor/dompdf/dompdf');
@@ -110,6 +112,7 @@ class TemplateSubscriber implements EventSubscriberInterface
                 $xmlWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'PDF');
                 $filename = dirname(__FILE__, 3)."/var/{$template->getTemplateName()}_$stamp.pdf";
                 $xmlWriter->save($filename);
+
                 header("Content-Disposition: attachment; filename={$template->getTemplateName()}_$stamp.pdf");
                 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
                 flush();

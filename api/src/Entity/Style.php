@@ -102,6 +102,8 @@ class Style
     private $description;
 
     /**
+     * @var text the css body of this style
+     *
      * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="text")
@@ -111,7 +113,7 @@ class Style
     /**
      * @Groups({"read","write"})
      * @MaxDepth(1)
-     * @ORM\ManyToOne(targetEntity="App\Entity\Image")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Image", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $favicon;
@@ -123,6 +125,14 @@ class Style
      * @ORM\JoinColumn(nullable=true)
      */
     private $organizations;
+
+    /**
+     * @Groups({"read", "write"})
+     * @MaxDepth(1)
+     * @ORM\OneToMany(targetEntity="App\Entity\Application", mappedBy="style")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $applications;
 
     /**
      * @var Datetime The moment this request was created
@@ -145,6 +155,7 @@ class Style
     public function __construct()
     {
         $this->organizations = new ArrayCollection();
+        $this->applications = new ArrayCollection();
     }
 
     public function getId(): ?Uuid
@@ -249,6 +260,37 @@ class Style
             // set the owning side to null (unless already changed)
             if ($organization->getStyle() === $this) {
                 $organization->setStyle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Application[]
+     */
+    public function getApplications(): Collection
+    {
+        return $this->applications;
+    }
+
+    public function addApplication(Application $application): self
+    {
+        if (!$this->applications->contains($application)) {
+            $this->applications[] = $application;
+            $application->setStyle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApplication(Application $application): self
+    {
+        if ($this->applications->contains($application)) {
+            $this->applications->removeElement($application);
+            // set the owning side to null (unless already changed)
+            if ($application->getStyle() === $this) {
+                $application->setStyle(null);
             }
         }
 

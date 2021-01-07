@@ -53,7 +53,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
- * @ApiFilter(SearchFilter::class)
+ * @ApiFilter(SearchFilter::class, properties={"contact": "exact"})
  */
 class Organization
 {
@@ -74,10 +74,9 @@ class Organization
     /**
      * @var string The rsin of this organisations.
      *
-     * @example About
+     * @example 44123124
      *
      * @Gedmo\Versioned
-     * @Assert\NotNull
      * @Assert\Length(
      *     max = 255
      * )
@@ -89,10 +88,9 @@ class Organization
     /**
      * @var string The Chamber of Comerce ID of this organisations.
      *
-     * @example About
+     * @example 4123124
      *
      * @Gedmo\Versioned
-     * @Assert\NotNull
      * @Assert\Length(
      *     max = 255
      * )
@@ -122,14 +120,46 @@ class Organization
      * @example This is the manucipality of Utrecht
      *
      * @Gedmo\Versioned
-     * @Assert\NotNull
      * @Assert\Length(
      *     max = 255
      * )
      * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description;
+
+    /**
+     * @var string The technicalContact of this application
+     *
+     * @example https://example.org/organizations/1
+     *
+     * @Groups({"read","write"})
+     * @Assert\Url
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $technicalContact;
+
+    /**
+     * @var string The privacyContact of this application
+     *
+     * @example https://example.org/organizations/1
+     *
+     * @Groups({"read","write"})
+     * @Assert\Url
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $privacyContact;
+
+    /**
+     * @var string The administrationContact of this application
+     *
+     * @example https://example.org/organizations/1
+     *
+     * @Groups({"read","write"})
+     * @Assert\Url
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $administrationContact;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Image")
@@ -139,7 +169,7 @@ class Organization
     /**
      * @Groups({"read", "write"})
      * @MaxDepth(1)
-     * @ORM\ManyToOne(targetEntity="App\Entity\Style", inversedBy="organizations")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Style", inversedBy="organizations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $style;
@@ -188,7 +218,7 @@ class Organization
     private $dateModified;
 
     /**
-     * @var string The contact for this organization
+     * @var string The contact information for this organization
      *
      * @Groups({"read", "write"})
      * @Assert\Url
@@ -199,12 +229,25 @@ class Organization
      */
     private $contact;
 
+    /**
+     * @Groups({"read", "write"})
+     * @ORM\ManyToOne(targetEntity=Organization::class, inversedBy="childOrganizations")
+     */
+    private $parentOrganization;
+
+    /**
+     * @Groups({"read"})
+     * @ORM\OneToMany(targetEntity=Organization::class, mappedBy="parentOrganization")
+     */
+    private $childOrganizations;
+
     public function __construct()
     {
         $this->applications = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->configurations = new ArrayCollection();
         $this->templates = new ArrayCollection();
+        $this->childOrganizations = new ArrayCollection();
     }
 
     public function getId(): ?Uuid
@@ -263,6 +306,51 @@ class Organization
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTechnicalContact(): ?string
+    {
+        return $this->technicalContact;
+    }
+
+    public function setTechnicalContact(string $technicalContact): self
+    {
+        $this->technicalContact = $technicalContact;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrivacyContact(): ?string
+    {
+        return $this->privacyContact;
+    }
+
+    public function setPrivacyContact(string $privacyContact): self
+    {
+        $this->privacyContact = $privacyContact;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdministrationContact(): ?string
+    {
+        return $this->administrationContact;
+    }
+
+    public function setAdministrationContact(string $administrationContact): self
+    {
+        $this->administrationContact = $administrationContact;
 
         return $this;
     }
@@ -444,6 +532,49 @@ class Organization
     public function setContact(?string $contact): self
     {
         $this->contact = $contact;
+
+        return $this;
+    }
+
+    public function getParentOrganization(): ?self
+    {
+        return $this->parentOrganization;
+    }
+
+    public function setParentOrganization(?self $parentOrganization): self
+    {
+        $this->parentOrganization = $parentOrganization;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getChildOrganizations(): Collection
+    {
+        return $this->childOrganizations;
+    }
+
+    public function addChildOrganization(self $childOrganization): self
+    {
+        if (!$this->childOrganizations->contains($childOrganization)) {
+            $this->childOrganizations[] = $childOrganization;
+            $childOrganization->setParentOrganization($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChildOrganization(self $childOrganization): self
+    {
+        if ($this->childOrganizations->contains($childOrganization)) {
+            $this->childOrganizations->removeElement($childOrganization);
+            // set the owning side to null (unless already changed)
+            if ($childOrganization->getParentOrganization() === $this) {
+                $childOrganization->setParentOrganization(null);
+            }
+        }
 
         return $this;
     }

@@ -466,13 +466,13 @@ paths:
           schema:
             type: string
         -
-          name: id
+          name: organization
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'id[]'
+          name: 'organization[]'
           in: query
           required: false
           schema:
@@ -481,78 +481,6 @@ paths:
               type: string
           style: form
           explode: true
-        -
-          name: name
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'name[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: description
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'description[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: domain
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'domain[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: dateCreated
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: dateModified
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[]'
-          in: query
-          required: false
-          schema:
-            type: string
         -
           name: page
           in: query
@@ -1531,13 +1459,13 @@ paths:
           schema:
             type: string
         -
-          name: id
+          name: organization
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'id[]'
+          name: 'organization[]'
           in: query
           required: false
           schema:
@@ -1546,78 +1474,6 @@ paths:
               type: string
           style: form
           explode: true
-        -
-          name: name
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'name[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: description
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'description[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: domain
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'domain[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: dateCreated
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: dateModified
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[]'
-          in: query
-          required: false
-          schema:
-            type: string
         -
           name: page
           in: query
@@ -5495,121 +5351,29 @@ paths:
           style: form
           explode: true
         -
+          name: menu.id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'menu.id[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
           name: name
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'name[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
           name: description
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'description[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: order
-          in: query
-          required: false
-          schema:
-            type: integer
-        -
-          name: 'order[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: integer
-          style: form
-          explode: true
-        -
-          name: icon
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'icon[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: type
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'type[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: href
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'href[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: dateCreated
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: dateModified
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[]'
           in: query
           required: false
           schema:
@@ -7023,6 +6787,33 @@ paths:
               - asc
               - desc
         -
+          name: 'order[technicalContact]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[privacyContact]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[administrationContact]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[dateCreated]'
           in: query
           required: false
@@ -7169,6 +6960,54 @@ paths:
             type: string
         -
           name: 'description[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: technicalContact
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'technicalContact[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: privacyContact
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'privacyContact[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: administrationContact
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'administrationContact[]'
           in: query
           required: false
           schema:
@@ -11999,18 +11838,23 @@ components:
         route:
           description: 'The moment this request was created'
           type: string
+          nullable: true
         endpoint:
           description: 'The endpoint that the request was made to'
           type: string
+          nullable: true
         method:
           description: 'The method that was used'
           type: string
+          nullable: true
         accept:
           description: 'The contentType that was reqousted'
           type: string
+          nullable: true
         contentType:
           description: 'The contentType that was suplieds'
           type: string
+          nullable: true
         content:
           description: 'The moment this request was created'
           type: string
@@ -12018,6 +11862,7 @@ components:
         ip:
           description: 'The moment this request was created'
           type: string
+          nullable: true
         session:
           description: 'The moment this request was created'
           type: string
@@ -12129,18 +11974,23 @@ components:
         route:
           description: 'The moment this request was created'
           type: string
+          nullable: true
         endpoint:
           description: 'The endpoint that the request was made to'
           type: string
+          nullable: true
         method:
           description: 'The method that was used'
           type: string
+          nullable: true
         accept:
           description: 'The contentType that was reqousted'
           type: string
+          nullable: true
         contentType:
           description: 'The contentType that was suplieds'
           type: string
+          nullable: true
         content:
           description: 'The moment this request was created'
           type: string
@@ -12148,6 +11998,7 @@ components:
         ip:
           description: 'The moment this request was created'
           type: string
+          nullable: true
         session:
           description: 'The moment this request was created'
           type: string
@@ -12973,6 +12824,25 @@ components:
         description:
           description: 'The description of this organisation.'
           type: string
+          nullable: true
+        technicalContact:
+          description: 'The technicalContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        privacyContact:
+          description: 'The privacyContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        administrationContact:
+          description: 'The administrationContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
         style:
           nullable: true
           anyOf:
@@ -12989,16 +12859,24 @@ components:
           format: date-time
           nullable: true
         contact:
-          description: 'The contact for this organization'
+          description: 'The contact information for this organization'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
           nullable: true
+        parentOrganization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization-read'
+        childOrganizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organization-read'
       required:
         - rsin
         - chamberOfComerce
         - name
-        - description
     Organization-write:
       type: object
       description: 'An organization as active on commonground.'
@@ -13006,7 +12884,6 @@ components:
         - rsin
         - chamberOfComerce
         - name
-        - description
       properties:
         rsin:
           description: 'The rsin of this organisations.'
@@ -13022,17 +12899,41 @@ components:
         description:
           description: 'The description of this organisation.'
           type: string
+          nullable: true
+        technicalContact:
+          description: 'The technicalContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        privacyContact:
+          description: 'The privacyContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        administrationContact:
+          description: 'The administrationContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
         style:
           nullable: true
           anyOf:
             -
               $ref: '#/components/schemas/Style-write'
         contact:
-          description: 'The contact for this organization'
+          description: 'The contact information for this organization'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
           nullable: true
+        parentOrganization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization-write'
     'Organization:jsonld-read':
       type: object
       description: 'An organization as active on commonground.'
@@ -13067,6 +12968,25 @@ components:
         description:
           description: 'The description of this organisation.'
           type: string
+          nullable: true
+        technicalContact:
+          description: 'The technicalContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        privacyContact:
+          description: 'The privacyContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        administrationContact:
+          description: 'The administrationContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
         style:
           nullable: true
           anyOf:
@@ -13083,16 +13003,24 @@ components:
           format: date-time
           nullable: true
         contact:
-          description: 'The contact for this organization'
+          description: 'The contact information for this organization'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
           nullable: true
+        parentOrganization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization:jsonld-read'
+        childOrganizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organization:jsonld-read'
       required:
         - rsin
         - chamberOfComerce
         - name
-        - description
     'Organization:jsonld-write':
       type: object
       description: 'An organization as active on commonground.'
@@ -13100,7 +13028,6 @@ components:
         - rsin
         - chamberOfComerce
         - name
-        - description
       properties:
         '@context':
           readOnly: true
@@ -13125,17 +13052,41 @@ components:
         description:
           description: 'The description of this organisation.'
           type: string
+          nullable: true
+        technicalContact:
+          description: 'The technicalContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        privacyContact:
+          description: 'The privacyContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        administrationContact:
+          description: 'The administrationContact of this application'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
         style:
           nullable: true
           anyOf:
             -
               $ref: '#/components/schemas/Style:jsonld-write'
         contact:
-          description: 'The contact for this organization'
+          description: 'The contact information for this organization'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
           nullable: true
+        parentOrganization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization:jsonld-write'
     Slug-read:
       type: object
       description: 'Your slug connects your application with your pages.'
@@ -13305,6 +13256,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization-read'
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application-read'
         dateCreated:
           description: 'The moment this request was created'
           type: string
@@ -13339,6 +13294,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization-write'
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application-write'
     'Style:jsonld-read':
       type: object
       description: 'Your style provides ccs and a favicon for an organisation.'
@@ -13373,6 +13332,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization:jsonld-read'
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application:jsonld-read'
         dateCreated:
           description: 'The moment this request was created'
           type: string
@@ -13416,6 +13379,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization:jsonld-write'
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application:jsonld-write'
     Template-read:
       type: object
       description: 'Templates holds information your pages or include in messages.'
@@ -13441,6 +13408,11 @@ components:
         content:
           description: 'The Content of this template.'
           type: string
+        variables:
+          description: 'Optional variables ussed during rendering'
+          type: array
+          items:
+            type: string
         templateEngine:
           description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
           type: string
@@ -13498,6 +13470,11 @@ components:
         content:
           description: 'The Content of this template.'
           type: string
+        variables:
+          description: 'Optional variables ussed during rendering'
+          type: array
+          items:
+            type: string
         templateEngine:
           description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
           type: string
@@ -13548,6 +13525,11 @@ components:
         content:
           description: 'The Content of this template.'
           type: string
+        variables:
+          description: 'Optional variables ussed during rendering'
+          type: array
+          items:
+            type: string
         templateEngine:
           description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
           type: string
@@ -13614,6 +13596,11 @@ components:
         content:
           description: 'The Content of this template.'
           type: string
+        variables:
+          description: 'Optional variables ussed during rendering'
+          type: array
+          items:
+            type: string
         templateEngine:
           description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
           type: string
@@ -13854,84 +13841,7 @@ definitions:
       - description
       - domain
       - organization
-  Organization-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this resource'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      rsin:
-        description: 'The rsin of this organisations.'
-        type: string
-        example: About
-        maxLength: 255
-      chamberOfComerce:
-        description: 'The Chamber of Comerce ID of this organisations.'
-        type: string
-        example: About
-        maxLength: 255
-      name:
-        description: 'The name of this organization.'
-        type: string
-        example: About
-        maxLength: 255
-      description:
-        description: 'The description of this organisation.'
-        type: string
-        example: 'This is the manucipality of Utrecht'
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: \Datetime
-      contact:
-        description: 'The contact for this organization'
-        type: string
-        format: url
-        maxLength: 255
-      style: []
-    required:
-      - rsin
-      - chamberOfComerce
-      - name
-      - description
-  Organization-write:
-    properties:
-      rsin:
-        description: 'The rsin of this organisations.'
-        type: string
-        example: About
-        maxLength: 255
-      chamberOfComerce:
-        description: 'The Chamber of Comerce ID of this organisations.'
-        type: string
-        example: About
-        maxLength: 255
-      name:
-        description: 'The name of this organization.'
-        type: string
-        example: About
-        maxLength: 255
-      description:
-        description: 'The description of this organisation.'
-        type: string
-        example: 'This is the manucipality of Utrecht'
-        maxLength: 255
-      contact:
-        description: 'The contact for this organization'
-        type: string
-        format: url
-        maxLength: 255
-      style: []
-    required:
-      - rsin
-      - chamberOfComerce
-      - name
-      - description
-  Style-read:
+  Configuration-read:
     properties:
       id:
         description: 'The UUID identifier of this resource'
@@ -13939,45 +13849,45 @@ definitions:
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       name:
-        description: 'The name of this style.'
+        description: 'The name of this application.'
         type: string
-        example: About
+        example: Webshop
         maxLength: 255
       description:
-        description: 'The description of this style.'
+        description: 'The description of this application.'
         type: string
-        example: 'This page holds info about this style'
+        example: 'Is the best site ever'
         maxLength: 255
-      css: []
+      configuration: []
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
       dateModified:
         description: 'The moment this request last Modified'
         type: \Datetime
-      favicon: []
-      organizations: []
+      application: []
     required:
       - name
       - description
-  Style-write:
+  Configuration-write:
     properties:
       name:
-        description: 'The name of this style.'
+        description: 'The name of this application.'
         type: string
-        example: About
+        example: Webshop
         maxLength: 255
       description:
-        description: 'The description of this style.'
+        description: 'The description of this application.'
         type: string
-        example: 'This page holds info about this style'
+        example: 'Is the best site ever'
         maxLength: 255
-      css: []
-      favicon: []
-      organizations: []
+      configuration: []
+      application: []
+      organization: []
     required:
       - name
       - description
+      - organization
   Image-read:
     properties:
       id:
@@ -14039,221 +13949,6 @@ definitions:
         example: app_img_flowers
         maxLength: 255
       base64: []
-      organization: []
-    required:
-      - name
-      - description
-  Configuration-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this resource'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      name:
-        description: 'The name of this application.'
-        type: string
-        example: Webshop
-        maxLength: 255
-      description:
-        description: 'The description of this application.'
-        type: string
-        example: 'Is the best site ever'
-        maxLength: 255
-      configuration: []
-      dateCreated:
-        description: 'The moment this request was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: \Datetime
-      application: []
-    required:
-      - name
-      - description
-  Configuration-write:
-    properties:
-      name:
-        description: 'The name of this application.'
-        type: string
-        example: Webshop
-        maxLength: 255
-      description:
-        description: 'The description of this application.'
-        type: string
-        example: 'Is the best site ever'
-        maxLength: 255
-      configuration: []
-      application: []
-      organization: []
-    required:
-      - name
-      - description
-      - organization
-  Slug-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this resource'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      name:
-        description: 'The internal name of this slug.'
-        type: string
-        example: 'About page for website'
-        maxLength: 255
-      slug:
-        description: 'The actual slug of this slug without a pre / e.g. about not about'
-        type: string
-        example: about
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: \Datetime
-      application: []
-      template: []
-    required:
-      - name
-      - slug
-  Slug-write:
-    properties:
-      name:
-        description: 'The internal name of this slug.'
-        type: string
-        example: 'About page for website'
-        maxLength: 255
-      slug:
-        description: 'The actual slug of this slug without a pre / e.g. about not about'
-        type: string
-        example: about
-        maxLength: 255
-      application: []
-      template: []
-    required:
-      - name
-      - slug
-  Template-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this resource'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      name:
-        description: 'The internal name of this menu'
-        type: string
-        example: 'webshop menu'
-        maxLength: 255
-      title:
-        description: 'The external name of this menu'
-        type: string
-        example: 'webshop menu'
-        maxLength: 255
-      description:
-        description: 'The description of this page.'
-        type: string
-        example: 'This page holds info about this application'
-        maxLength: 255
-      content:
-        description: 'The Content of this template.'
-        type: string
-        example: 'A lot of random info over any topic'
-      templateEngine:
-        description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
-        type: string
-        example: twig
-      dateCreated:
-        description: 'The moment this request was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: \Datetime
-      slugs: []
-      organization: []
-      templateGroups: []
-    required:
-      - name
-      - description
-      - content
-      - templateEngine
-  Template-write:
-    properties:
-      name:
-        description: 'The internal name of this menu'
-        type: string
-        example: 'webshop menu'
-        maxLength: 255
-      title:
-        description: 'The external name of this menu'
-        type: string
-        example: 'webshop menu'
-        maxLength: 255
-      description:
-        description: 'The description of this page.'
-        type: string
-        example: 'This page holds info about this application'
-        maxLength: 255
-      content:
-        description: 'The Content of this template.'
-        type: string
-        example: 'A lot of random info over any topic'
-      templateEngine:
-        description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
-        type: string
-        example: twig
-      slugs: []
-      organization: []
-      templateGroups: []
-    required:
-      - name
-      - description
-      - content
-      - templateEngine
-  TemplateGroup-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this resource'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      name:
-        description: 'The internal name of this menu'
-        type: string
-        example: 'webshop menu'
-        maxLength: 255
-      description:
-        description: 'The description of this page.'
-        type: string
-        example: 'This page holds info about this application'
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: \Datetime
-      application: []
-      organization: []
-    required:
-      - name
-      - description
-  TemplateGroup-write:
-    properties:
-      name:
-        description: 'The internal name of this menu'
-        type: string
-        example: 'webshop menu'
-        maxLength: 255
-      description:
-        description: 'The description of this page.'
-        type: string
-        example: 'This page holds info about this application'
-        maxLength: 255
-      templates: []
-      application: []
       organization: []
     required:
       - name
@@ -14388,59 +14083,331 @@ definitions:
       - order
       - href
       - menu
-  ChangeLog-read:
+  Organization-read:
     properties:
       id:
-        description: 'The UUID identifier of this object'
+        description: 'The UUID identifier of this resource'
         type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
-      note:
-        description: 'A note conserning this log lin'
+      rsin:
+        description: 'The rsin of this organisations.'
         type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
+        example: About
+        maxLength: 255
+      chamberOfComerce:
+        description: 'The Chamber of Comerce ID of this organisations.'
         type: string
-      objectId:
-        description: ''
+        example: About
+        maxLength: 255
+      name:
+        description: 'The name of this organization.'
         type: string
-      objectClass:
-        description: ''
+        example: About
+        maxLength: 255
+      description:
+        description: 'The description of this organisation.'
         type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
+        example: 'This is the manucipality of Utrecht'
+        maxLength: 255
+      technicalContact:
+        description: 'The technicalContact of this application'
         type: string
-      session:
+        example: 'https://example.org/organizations/1'
+        format: url
+      privacyContact:
+        description: 'The privacyContact of this application'
+        type: string
+        example: 'https://example.org/organizations/1'
+        format: url
+      administrationContact:
+        description: 'The administrationContact of this application'
+        type: string
+        example: 'https://example.org/organizations/1'
+        format: url
+      dateCreated:
         description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
+      contact:
+        description: 'The contact information for this organization'
         type: string
+        format: url
+        maxLength: 255
+      style: []
+      parentOrganization: []
+      childOrganizations: []
+    required:
+      - rsin
+      - chamberOfComerce
+      - name
+  Organization-write:
+    properties:
+      rsin:
+        description: 'The rsin of this organisations.'
+        type: string
+        example: About
+        maxLength: 255
+      chamberOfComerce:
+        description: 'The Chamber of Comerce ID of this organisations.'
+        type: string
+        example: About
+        maxLength: 255
+      name:
+        description: 'The name of this organization.'
+        type: string
+        example: About
+        maxLength: 255
+      description:
+        description: 'The description of this organisation.'
+        type: string
+        example: 'This is the manucipality of Utrecht'
+        maxLength: 255
+      technicalContact:
+        description: 'The technicalContact of this application'
+        type: string
+        example: 'https://example.org/organizations/1'
+        format: url
+      privacyContact:
+        description: 'The privacyContact of this application'
+        type: string
+        example: 'https://example.org/organizations/1'
+        format: url
+      administrationContact:
+        description: 'The administrationContact of this application'
+        type: string
+        example: 'https://example.org/organizations/1'
+        format: url
+      contact:
+        description: 'The contact information for this organization'
+        type: string
+        format: url
+        maxLength: 255
+      style: []
+      parentOrganization: []
+    required:
+      - rsin
+      - chamberOfComerce
+      - name
+  Slug-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this resource'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      name:
+        description: 'The internal name of this slug.'
+        type: string
+        example: 'About page for website'
+        maxLength: 255
+      slug:
+        description: 'The actual slug of this slug without a pre / e.g. about not about'
+        type: string
+        example: about
         maxLength: 255
       dateCreated:
         description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2020-09-17 15:12:45'
+        type: \Datetime
       dateModified:
         description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2020-09-17 15:12:45'
-    required: []
-  ChangeLog-write:
+        type: \Datetime
+      application: []
+      template: []
+    required:
+      - name
+      - slug
+  Slug-write:
     properties:
-      note:
-        description: 'A note conserning this log lin'
+      name:
+        description: 'The internal name of this slug.'
         type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-    required: []
+        example: 'About page for website'
+        maxLength: 255
+      slug:
+        description: 'The actual slug of this slug without a pre / e.g. about not about'
+        type: string
+        example: about
+        maxLength: 255
+      application: []
+      template: []
+    required:
+      - name
+      - slug
+  Style-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this resource'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      name:
+        description: 'The name of this style.'
+        type: string
+        example: About
+        maxLength: 255
+      description:
+        description: 'The description of this style.'
+        type: string
+        example: 'This page holds info about this style'
+        maxLength: 255
+      css: []
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
+      favicon: []
+      organizations: []
+      applications: []
+    required:
+      - name
+      - description
+  Style-write:
+    properties:
+      name:
+        description: 'The name of this style.'
+        type: string
+        example: About
+        maxLength: 255
+      description:
+        description: 'The description of this style.'
+        type: string
+        example: 'This page holds info about this style'
+        maxLength: 255
+      css: []
+      favicon: []
+      organizations: []
+      applications: []
+    required:
+      - name
+      - description
+  Template-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this resource'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      name:
+        description: 'The internal name of this menu'
+        type: string
+        example: 'webshop menu'
+        maxLength: 255
+      title:
+        description: 'The external name of this menu'
+        type: string
+        example: 'webshop menu'
+        maxLength: 255
+      description:
+        description: 'The description of this page.'
+        type: string
+        example: 'This page holds info about this application'
+        maxLength: 255
+      content:
+        description: 'The Content of this template.'
+        type: string
+        example: 'A lot of random info over any topic'
+      templateEngine:
+        description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
+        type: string
+        example: twig
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
+      slugs: []
+      organization: []
+      templateGroups: []
+    required:
+      - name
+      - description
+      - content
+      - templateEngine
+  Template-write:
+    properties:
+      name:
+        description: 'The internal name of this menu'
+        type: string
+        example: 'webshop menu'
+        maxLength: 255
+      title:
+        description: 'The external name of this menu'
+        type: string
+        example: 'webshop menu'
+        maxLength: 255
+      description:
+        description: 'The description of this page.'
+        type: string
+        example: 'This page holds info about this application'
+        maxLength: 255
+      content:
+        description: 'The Content of this template.'
+        type: string
+        example: 'A lot of random info over any topic'
+      templateEngine:
+        description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
+        type: string
+        example: twig
+      slugs: []
+      organization: []
+      templateGroups: []
+    required:
+      - name
+      - description
+      - content
+      - templateEngine
+  TemplateGroup-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this resource'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      name:
+        description: 'The internal name of this menu'
+        type: string
+        example: 'webshop menu'
+        maxLength: 255
+      description:
+        description: 'The description of this page.'
+        type: string
+        example: 'This page holds info about this application'
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
+      application: []
+      organization: []
+    required:
+      - name
+      - description
+  TemplateGroup-write:
+    properties:
+      name:
+        description: 'The internal name of this menu'
+        type: string
+        example: 'webshop menu'
+        maxLength: 255
+      description:
+        description: 'The description of this page.'
+        type: string
+        example: 'This page holds info about this application'
+        maxLength: 255
+      templates: []
+      application: []
+      organization: []
+    required:
+      - name
+      - description
   AuditTrail-read:
     properties:
       id:
@@ -14545,12 +14512,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-09-17 15:12:45'
+        example: '2020-12-09 13:53:49'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-09-17 15:12:45'
+        example: '2020-12-09 13:53:49'
     required: []
   AuditTrail-write:
     properties:
@@ -14558,6 +14525,59 @@ definitions:
         description: 'A note conserning this log lin'
         type: string
         example: 'This log line looks suspicius'
+        maxLength: 2555
+    required: []
+  ChangeLog-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
+        type: string
+      objectId:
+        description: ''
+        type: string
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
+        type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2020-12-09 13:53:49'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2020-12-09 13:53:49'
+    required: []
+  ChangeLog-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
         maxLength: 2555
     required: []
 tags:
@@ -14568,45 +14588,15 @@ tags:
       
       
   -
-    name: Organization
-    description: |
-      An organization as active on commonground.
-      
-      
-  -
-    name: Style
-    description: |
-      Your style provides ccs and a favicon for an organisation.
-      
-      
-  -
-    name: Image
-    description: |
-      Image speaks for itself.
-      
-      
-  -
     name: Configuration
     description: |
       Configurations hold a specific organisation configruation for an application.
       
       
   -
-    name: Slug
+    name: Image
     description: |
-      Your slug connects your application with your pages.
-      
-      
-  -
-    name: Template
-    description: |
-      Templates holds information your pages or include in messages.
-      
-      
-  -
-    name: TemplateGroup
-    description: |
-      Groups are a way of orginzing templates.
+      Image speaks for itself.
       
       
   -
@@ -14622,13 +14612,43 @@ tags:
       
       
   -
-    name: ChangeLog
+    name: Organization
+    description: |
+      An organization as active on commonground.
+      
+      
+  -
+    name: Slug
+    description: |
+      Your slug connects your application with your pages.
+      
+      
+  -
+    name: Style
+    description: |
+      Your style provides ccs and a favicon for an organisation.
+      
+      
+  -
+    name: Template
+    description: |
+      Templates holds information your pages or include in messages.
+      
+      
+  -
+    name: TemplateGroup
+    description: |
+      Groups are a way of orginzing templates.
+      
+      
+  -
+    name: AuditTrail
     description: |
       An resource representing a log line.
       
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
-    name: AuditTrail
+    name: ChangeLog
     description: |
       An resource representing a log line.
       
@@ -14639,15 +14659,15 @@ securityDefinitions:
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the AuditTrail resource'
-      write: 'write right to the AuditTrail resource'
+      read: 'read right to the ChangeLog resource'
+      write: 'write right to the ChangeLog resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the AuditTrail resource'
-      write: 'write right to the AuditTrail resource'
+      read: 'read right to the ChangeLog resource'
+      write: 'write right to the ChangeLog resource'
 host: irc.zaakonline.nl
 servers:
   -

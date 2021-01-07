@@ -65,7 +65,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
- * @ApiFilter(SearchFilter::class)
+ * @ApiFilter(SearchFilter::class, properties={"organization": "partial"})
  */
 class Application
 {
@@ -155,7 +155,7 @@ class Application
     /**
      * @Groups({"read","write"})
      * @MaxDepth(1)
-     * @ORM\ManyToOne(targetEntity="App\Entity\Style")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Style", inversedBy="applications", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $style;
@@ -211,16 +211,16 @@ class Application
         return $this->defaultConfiguration;
     }
 
-    public function setStyle(Style $style): self
+    public function getStyle(): ?Style
+    {
+        return $this->style;
+    }
+
+    public function setStyle(?Style $style): self
     {
         $this->style = $style;
 
         return $this;
-    }
-
-    public function getStyle()
-    {
-        return $this->style;
     }
 
     public function getId(): Uuid
