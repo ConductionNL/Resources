@@ -128,7 +128,6 @@ class Template implements Translatable
      *
      * @Gedmo\Translatable
      * @Gedmo\Versioned
-     * @Assert\NotNull
      * @Assert\Length(
      *     max = 255
      * )

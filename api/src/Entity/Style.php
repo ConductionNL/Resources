@@ -102,6 +102,8 @@ class Style
     private $description;
 
     /**
+     * @var text the css body of this style
+     *
      * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="text")
