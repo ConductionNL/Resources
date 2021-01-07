@@ -3,7 +3,11 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\CategoryRepository;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\Uuid;
@@ -111,11 +115,19 @@ class Category
     private $description;
 
     /**
+     * @Groups({"read","write"})
+     * @MaxDepth(1)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Organization", inversedBy="templates")
+     * @ORM\JoinColumn(nullable=false, nullable=true)
+     */
+    private $organization;
+
+    /**
      * The resources that are attached to this group
      *
      * @MaxDepth(1)
      * @Groups({"read","write"})
-     * @ORM\ManyToOne(targetEntity=ResourceCatagorie::class, inversedBy="catagories")
+     * @ORM\ManyToOne(targetEntity=ResourceCategory::class, inversedBy="catagories")
      */
     private $resources;
 
@@ -226,6 +238,18 @@ class Category
         return $this;
     }
 
+    public function getOrganization(): ?Organization
+    {
+        return $this->organization;
+    }
+
+    public function setOrganization(?Organization $organization): self
+    {
+        $this->organization = $organization;
+
+        return $this;
+    }
+
     public function getResources(): ?ResourceCatagories
     {
         return $this->resources;
@@ -237,7 +261,7 @@ class Category
 
         return $this;
     }
-    
+
     public function getRoot()
     {
         return $this->root;
