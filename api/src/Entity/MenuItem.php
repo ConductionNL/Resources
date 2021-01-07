@@ -104,12 +104,11 @@ class MenuItem implements Translatable
     private $description;
 
     /**
-     * @var int The order in wichs this menu item is shown in relation to other items of the same menu
+     * @var int The order in which this menu item is shown in relation to other items of the same menu
      *
      * @example 1
      *
      * @Gedmo\Versioned
-     * @Assert\NotNull
      * @Assert\Length(
      *      max = 3
      * )
