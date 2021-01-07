@@ -231,11 +231,6 @@ class Menu implements Translatable
         return $this;
     }
 
-    public function setTranslatableLocale($locale)
-    {
-        $this->locale = $locale;
-    }
-
     public function getDateCreated(): ?\DateTimeInterface
     {
         return $this->dateModified;
@@ -258,5 +253,10 @@ class Menu implements Translatable
         $this->dateModified = $dateModified;
 
         return $this;
+    }
+
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }
