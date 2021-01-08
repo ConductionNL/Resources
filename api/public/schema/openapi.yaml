@@ -2801,6 +2801,22 @@ paths:
           schema:
             type: string
         -
+          name: organization.id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'organization.id[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
           name: page
           in: query
           required: false
@@ -7908,6 +7924,18 @@ paths:
               type: string
           style: form
           explode: true
+        -
+          name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: description
+          in: query
+          required: false
+          schema:
+            type: string
         -
           name: page
           in: query
@@ -16635,12 +16663,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-01-07 15:03:20'
+        example: '2021-01-08 11:51:19'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-01-07 15:03:20'
+        example: '2021-01-08 11:51:19'
     required: []
   ChangeLog-write:
     properties:
@@ -16754,12 +16782,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-01-07 15:03:20'
+        example: '2021-01-08 11:51:19'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-01-07 15:03:20'
+        example: '2021-01-08 11:51:19'
     required: []
   AuditTrail-write:
     properties:
