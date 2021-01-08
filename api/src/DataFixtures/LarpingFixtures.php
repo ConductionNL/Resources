@@ -10,6 +10,7 @@ use App\Entity\MenuItem;
 use App\Entity\Organization;
 use App\Entity\Style;
 use App\Entity\Template;
+use App\Entity\Category;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -39,7 +40,7 @@ class LarpingFixtures extends Fixture
             return false;
         }
 
-        $id = Uuid::fromString('7b863976-0fc3-4f49-a4f7-0bf7d2f2f535');
+        $id = Uuid::fromString('d24e147f-00b9-4970-9809-6684a3fb965b');
         $organization = new Organization();
         $organization->setName('Larping');
         $organization->setDescription('Larping organization');
@@ -52,7 +53,7 @@ class LarpingFixtures extends Fixture
         $organization = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
 
         // Application
-        $id = Uuid::fromString('9798cae6-187a-434f-bd66-f1dc2cc61466');
+        $id = Uuid::fromString('e163dcd7-c35e-4367-9a69-cf553b19c379');
         $application = new Application();
         $application->setName('Larping.eu');
         $application->setDescription('Larping application');
@@ -66,7 +67,7 @@ class LarpingFixtures extends Fixture
 
         $manager->flush();
 
-        $id = Uuid::fromString('6677d727-a57f-4405-8da0-4f53b20094ca');
+        $id = Uuid::fromString('51eb5628-3b37-497b-a57f-6b039ec776e5');
         $organization = new Organization();
         $organization->setName('Vortex Adventures');
         $organization->setDescription('Vortex Adventures organization');
@@ -78,6 +79,97 @@ class LarpingFixtures extends Fixture
         $manager->flush();
         $organization = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
 
+        $manager->flush();
+
+        // Categories
+        $id = Uuid::fromString('4ecbd98c-c2d0-464e-ab2b-be0d9237d3fc');
+        $settings = New Category();
+        $settings->setName("settings");
+        $settings->setOrganization($organization);
+        $settings ->setIcon("fab fa-fort-awesome");
+        $settings->setId($id);
+        $manager->persist($settings);
+        $manager->flush();
+        $settings = $manager->getRepository('App:Organization')->findOneBy(['id'=> $settings]);
+
+        $id = Uuid::fromString('95dac93a-c56b-4158-b095-df1e13425cd2');
+        $category = New Category();
+        $category->setName("low fantasy");
+        $category->setOrganization($organization);
+        $category ->setIcon("fab fa-fort-awesome");
+        $category->setParent($settings);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('2b75bda8-b8fd-428c-80e3-d00370d078df');
+        $category = New Category();
+        $category->setName("high fantasy");
+        $category->setOrganization($organization);
+        $category ->setIcon("fab fa-fort-awesome");
+        $category->setParent($settings);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('8dda3a5f-bfbe-4468-81cd-44910fcd4663');
+        $category = New Category();
+        $category->setName("post apocalypse");
+        $category->setOrganization($organization);
+        $category ->setIcon("fab fa-fort-awesome");
+        $category->setParent($settings);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('c9916d80-0f53-4a4a-992f-e3ee7c1c790f');
+        $category = New Category();
+        $category->setName("historic");
+        $category->setOrganization($organization);
+        $category ->setIcon("fab fa-fort-awesome");
+        $category->setParent($settings);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('d1dbf62a-3e76-42ae-8154-4e8ae42cfe96');
+        $category = New Category();
+        $category->setName("futore");
+        $category->setOrganization($organization);
+        $category ->setIcon("fab fa-fort-awesome");
+        $category->setParent($settings);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('d401d125-2443-4cd9-bf55-1b136530aa3f');
+        $features = New Category();
+        $features->setName("features");
+        $features->setOrganization($organization);
+        $features ->setIcon("fab fa-fort-awesome");
+        $features->setId($id);
+        $manager->persist($features);
+        $manager->flush();
+        $features = $manager->getRepository('App:Organization')->findOneBy(['id'=> $features]);
+
+        $id = Uuid::fromString('b70f9bdb-cdb2-45f4-8d8b-ac6e6fbf977e');
+        $category = New Category();
+        $category->setName("showers");
+        $category->setOrganization($organization);
+        $category ->setIcon("fab fa-fort-awesome");
+        $category->setParent($features);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('165fb2eb-8e9b-49d6-8d4e-dd26b0688269');
+        $category = New Category();
+        $category->setName("camping");
+        $category->setOrganization($organization);
+        $category ->setIcon("fab fa-fort-awesome");
+        $category->setParent($features);
+        $category->setId($id);
+        $manager->persist($category);
         $manager->flush();
 
         // Image
