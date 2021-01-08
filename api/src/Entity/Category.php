@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * An category
+ * An category.
  *
  * @ApiResource(
  *     attributes={"pagination_items_per_page"=30},
@@ -52,7 +52,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
- * @ApiFilter(SearchFilter::class, properties={"contact": "exact"})
+ * @ApiFilter(SearchFilter::class, properties={
+ *     "organization.id": "exact"
+ * })
  */
 class Category
 {
@@ -123,7 +125,7 @@ class Category
     private $organization;
 
     /**
-     * The resources that are attached to this group
+     * The resources that are attached to this group.
      *
      * @MaxDepth(1)
      * @Groups({"read","write"})
