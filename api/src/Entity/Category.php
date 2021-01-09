@@ -53,7 +53,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
  * @ApiFilter(SearchFilter::class, properties={
- *     "organization.id": "exact"
+ *     "organization.id": "ipartial",
+ *     "parent.id": "ipartial",
+ *     "name.id": "ipartial",
  * })
  */
 class Category
