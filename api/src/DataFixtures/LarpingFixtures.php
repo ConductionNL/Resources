@@ -82,40 +82,41 @@ class LarpingFixtures extends Fixture
         $manager->flush();
 
         // Regions
-        $id = Uuid::fromString('4ecbd98c-c2d0-464e-ab2b-be0d9237d3fc');
         $regions = new Category();
         $regions->setName('regions');
         $regions->setOrganization($larpingOrg);
         $regions->setIcon('fab fa-fort-awesome');
-        $regions->setId($id);
         $manager->persist($regions);
         $manager->flush();
-        $regions = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
+        $regions = $manager->getRepository('App:Category')->findOneBy(['id'=> (string) $regions->getId()]);
 
+        /*
         $europe = new Category();
         $europe->setName('Europe');
         $europe->setOrganization($larpingOrg);
         $europe->setIcon('fab fa-fort-awesome');
         $europe->setParent($regions);
         $manager->persist($europe);
+        $manager->flush();
 
+        /*
         $category = new Category();
         $category->setName('Netherlands');
         $category->setOrganization($larpingOrg);
         $category->setIcon('fab fa-fort-awesome');
         $category->setParent($europe);
         $manager->persist($category);
+        $manager->flush();
+        */
 
         // Categories
-        $id = Uuid::fromString('4ecbd98c-c2d0-464e-ab2b-be0d9237d3fc');
         $settings = new Category();
         $settings->setName('settings');
         $settings->setOrganization($larpingOrg);
         $settings->setIcon('fab fa-fort-awesome');
-        $settings->setId($id);
         $manager->persist($settings);
         $manager->flush();
-        $settings = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
+        $settings = $manager->getRepository('App:Category')->findOneBy(['id'=> (string) $settings->getId()]);
 
         $id = Uuid::fromString('95dac93a-c56b-4158-b095-df1e13425cd2');
         $category = new Category();
@@ -123,8 +124,8 @@ class LarpingFixtures extends Fixture
         $category->setOrganization($larpingOrg);
         $category->setIcon('fab fa-fort-awesome');
         $category->setParent($settings);
-        $category->setId($id);
         $manager->persist($category);
+        $category->setId($id);
         $manager->flush();
 
         $id = Uuid::fromString('2b75bda8-b8fd-428c-80e3-d00370d078df');
@@ -133,6 +134,7 @@ class LarpingFixtures extends Fixture
         $category->setOrganization($larpingOrg);
         $category->setIcon('fab fa-fort-awesome');
         $category->setParent($settings);
+        $manager->persist($category);
         $category->setId($id);
         $manager->persist($category);
         $manager->flush();
@@ -143,6 +145,7 @@ class LarpingFixtures extends Fixture
         $category->setOrganization($larpingOrg);
         $category->setIcon('fab fa-fort-awesome');
         $category->setParent($settings);
+        $manager->persist($category);
         $category->setId($id);
         $manager->persist($category);
         $manager->flush();
@@ -153,6 +156,7 @@ class LarpingFixtures extends Fixture
         $category->setOrganization($larpingOrg);
         $category->setIcon('fab fa-fort-awesome');
         $category->setParent($settings);
+        $manager->persist($category);
         $category->setId($id);
         $manager->persist($category);
         $manager->flush();
@@ -163,19 +167,17 @@ class LarpingFixtures extends Fixture
         $category->setOrganization($larpingOrg);
         $category->setIcon('fab fa-fort-awesome');
         $category->setParent($settings);
+        $manager->persist($category);
         $category->setId($id);
         $manager->persist($category);
         $manager->flush();
 
-        $id = Uuid::fromString('d401d125-2443-4cd9-bf55-1b136530aa3f');
         $features = new Category();
         $features->setName('features');
         $features->setOrganization($larpingOrg);
         $features->setIcon('fab fa-fort-awesome');
-        $features->setId($id);
         $manager->persist($features);
         $manager->flush();
-        $features = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
 
         $id = Uuid::fromString('b70f9bdb-cdb2-45f4-8d8b-ac6e6fbf977e');
         $category = new Category();
@@ -183,6 +185,7 @@ class LarpingFixtures extends Fixture
         $category->setOrganization($larpingOrg);
         $category->setIcon('fab fa-fort-awesome');
         $category->setParent($features);
+        $manager->persist($category);
         $category->setId($id);
         $manager->persist($category);
         $manager->flush();
@@ -193,6 +196,7 @@ class LarpingFixtures extends Fixture
         $category->setOrganization($larpingOrg);
         $category->setIcon('fab fa-fort-awesome');
         $category->setParent($features);
+        $manager->persist($category);
         $category->setId($id);
         $manager->persist($category);
         $manager->flush();
