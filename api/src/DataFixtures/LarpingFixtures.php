@@ -81,6 +81,31 @@ class LarpingFixtures extends Fixture
 
         $manager->flush();
 
+        // Regions
+        $id = Uuid::fromString('4ecbd98c-c2d0-464e-ab2b-be0d9237d3fc');
+        $regions = new Category();
+        $regions->setName('regions');
+        $regions->setOrganization($larpingOrg);
+        $regions->setIcon('fab fa-fort-awesome');
+        $regions->setId($id);
+        $manager->persist($regions);
+        $manager->flush();
+        $regions = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
+
+        $europe = new Category();
+        $europe->setName('Europe');
+        $europe->setOrganization($larpingOrg);
+        $europe->setIcon('fab fa-fort-awesome');
+        $europe->setParent($regions);
+        $manager->persist($europe);
+
+        $category = new Category();
+        $category->setName('Netherlands');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('fab fa-fort-awesome');
+        $category->setParent($europe);
+        $manager->persist($category);
+
         // Categories
         $id = Uuid::fromString('4ecbd98c-c2d0-464e-ab2b-be0d9237d3fc');
         $settings = new Category();
@@ -90,7 +115,7 @@ class LarpingFixtures extends Fixture
         $settings->setId($id);
         $manager->persist($settings);
         $manager->flush();
-        $settings = $manager->getRepository('App:Organization')->findOneBy(['id'=> $settings]);
+        $settings = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
 
         $id = Uuid::fromString('95dac93a-c56b-4158-b095-df1e13425cd2');
         $category = new Category();
@@ -150,7 +175,7 @@ class LarpingFixtures extends Fixture
         $features->setId($id);
         $manager->persist($features);
         $manager->flush();
-        $features = $manager->getRepository('App:Organization')->findOneBy(['id'=> $features]);
+        $features = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
 
         $id = Uuid::fromString('b70f9bdb-cdb2-45f4-8d8b-ac6e6fbf977e');
         $category = new Category();
