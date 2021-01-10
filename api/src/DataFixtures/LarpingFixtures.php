@@ -119,7 +119,7 @@ class LarpingFixtures extends Fixture
         $category = new Category();
         $category->setName('low fantasy');
         $category->setOrganization($larpingOrg);
-        $category->setIcon('fal flask-potion');
+        $category->setIcon('fal fa-flask-potion');
         $category->setParent($settings);
         $manager->persist($category);
         $category->setId($id);
@@ -151,7 +151,7 @@ class LarpingFixtures extends Fixture
         $category = new Category();
         $category->setName('medieval');
         $category->setOrganization($larpingOrg);
-        $category->setIcon('fab fa-fort-awesome');
+        $category->setIcon('fal fa-chess-rook');
         $category->setParent($settings);
         $manager->persist($category);
         $category->setId($id);
@@ -173,7 +173,7 @@ class LarpingFixtures extends Fixture
         $category = new Category();
         $category->setName('future');
         $category->setOrganization($larpingOrg);
-        $category->setIcon('fas fa-user-astronaut');
+        $category->setIcon('fal fa-user-astronaut');
         $category->setParent($settings);
         $manager->persist($category);
         $category->setId($id);
@@ -183,7 +183,7 @@ class LarpingFixtures extends Fixture
         $features = new Category();
         $features->setName('features');
         $features->setOrganization($larpingOrg);
-        $features->setIcon('fab fa-fort-awesome');
+        $features->setIcon('fal fa-chess-rook');
         $manager->persist($features);
         $manager->flush();
 
@@ -191,7 +191,7 @@ class LarpingFixtures extends Fixture
         $category = new Category();
         $category->setName('showers');
         $category->setOrganization($larpingOrg);
-        $category->setIcon('fab fa-bath');
+        $category->setIcon('fal fa-bath');
         $category->setParent($features);
         $manager->persist($category);
         $category->setId($id);
@@ -202,7 +202,7 @@ class LarpingFixtures extends Fixture
         $category = new Category();
         $category->setName('camping');
         $category->setOrganization($larpingOrg);
-        $category->setIcon('fab fa-campground');
+        $category->setIcon('fal fa-campground');
         $category->setParent($features);
         $manager->persist($category);
         $category->setId($id);
