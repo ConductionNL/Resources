@@ -209,7 +209,7 @@ class LarpingFixtures extends Fixture
         $manager->persist($category);
         $manager->flush();
 
-        $id = Uuid::fromString('165fb2eb-8e9b-49d6-8d4e-dd26b0688269');
+        $id = Uuid::fromString('d424fc30-8795-4a73-9890-cf1423dc05c4');
         $category = new Category();
         $category->setName('beds');
         $category->setOrganization($larpingOrg);
