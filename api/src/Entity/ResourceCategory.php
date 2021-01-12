@@ -8,6 +8,9 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use App\Repository\ResourceCategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\Uuid;
@@ -17,7 +20,7 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Configurations hold a specific organisation configruation for an application.
+ * An resource atachhed to one or more categoires.
  *
  * @ApiResource(
  *     attributes={"pagination_items_per_page"=30},
@@ -45,15 +48,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          }
  *     }
  * )
- * @ORM\Entity(repositoryClass="App\Repository\ConfigurationRepository")
+ * @ORM\Entity(repositoryClass=ResourceCategoryRepository::class)
  * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")
  *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
- * @ApiFilter(SearchFilter::class, properties={"id": "exact", "application.id": "exact","organization.id": "exact", "name": "partial", "description": "partial", "content": "partial"})
+ * @ApiFilter(SearchFilter::class, properties={"resource": "partial"})
  */
-class Configuration
+class ResourceCategory
 {
     /**
      * @var UuidInterface The UUID identifier of this resource
@@ -70,60 +73,22 @@ class Configuration
     private $id;
 
     /**
-     * @var string The name of this application.
+     * @var string The common ground resource bound to groups
      *
-     * @example Webshop
-     *
-     * @Gedmo\Versioned
+     * @Groups({"read", "write"})
+     * @Assert\Url
      * @Assert\Length(
-     *      max = 255
+     *     max=255
      * )
-     * @Gedmo\Versioned
-     * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $resource;
 
     /**
-     * @var string The description of this application.
-     *
-     * @example Is the best site ever
-     *
-     * @Gedmo\Versioned
-     * @Assert\Length(
-     *      max = 255
-     * )
-     * @Gedmo\Versioned
-     * @Groups({"read","write"})
-     * @ORM\Column(type="text", nullable=true)
+     * @Groups({"read", "write"})
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="resources")
      */
-    private $description;
-
-    /**
-     * @Groups({"read","write"})
-     * @MaxDepth(1)
-     * @ORM\OneToOne(targetEntity="App\Entity\Application")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $application;
-
-    /**
-     * @Groups({"write"})
-     * @Assert\NotNull
-     * @MaxDepth(1)
-     * @ORM\ManyToOne(targetEntity="App\Entity\Organization", inversedBy="configurations")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $organization;
-
-    /**
-     * @var array array of configurations that will be provided to the application
-     *
-     * @Gedmo\Versioned
-     * @Groups({"read","write"})
-     * @ORM\Column(type="json")
-     */
-    private $configuration = [];
+    private $categories;
 
     /**
      * @var Datetime The moment this request was created
@@ -143,7 +108,12 @@ class Configuration
      */
     private $dateModified;
 
-    public function getId(): Uuid
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
+
+    public function getId(): ?Uuid
     {
         return $this->id;
     }
@@ -155,62 +125,38 @@ class Configuration
         return $this;
     }
 
-    public function getName(): ?string
+    public function getResource(): ?string
     {
-        return $this->name;
+        return $this->resource;
     }
 
-    public function setName(string $name): self
+    public function setResource(string $resource): self
     {
-        $this->name = $name;
+        $this->resource = $resource;
 
         return $this;
     }
 
-    public function getDescription(): ?string
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategories(): Collection
     {
-        return $this->description;
+        return $this->categories;
     }
 
-    public function setDescription(?string $description): self
+    public function addCategory(Category $category): self
     {
-        $this->description = $description;
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+        }
 
         return $this;
     }
 
-    public function getApplication(): ?Application
+    public function removeCategory(Category $category): self
     {
-        return $this->application;
-    }
-
-    public function setApplication(?Application $application): self
-    {
-        $this->application = $application;
-
-        return $this;
-    }
-
-    public function getOrganization(): ?Organization
-    {
-        return $this->organization;
-    }
-
-    public function setOrganization(?Organization $organization): self
-    {
-        $this->organization = $organization;
-
-        return $this;
-    }
-
-    public function getConfiguration(): ?array
-    {
-        return $this->configuration;
-    }
-
-    public function setConfiguration(array $configuration): self
-    {
-        $this->configuration = $configuration;
+        $this->categories->removeElement($category);
 
         return $this;
     }
