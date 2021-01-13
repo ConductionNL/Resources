@@ -81,33 +81,57 @@ class LarpingFixtures extends Fixture
 
         $manager->flush();
 
+        // Regions
+        $regions = new Category();
+        $regions->setName('regions');
+        $regions->setOrganization($larpingOrg);
+        $regions->setIcon('fab fa-fort-awesome');
+        $manager->persist($regions);
+        $manager->flush();
+        $regions = $manager->getRepository('App:Category')->findOneBy(['id'=> (string) $regions->getId()]);
+
+        $europe = new Category();
+        $europe->setName('Europe');
+        $europe->setOrganization($larpingOrg);
+        $europe->setIcon('fab fa-fort-awesome');
+        $europe->setParent($regions);
+        $manager->persist($europe);
+        $manager->flush();
+
+        $category = new Category();
+        $category->setName('Netherlands');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('fab fa-fort-awesome');
+        $category->setParent($europe);
+        $manager->persist($category);
+        $manager->flush();
+
         // Categories
-        $id = Uuid::fromString('4ecbd98c-c2d0-464e-ab2b-be0d9237d3fc');
         $settings = new Category();
         $settings->setName('settings');
         $settings->setOrganization($larpingOrg);
         $settings->setIcon('fab fa-fort-awesome');
-        $settings->setId($id);
         $manager->persist($settings);
         $manager->flush();
-        $settings = $manager->getRepository('App:Organization')->findOneBy(['id'=> $settings]);
+        $settings = $manager->getRepository('App:Category')->findOneBy(['id'=> (string) $settings->getId()]);
 
         $id = Uuid::fromString('95dac93a-c56b-4158-b095-df1e13425cd2');
         $category = new Category();
         $category->setName('low fantasy');
         $category->setOrganization($larpingOrg);
-        $category->setIcon('fab fa-fort-awesome');
+        $category->setIcon('fal fa-flask-potion');
         $category->setParent($settings);
-        $category->setId($id);
         $manager->persist($category);
+        $category->setId($id);
         $manager->flush();
 
         $id = Uuid::fromString('2b75bda8-b8fd-428c-80e3-d00370d078df');
         $category = new Category();
         $category->setName('high fantasy');
         $category->setOrganization($larpingOrg);
-        $category->setIcon('fab fa-fort-awesome');
+        $category->setIcon('fal fa-magic');
         $category->setParent($settings);
+        $manager->persist($category);
         $category->setId($id);
         $manager->persist($category);
         $manager->flush();
@@ -116,8 +140,20 @@ class LarpingFixtures extends Fixture
         $category = new Category();
         $category->setName('post apocalypse');
         $category->setOrganization($larpingOrg);
-        $category->setIcon('fab fa-fort-awesome');
+        $category->setIcon('fal fa-biohazard');
         $category->setParent($settings);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('d06278df-bb53-4c1b-a038-7b80948e3d64');
+        $category = new Category();
+        $category->setName('medieval');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('fal fa-chess-rook');
+        $category->setParent($settings);
+        $manager->persist($category);
         $category->setId($id);
         $manager->persist($category);
         $manager->flush();
@@ -126,38 +162,38 @@ class LarpingFixtures extends Fixture
         $category = new Category();
         $category->setName('historic');
         $category->setOrganization($larpingOrg);
-        $category->setIcon('fab fa-fort-awesome');
+        $category->setIcon('fal fa-user-cowboy');
         $category->setParent($settings);
+        $manager->persist($category);
         $category->setId($id);
         $manager->persist($category);
         $manager->flush();
 
         $id = Uuid::fromString('d1dbf62a-3e76-42ae-8154-4e8ae42cfe96');
         $category = new Category();
-        $category->setName('futore');
+        $category->setName('future');
         $category->setOrganization($larpingOrg);
-        $category->setIcon('fab fa-fort-awesome');
+        $category->setIcon('fal fa-user-astronaut');
         $category->setParent($settings);
+        $manager->persist($category);
         $category->setId($id);
         $manager->persist($category);
         $manager->flush();
 
-        $id = Uuid::fromString('d401d125-2443-4cd9-bf55-1b136530aa3f');
         $features = new Category();
         $features->setName('features');
         $features->setOrganization($larpingOrg);
-        $features->setIcon('fab fa-fort-awesome');
-        $features->setId($id);
+        $features->setIcon('fal fa-chess-rook');
         $manager->persist($features);
         $manager->flush();
-        $features = $manager->getRepository('App:Organization')->findOneBy(['id'=> $features]);
 
         $id = Uuid::fromString('b70f9bdb-cdb2-45f4-8d8b-ac6e6fbf977e');
         $category = new Category();
         $category->setName('showers');
         $category->setOrganization($larpingOrg);
-        $category->setIcon('fab fa-fort-awesome');
+        $category->setIcon('fal fa-bath');
         $category->setParent($features);
+        $manager->persist($category);
         $category->setId($id);
         $manager->persist($category);
         $manager->flush();
@@ -166,8 +202,20 @@ class LarpingFixtures extends Fixture
         $category = new Category();
         $category->setName('camping');
         $category->setOrganization($larpingOrg);
-        $category->setIcon('fab fa-fort-awesome');
+        $category->setIcon('fal fa-campground');
         $category->setParent($features);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('d424fc30-8795-4a73-9890-cf1423dc05c4');
+        $category = new Category();
+        $category->setName('beds');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('fab fa-bed');
+        $category->setParent($features);
+        $manager->persist($category);
         $category->setId($id);
         $manager->persist($category);
         $manager->flush();

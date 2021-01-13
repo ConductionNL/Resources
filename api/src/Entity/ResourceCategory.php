@@ -85,11 +85,10 @@ class ResourceCategory
     private $resource;
 
     /**
-     * @MaxDepth(1)
-     * @Groups({"read","write"})
-     * @ORM\OneToMany(targetEntity=Category::class, mappedBy="resources")
+     * @Groups({"read", "write"})
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="resources")
      */
-    private $catagories;
+    private $categories;
 
     /**
      * @var Datetime The moment this request was created
@@ -111,7 +110,7 @@ class ResourceCategory
 
     public function __construct()
     {
-        $this->catagories = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?Uuid
@@ -139,31 +138,25 @@ class ResourceCategory
     }
 
     /**
-     * @return Collection|Categories[]
+     * @return Collection|Category[]
      */
-    public function getCatagories(): Collection
+    public function getCategories(): Collection
     {
-        return $this->catagories;
+        return $this->categories;
     }
 
-    public function addCatagory(Categories $catagory): self
+    public function addCategory(Category $category): self
     {
-        if (!$this->catagories->contains($catagory)) {
-            $this->catagories[] = $catagory;
-            $catagory->setResources($this);
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
         }
 
         return $this;
     }
 
-    public function removeCatagory(Categories $catagory): self
+    public function removeCategory(Category $category): self
     {
-        if ($this->catagories->removeElement($catagory)) {
-            // set the owning side to null (unless already changed)
-            if ($catagory->getResources() === $this) {
-                $catagory->setResources(null);
-            }
-        }
+        $this->categories->removeElement($category);
 
         return $this;
     }

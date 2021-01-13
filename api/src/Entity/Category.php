@@ -8,6 +8,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\Uuid;
@@ -53,7 +55,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
  * @ApiFilter(SearchFilter::class, properties={
- *     "organization.id": "exact"
+ *     "name": "ipartial",
+ *     "description": "ipartial",
+ *     "organization.id": "ipartial",
+ *     "parent.id": "ipartial",
+ *     "parent.name": "ipartial",
+ *     "resources.resource": "ipartial",
  * })
  */
 class Category
@@ -125,15 +132,6 @@ class Category
     private $organization;
 
     /**
-     * The resources that are attached to this group.
-     *
-     * @MaxDepth(1)
-     * @Groups({"read","write"})
-     * @ORM\ManyToOne(targetEntity=ResourceCategory::class, inversedBy="catagories")
-     */
-    private $resources;
-
-    /**
      * @Gedmo\TreeLeft
      * @ORM\Column(name="lft", type="integer")
      */
@@ -175,6 +173,12 @@ class Category
     private $children;
 
     /**
+     * @Groups({"read","write"})
+     * @ORM\ManyToMany(targetEntity=ResourceCategory::class, mappedBy="categories")
+     */
+    private $resources;
+
+    /**
      * @var Datetime The moment this request was created
      *
      * @Groups({"read"})
@@ -191,6 +195,12 @@ class Category
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateModified;
+
+    public function __construct()
+    {
+        $this->resources = new ArrayCollection();
+    }
+
 
     public function getId(): ?Uuid
     {
@@ -252,18 +262,6 @@ class Category
         return $this;
     }
 
-    public function getResources(): ?ResourceCatagories
-    {
-        return $this->resources;
-    }
-
-    public function setResources(?ResourceCatagories $resources): self
-    {
-        $this->resources = $resources;
-
-        return $this;
-    }
-
     public function getRoot()
     {
         return $this->root;
@@ -277,6 +275,33 @@ class Category
     public function getParent()
     {
         return $this->parent;
+    }
+
+    /**
+     * @return Collection|ResourceCategory[]
+     */
+    public function getResources(): Collection
+    {
+        return $this->resources;
+    }
+
+    public function addResource(ResourceCategory $resource): self
+    {
+        if (!$this->resources->contains($resource)) {
+            $this->resources[] = $resource;
+            $resource->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeResource(ResourceCategory $resource): self
+    {
+        if ($this->resources->removeElement($resource)) {
+            $resource->removeCategory($this);
+        }
+
+        return $this;
     }
 
     public function getDateCreated(): ?\DateTimeInterface
