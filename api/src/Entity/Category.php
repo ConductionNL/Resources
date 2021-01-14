@@ -61,7 +61,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     "organization.id": "ipartial",
  *     "parent.id": "ipartial",
  *     "parent.name": "ipartial",
- *     "resources.resource": "ipartial",
+ *     "resources.resource": "ipartial"
  * })
  */
 class Category
