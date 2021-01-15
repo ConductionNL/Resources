@@ -220,6 +220,94 @@ class LarpingFixtures extends Fixture
         $manager->persist($category);
         $manager->flush();
 
+        $id = Uuid::fromString('f5b15874-98c7-4fd7-9477-5a300a0f8191');
+        $category = new Category();
+        $category->setName('dormitory');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('fas fa-bed-bunk');
+        $category->setParent($features);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('6c84f964-ed0d-4518-89fb-c1f1e50b2cc0');
+        $category = new Category();
+        $category->setName('wi-fi');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('fas fa-wifi');
+        $category->setParent($features);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('4d56fd2c-c9c3-4201-aa47-7f6ea51937c0');
+        $category = new Category();
+        $category->setName('parking');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('fas fa-parking');
+        $category->setParent($features);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('1a8e3391-d646-4eda-817e-08f90df30800');
+        $category = new Category();
+        $category->setName('kitchen');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('fas fa-sink');
+        $category->setParent($features);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('0def49c5-d755-4243-8c6d-a98697bf0872');
+        $category = new Category();
+        $category->setName('cutlery');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('fas fa-utensils-alt');
+        $category->setParent($features);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('d1119c2b-4703-4aab-9656-c86899b3c4d1');
+        $category = new Category();
+        $category->setName('power');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('fas fa-plug');
+        $category->setParent($features);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('aa37d2c6-4df1-4098-8e6d-63f41a08e435');
+        $category = new Category();
+        $category->setName('water');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('fas fa-water');
+        $category->setParent($features);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('2b388eaa-8fcc-4920-b514-f25b5aff93e2');
+        $category = new Category();
+        $category->setName('bungalows');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('fas fa-house-day');
+        $category->setParent($features);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
         // Image
 //        $id = Uuid::fromString('50e8a292-078a-4569-8ca7-f8a21ddcb8b6');
 //        $image = new Image();
