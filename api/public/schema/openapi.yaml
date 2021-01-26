@@ -2801,6 +2801,22 @@ paths:
           schema:
             type: string
         -
+          name: id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'id[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
           name: name
           in: query
           required: false
@@ -8917,6 +8933,52 @@ paths:
             type: string
         -
           name: resource
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: categories.id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'categories.id[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: categories.name
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: categories.organization.id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: categories.parent.id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: categories.parent.name
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: categories.resources.resource
           in: query
           required: false
           schema:
@@ -16741,12 +16803,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-01-10 13:33:31'
+        example: '2021-01-26 12:10:43'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-01-10 13:33:31'
+        example: '2021-01-26 12:10:43'
     required: []
   AuditTrail-write:
     properties:
@@ -16794,12 +16856,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-01-10 13:33:31'
+        example: '2021-01-26 12:10:43'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-01-10 13:33:31'
+        example: '2021-01-26 12:10:43'
     required: []
   ChangeLog-write:
     properties:
