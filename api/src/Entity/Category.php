@@ -202,7 +202,6 @@ class Category
         $this->resources = new ArrayCollection();
     }
 
-
     public function getId(): ?Uuid
     {
         return $this->id;
