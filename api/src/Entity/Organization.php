@@ -245,6 +245,13 @@ class Organization
      */
     private $childOrganizations;
 
+    /**
+     * @Groups({"read", "write"})
+     * @ORM\OneToOne(targetEntity=Template::class, cascade={"persist", "remove"})
+     * @MaxDepth(1)
+     */
+    private $termsAndConditions;
+
     public function __construct()
     {
         $this->applications = new ArrayCollection();
@@ -579,6 +586,18 @@ class Organization
                 $childOrganization->setParentOrganization(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTermsAndConditions(): ?Template
+    {
+        return $this->termsAndConditions;
+    }
+
+    public function setTermsAndConditions(?Template $termsAndConditions): self
+    {
+        $this->termsAndConditions = $termsAndConditions;
 
         return $this;
     }

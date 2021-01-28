@@ -14986,6 +14986,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization-read'
+        termsAndConditions:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Template-read'
       required:
         - name
     Organization-write:
@@ -15041,6 +15046,11 @@ components:
           anyOf:
             -
               $ref: '#/components/schemas/Organization-write'
+        termsAndConditions:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Template-write'
       required:
         - name
     'Organization:jsonld-read':
@@ -15126,6 +15136,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization:jsonld-read'
+        termsAndConditions:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Template:jsonld-read'
       required:
         - name
     'Organization:jsonld-write':
@@ -15190,6 +15205,11 @@ components:
           anyOf:
             -
               $ref: '#/components/schemas/Organization:jsonld-write'
+        termsAndConditions:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Template:jsonld-write'
       required:
         - name
     ResourceCategory-read:
@@ -16405,6 +16425,7 @@ definitions:
       style: []
       parentOrganization: []
       childOrganizations: []
+      termsAndConditions: []
     required:
       - name
   Organization-write:
@@ -16451,6 +16472,7 @@ definitions:
         maxLength: 255
       style: []
       parentOrganization: []
+      termsAndConditions: []
     required:
       - name
   ResourceCategory-read:
@@ -16803,12 +16825,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-01-26 12:10:43'
+        example: '2021-01-28 13:37:43'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-01-26 12:10:43'
+        example: '2021-01-28 13:37:43'
     required: []
   AuditTrail-write:
     properties:
@@ -16856,12 +16878,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-01-26 12:10:43'
+        example: '2021-01-28 13:37:43'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-01-26 12:10:43'
+        example: '2021-01-28 13:37:43'
     required: []
   ChangeLog-write:
     properties:
