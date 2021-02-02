@@ -5,7 +5,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.10.0
-    created: "2021-01-15T15:24:25.2522307Z"
+    created: "2021-01-28T13:30:43.0967438Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -34,17 +34,4 @@ entries:
     urls:
     - charts/postgresql-10.1.1.tgz
     version: 10.1.1
-  wrc:
-  - apiVersion: v1
-    appVersion: V1.0
-    created: "2021-01-15T15:24:25.233298Z"
-    description: Naast deze JSON rest API is er ook een [graphql](/graphql) interface
-      beschikbaar.
-    digest: 9fcc31feac44d5c82e18c41469652c406cacd302a0c751c1f6f568420a93d2b6
-    home: wrc.zaakonline.nl
-    icon: wrc.zaakonline.nl
-    name: wrc
-    urls:
-    - wrc-0.1.0.tgz
-    version: 0.1.0
-generated: "2021-01-15T15:24:25.1467374Z"
+generated: "2021-01-28T13:30:42.7643283Z"
