@@ -1184,33 +1184,6 @@ class ZuiddrechtFixtures extends Fixture
         $slug->setSlug('Zaaksysteem');
         $manager->persist($slug);
 
-        $id = Uuid::fromString('c6ea48d9-dc94-4a0c-b53d-b5c3f2c3beef');
-        $template = new Template();
-        $template->setName('Zaaksysteem');
-        $template->setTitle('Zaaksysteem.nl integratie bij Zuid-Drecht bijna klaar!');
-        $template->setDescription('Samen hebben Conduction en Zaaksysteem.nl een werkende integratie gemaakt waarmee formulieren op basis van de Common Ground principes in het zaaksysteem afgehandeld kunnen worden. Benieuwd hoe dit eruit ziet? Kom naar Zaaksystemen in beeld 2021 en ervaar het helemaal zelf van A tot Z.');
-        $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/Zuiddrecht/website/nieuws/zaaksysteem.html.twig', 'r'));
-        $template->setTemplateEngine('twig');
-        $date = new \DateTime();
-        $date->sub(new \DateInterval('P6D'));
-        $template->setDateCreated($date);
-        $template->setDateModified($date);
-        $manager->persist($template);
-        $template->setId($id);
-        $manager->persist($template);
-        $manager->flush();
-        $template = $manager->getRepository('App:Template')->findOneBy(['id'=> $id]);
-        $template->addTemplateGroup($groupNews);
-        $manager->persist($template);
-        $manager->flush();
-
-        $slug = new Slug();
-        $slug->setTemplate($template);
-        $slug->setApplication($application);
-        $slug->setName('Zaaksysteem');
-        $slug->setSlug('Zaaksysteem');
-        $manager->persist($slug);
-
         $id = Uuid::fromString('67b1e403-4436-4cd9-a328-ce99e05511a1');
         $template = new Template();
         $template->setName('huwelijksplanner');
