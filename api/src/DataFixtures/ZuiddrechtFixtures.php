@@ -598,6 +598,30 @@ class ZuiddrechtFixtures extends Fixture
         $slug->setSlug('functionaliteit');
         $manager->persist($slug);
 
+        $id = Uuid::fromString('cdbff8e6-1651-4bd0-8bec-f0a068998ef4');
+        $template = new Template();
+        $template->setName('VrijBRP');
+        $template->setTitle('Gemeente Zuid-Drecht adopteert VrijBRP');
+        $template->setDescription('Bij de dienstverlening aan inwoners van een gemeente speelt de afdeling Burgerzaken een belangrijke rol. Denk aan de aangifte van geboorte of het verkrijgen van een wettelijk document. Digitalisering biedt kansen om deze diensten toegankelijker en eenvoudiger te maken en het contact met inwoners te versterken. VrijBRP maakt veilig beheer en een goed afgeschermde gegevensuitwisseling mogelijk én biedt gemeenten alle ruimte om zelf grip te houden. De ambitie van Procura is helder: samen met een community van gemeenten en marktpartijen verder bouwen aan innovaties voor burgers en ondernemers. Zuid-Drecht zet samen met Procura de stap!');
+        $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/Zuiddrecht/website/vrijbrp.html.twig', 'r'));
+        $template->setTemplateEngine('twig');
+        $manager->persist($template);
+        $template->setId($id);
+        $manager->persist($template);
+        $manager->flush();
+        $template = $manager->getRepository('App:Template')->findOneBy(['id'=> $id]);
+        $template->addTemplateGroup($groupPages);
+        $template->addTemplateGroup($groupOver);
+        $manager->persist($template);
+        $manager->flush();
+
+        $slug = new Slug();
+        $slug->setTemplate($template);
+        $slug->setApplication($application);
+        $slug->setName('vrijbrp');
+        $slug->setSlug('vrijbrp');
+        $manager->persist($slug);
+
         $id = Uuid::fromString('48d0af07-4895-45ee-9b4d-5acb92f1dfab');
         $template = new Template();
         $template->setName('zaaksysteem');
