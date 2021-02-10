@@ -72,7 +72,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     "description": "ipartial",
  *     "content": "partial",
  *     "templateGroups.name": "partial",
- *     "templateGroups.id": "exact"})
+ *     "templateGroups.id": "exact"
+ * })
  */
 class Template implements Translatable
 {
