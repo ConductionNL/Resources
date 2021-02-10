@@ -8,19 +8,18 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use App\Repository\ResourceCategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\Translatable\Translatable;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Menu is your way of navigation inside your application.
+ * An resource atachhed to one or more categoires.
  *
  * @ApiResource(
  *     attributes={"pagination_items_per_page"=30},
@@ -48,16 +47,24 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          }
  *     }
  * )
- * @ORM\Entity(repositoryClass="App\Repository\MenuRepository")
+ * @ORM\Entity(repositoryClass=ResourceCategoryRepository::class)
  * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")
  *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
- * @ApiFilter(SearchFilter::class)
- * @ApiFilter(SearchFilter::class, properties={"id": "exact", "application.id": "exact", "name": "partial", "description": "partial"})
+ * @ApiFilter(SearchFilter::class, properties={
+ *     "resource": "ipartial",
+ *     "categories.id":"exact",
+ *     "categories.name":"ipartial",
+ *     "categories.id":"exact",
+ *     "categories.organization.id": "ipartial",
+ *     "categories.parent.id": "ipartial",
+ *     "categories.parent.name": "ipartial",
+ *     "categories.resources.resource": "ipartial"
+ * })
  */
-class Menu implements Translatable
+class ResourceCategory
 {
     /**
      * @var UuidInterface The UUID identifier of this resource
@@ -74,60 +81,22 @@ class Menu implements Translatable
     private $id;
 
     /**
-     * @var string The name of this menu
+     * @var string The common ground resource bound to groups
      *
-     * @example webshop menu
-     *
-     * @Gedmo\Translatable
-     * @Gedmo\Versioned
-     * @Assert\NotNull
+     * @Groups({"read", "write"})
+     * @Assert\Url
      * @Assert\Length(
-     *      max = 255
+     *     max=255
      * )
-     * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $resource;
 
     /**
-     * @var string The description of this menuItems
-     *
-     * @example This menuItems links to the about page
-     *
-     * @Gedmo\Translatable
-     * @Gedmo\Versioned
-     * @Assert\Length(
-     *      max = 2555
-     * )
-     * @Groups({"read","write"})
-     * @ORM\Column(type="text", nullable=true)
+     * @Groups({"read", "write"})
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="resources")
      */
-    private $description;
-
-    /**
-     * @Groups({"read","write"})
-     * @ORM\OneToMany(targetEntity="App\Entity\MenuItem", mappedBy="menu",cascade={"persist"})
-     * @MaxDepth(1)
-     */
-    private $menuItems;
-
-    /**
-     * @Groups({"read","write"})
-     * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="App\Entity\Application", inversedBy="menus")
-     * @ORM\JoinColumn(nullable=false)
-     * @MaxDepth(1)
-     */
-    private $application;
-
-    /**
-     * @Groups({"read"})
-     * @Gedmo\Locale
-     * Used locale to override Translation listener`s locale
-     * this is not a mapped field of entity metadata, just a simple property
-     * and it is not necessary because globally locale can be set in listener
-     */
-    private $locale;
+    private $categories;
 
     /**
      * @var Datetime The moment this request was created
@@ -149,10 +118,10 @@ class Menu implements Translatable
 
     public function __construct()
     {
-        $this->menuItems = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
-    public function getId(): Uuid
+    public function getId(): ?Uuid
     {
         return $this->id;
     }
@@ -164,76 +133,45 @@ class Menu implements Translatable
         return $this;
     }
 
-    public function getName(): ?string
+    public function getResource(): ?string
     {
-        return $this->name;
+        return $this->resource;
     }
 
-    public function setName(string $name): self
+    public function setResource(string $resource): self
     {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
+        $this->resource = $resource;
 
         return $this;
     }
 
     /**
-     * @return Collection|menuItems[]
+     * @return Collection|Category[]
      */
-    public function getMenuItems(): Collection
+    public function getCategories(): Collection
     {
-        return $this->menuItems;
+        return $this->categories;
     }
 
-    public function addMenuItem(MenuItem $menuItem): self
+    public function addCategory(Category $category): self
     {
-        if (!$this->menuItems->contains($menuItem)) {
-            $this->menuItems[] = $menuItem;
-            $menuItem->setMenu($this);
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
         }
 
         return $this;
     }
 
-    public function removeMenuItem(MenuItem $menuItem): self
+    public function removeCategory(Category $category): self
     {
-        if ($this->menuItems->contains($menuItem)) {
-            $this->menuItems->removeElement($menuItem);
-            // set the owning side to null (unless already changed)
-            if ($menuItem->getMenu() === $this) {
-                $menuItem->setMenu(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getApplication(): ?Application
-    {
-        return $this->application;
-    }
-
-    public function setApplication(?Application $application): self
-    {
-        $this->application = $application;
+        $this->categories->removeElement($category);
 
         return $this;
     }
 
     public function getDateCreated(): ?\DateTimeInterface
     {
-        return $this->dateModified;
+        return $this->dateCreated;
     }
 
     public function setDateCreated(\DateTimeInterface $dateCreated): self
@@ -253,10 +191,5 @@ class Menu implements Translatable
         $this->dateModified = $dateModified;
 
         return $this;
-    }
-
-    public function setTranslatableLocale($locale)
-    {
-        $this->locale = $locale;
     }
 }

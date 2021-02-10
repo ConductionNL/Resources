@@ -4,60 +4,56 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\Translatable\Translatable;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Menu is your way of navigation inside your application.
+ * Documents hold a document encoded in base64.
  *
  * @ApiResource(
- *     attributes={"pagination_items_per_page"=30},
- *     normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
- *     denormalizationContext={"groups"={"write"}, "enable_max_depth"=true},
+ *      attributes={"pagination_items_per_page"=30},
+ *     	normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
+ *     	denormalizationContext={"groups"={"write"}, "enable_max_depth"=true},
  *     itemOperations={
- *          "get",
- *          "put",
- *          "delete",
- *          "get_change_logs"={
- *              "path"="/adresses/{id}/change_log",
+ * 		"get",
+ * 	    "put",
+ * 	   "delete",
+ *     "get_change_logs"={
+ *              "path"="/documents/{id}/change_log",
  *              "method"="get",
  *              "swagger_context" = {
  *                  "summary"="Changelogs",
  *                  "description"="Gets al the change logs for this resource"
  *              }
  *          },
- *          "get_audit_trail"={
- *              "path"="/adresses/{id}/audit_trail",
+ *     "get_audit_trail"={
+ *              "path"="/documents/{id}/audit_trail",
  *              "method"="get",
  *              "swagger_context" = {
  *                  "summary"="Audittrail",
  *                  "description"="Gets the audit trail for this resource"
  *              }
  *          }
- *     }
+ * 		}
  * )
- * @ORM\Entity(repositoryClass="App\Repository\MenuRepository")
- * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")
+ * @ORM\Entity(repositoryClass="App\Repository\DocumentRepository")
+ * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")*
  *
- * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
- * @ApiFilter(SearchFilter::class)
- * @ApiFilter(SearchFilter::class, properties={"id": "exact", "application.id": "exact", "name": "partial", "description": "partial"})
+ * @ApiFilter(SearchFilter::class, properties={
+ *     "organizaiton": "exact",
+ *     "person": "exact"
+ * })
  */
-class Menu implements Translatable
+class Document
 {
     /**
      * @var UuidInterface The UUID identifier of this resource
@@ -74,11 +70,10 @@ class Menu implements Translatable
     private $id;
 
     /**
-     * @var string The name of this menu
+     * @var string The internal name of this document
      *
-     * @example webshop menu
+     * @example specialdocument
      *
-     * @Gedmo\Translatable
      * @Gedmo\Versioned
      * @Assert\NotNull
      * @Assert\Length(
@@ -90,44 +85,47 @@ class Menu implements Translatable
     private $name;
 
     /**
-     * @var string The description of this menuItems
+     * @var string The description of this document.
      *
-     * @example This menuItems links to the about page
+     * @example This paragraph holds info about this document
      *
      * @Gedmo\Translatable
      * @Gedmo\Versioned
      * @Assert\Length(
-     *      max = 2555
+     *     max = 255
      * )
      * @Groups({"read","write"})
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description;
 
     /**
+     * @var string the base64 version of the image
+     *
+     * @Gedmo\Versioned
      * @Groups({"read","write"})
-     * @ORM\OneToMany(targetEntity="App\Entity\MenuItem", mappedBy="menu",cascade={"persist"})
-     * @MaxDepth(1)
+     * @ORM\Column(type="text")
      */
-    private $menuItems;
+    private $base64;
 
     /**
      * @Groups({"read","write"})
-     * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="App\Entity\Application", inversedBy="menus")
-     * @ORM\JoinColumn(nullable=false)
-     * @MaxDepth(1)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Organization", inversedBy="images")
+     * @ORM\JoinColumn()
      */
-    private $application;
+    private $organization;
 
     /**
-     * @Groups({"read"})
-     * @Gedmo\Locale
-     * Used locale to override Translation listener`s locale
-     * this is not a mapped field of entity metadata, just a simple property
-     * and it is not necessary because globally locale can be set in listener
+     * @var string The contact of this document
+     *
+     * @Groups({"read", "write"})
+     * @Assert\Url
+     * @Assert\Length(
+     *     max=255
+     * )
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $locale;
+    private $contact;
 
     /**
      * @var Datetime The moment this request was created
@@ -146,11 +144,6 @@ class Menu implements Translatable
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateModified;
-
-    public function __construct()
-    {
-        $this->menuItems = new ArrayCollection();
-    }
 
     public function getId(): Uuid
     {
@@ -188,45 +181,38 @@ class Menu implements Translatable
         return $this;
     }
 
-    /**
-     * @return Collection|menuItems[]
-     */
-    public function getMenuItems(): Collection
+    public function getBase64(): ?string
     {
-        return $this->menuItems;
+        return $this->base64;
     }
 
-    public function addMenuItem(MenuItem $menuItem): self
+    public function setBase64(string $base64): self
     {
-        if (!$this->menuItems->contains($menuItem)) {
-            $this->menuItems[] = $menuItem;
-            $menuItem->setMenu($this);
-        }
+        $this->base64 = $base64;
 
         return $this;
     }
 
-    public function removeMenuItem(MenuItem $menuItem): self
+    public function getOrganization(): ?Organization
     {
-        if ($this->menuItems->contains($menuItem)) {
-            $this->menuItems->removeElement($menuItem);
-            // set the owning side to null (unless already changed)
-            if ($menuItem->getMenu() === $this) {
-                $menuItem->setMenu(null);
-            }
-        }
+        return $this->organization;
+    }
+
+    public function setOrganization(?Organization $organization): self
+    {
+        $this->organization = $organization;
 
         return $this;
     }
 
-    public function getApplication(): ?Application
+    public function getContact(): ?string
     {
-        return $this->application;
+        return $this->contact;
     }
 
-    public function setApplication(?Application $application): self
+    public function setContact(?string $contact): self
     {
-        $this->application = $application;
+        $this->contact = $contact;
 
         return $this;
     }
@@ -253,10 +239,5 @@ class Menu implements Translatable
         $this->dateModified = $dateModified;
 
         return $this;
-    }
-
-    public function setTranslatableLocale($locale)
-    {
-        $this->locale = $locale;
     }
 }

@@ -12,7 +12,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\Translatable\Translatable;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -20,7 +19,7 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Menu is your way of navigation inside your application.
+ * An category.
  *
  * @ApiResource(
  *     attributes={"pagination_items_per_page"=30},
@@ -31,7 +30,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          "put",
  *          "delete",
  *          "get_change_logs"={
- *              "path"="/adresses/{id}/change_log",
+ *              "path"="/categories/{id}/change_log",
  *              "method"="get",
  *              "swagger_context" = {
  *                  "summary"="Changelogs",
@@ -39,7 +38,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *              }
  *          },
  *          "get_audit_trail"={
- *              "path"="/adresses/{id}/audit_trail",
+ *              "path"="/categories/{id}/audit_trail",
  *              "method"="get",
  *              "swagger_context" = {
  *                  "summary"="Audittrail",
@@ -48,16 +47,24 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          }
  *     }
  * )
- * @ORM\Entity(repositoryClass="App\Repository\MenuRepository")
+ * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\NestedTreeRepository")
  * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")
+ * @Gedmo\Tree(type="nested")
  *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
- * @ApiFilter(SearchFilter::class)
- * @ApiFilter(SearchFilter::class, properties={"id": "exact", "application.id": "exact", "name": "partial", "description": "partial"})
+ * @ApiFilter(SearchFilter::class, properties={
+ *     "id": "exact",
+ *     "name": "ipartial",
+ *     "description": "ipartial",
+ *     "organization.id": "ipartial",
+ *     "parent.id": "ipartial",
+ *     "parent.name": "ipartial",
+ *     "resources.resource": "ipartial"
+ * })
  */
-class Menu implements Translatable
+class Category
 {
     /**
      * @var UuidInterface The UUID identifier of this resource
@@ -74,15 +81,14 @@ class Menu implements Translatable
     private $id;
 
     /**
-     * @var string The name of this menu
+     * @var string The name of this organization.
      *
-     * @example webshop menu
+     * @example About
      *
-     * @Gedmo\Translatable
      * @Gedmo\Versioned
      * @Assert\NotNull
      * @Assert\Length(
-     *      max = 255
+     *     max = 255
      * )
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255)
@@ -90,44 +96,88 @@ class Menu implements Translatable
     private $name;
 
     /**
-     * @var string The description of this menuItems
+     * @var string The (e.g. font awsome) icon for this group.
      *
-     * @example This menuItems links to the about page
+     * @example fa-builing
      *
-     * @Gedmo\Translatable
      * @Gedmo\Versioned
+     * @Assert\NotNull
      * @Assert\Length(
-     *      max = 2555
+     *     max = 255
      * )
      * @Groups({"read","write"})
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $icon;
+
+    /**
+     * @var string The description of this organisation.
+     *
+     * @example This is the manucipality of Utrecht
+     *
+     * @Gedmo\Versioned
+     * @Assert\Length(
+     *     max = 255
+     * )
+     * @Groups({"read","write"})
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description;
 
     /**
      * @Groups({"read","write"})
-     * @ORM\OneToMany(targetEntity="App\Entity\MenuItem", mappedBy="menu",cascade={"persist"})
      * @MaxDepth(1)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Organization", inversedBy="templates")
+     * @ORM\JoinColumn(nullable=false, nullable=true)
      */
-    private $menuItems;
+    private $organization;
 
     /**
-     * @Groups({"read","write"})
-     * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="App\Entity\Application", inversedBy="menus")
-     * @ORM\JoinColumn(nullable=false)
-     * @MaxDepth(1)
+     * @Gedmo\TreeLeft
+     * @ORM\Column(name="lft", type="integer")
      */
-    private $application;
+    private $lft;
+
+    /**
+     * @Gedmo\TreeLevel
+     * @ORM\Column(name="lvl", type="integer")
+     */
+    private $lvl;
+
+    /**
+     * @Gedmo\TreeRight
+     * @ORM\Column(name="rgt", type="integer")
+     */
+    private $rgt;
 
     /**
      * @Groups({"read"})
-     * @Gedmo\Locale
-     * Used locale to override Translation listener`s locale
-     * this is not a mapped field of entity metadata, just a simple property
-     * and it is not necessary because globally locale can be set in listener
+     * @Gedmo\TreeRoot
+     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\JoinColumn(name="tree_root", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $locale;
+    private $root;
+
+    /**
+     * @Groups({"read","write"})
+     * @Gedmo\TreeParent
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $parent;
+
+    /**
+     * @Groups({"read"})
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     */
+    private $children;
+
+    /**
+     * @Groups({"read","write"})
+     * @ORM\ManyToMany(targetEntity=ResourceCategory::class, mappedBy="categories")
+     */
+    private $resources;
 
     /**
      * @var Datetime The moment this request was created
@@ -149,10 +199,10 @@ class Menu implements Translatable
 
     public function __construct()
     {
-        $this->menuItems = new ArrayCollection();
+        $this->resources = new ArrayCollection();
     }
 
-    public function getId(): Uuid
+    public function getId(): ?Uuid
     {
         return $this->id;
     }
@@ -176,6 +226,18 @@ class Menu implements Translatable
         return $this;
     }
 
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+    }
+
+    public function setIcon(?string $icon): self
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
     public function getDescription(): ?string
     {
         return $this->description;
@@ -188,52 +250,63 @@ class Menu implements Translatable
         return $this;
     }
 
+    public function getOrganization(): ?Organization
+    {
+        return $this->organization;
+    }
+
+    public function setOrganization(?Organization $organization): self
+    {
+        $this->organization = $organization;
+
+        return $this;
+    }
+
+    public function getRoot()
+    {
+        return $this->root;
+    }
+
+    public function setParent(Category $parent = null)
+    {
+        $this->parent = $parent;
+    }
+
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
     /**
-     * @return Collection|menuItems[]
+     * @return Collection|ResourceCategory[]
      */
-    public function getMenuItems(): Collection
+    public function getResources(): Collection
     {
-        return $this->menuItems;
+        return $this->resources;
     }
 
-    public function addMenuItem(MenuItem $menuItem): self
+    public function addResource(ResourceCategory $resource): self
     {
-        if (!$this->menuItems->contains($menuItem)) {
-            $this->menuItems[] = $menuItem;
-            $menuItem->setMenu($this);
+        if (!$this->resources->contains($resource)) {
+            $this->resources[] = $resource;
+            $resource->addCategory($this);
         }
 
         return $this;
     }
 
-    public function removeMenuItem(MenuItem $menuItem): self
+    public function removeResource(ResourceCategory $resource): self
     {
-        if ($this->menuItems->contains($menuItem)) {
-            $this->menuItems->removeElement($menuItem);
-            // set the owning side to null (unless already changed)
-            if ($menuItem->getMenu() === $this) {
-                $menuItem->setMenu(null);
-            }
+        if ($this->resources->removeElement($resource)) {
+            $resource->removeCategory($this);
         }
-
-        return $this;
-    }
-
-    public function getApplication(): ?Application
-    {
-        return $this->application;
-    }
-
-    public function setApplication(?Application $application): self
-    {
-        $this->application = $application;
 
         return $this;
     }
 
     public function getDateCreated(): ?\DateTimeInterface
     {
-        return $this->dateModified;
+        return $this->dateCreated;
     }
 
     public function setDateCreated(\DateTimeInterface $dateCreated): self
@@ -253,10 +326,5 @@ class Menu implements Translatable
         $this->dateModified = $dateModified;
 
         return $this;
-    }
-
-    public function setTranslatableLocale($locale)
-    {
-        $this->locale = $locale;
     }
 }

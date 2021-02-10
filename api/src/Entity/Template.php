@@ -72,7 +72,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     "description": "ipartial",
  *     "content": "partial",
  *     "templateGroups.name": "partial",
- *     "templateGroups.id": "exact"})
+ *     "templateGroups.id": "exact"
+ * })
  */
 class Template implements Translatable
 {
@@ -132,7 +133,7 @@ class Template implements Translatable
      *     max = 255
      * )
      * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 

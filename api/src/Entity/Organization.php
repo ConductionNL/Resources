@@ -30,7 +30,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          "put",
  *          "delete",
  *          "get_change_logs"={
- *              "path"="/adresses/{id}/change_log",
+ *              "path"="/organizations/{id}/change_log",
  *              "method"="get",
  *              "swagger_context" = {
  *                  "summary"="Changelogs",
@@ -38,7 +38,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *              }
  *          },
  *          "get_audit_trail"={
- *              "path"="/adresses/{id}/audit_trail",
+ *              "path"="/organizations/{id}/audit_trail",
  *              "method"="get",
  *              "swagger_context" = {
  *                  "summary"="Audittrail",
@@ -53,7 +53,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
- * @ApiFilter(SearchFilter::class, properties={"contact": "exact"})
+ * @ApiFilter(SearchFilter::class, properties={
+ *     "contact": "exact",
+ *     "name": "ipartial",
+ *     "description": "ipartial"
+ * })
  */
 class Organization
 {
@@ -240,6 +244,13 @@ class Organization
      * @ORM\OneToMany(targetEntity=Organization::class, mappedBy="parentOrganization")
      */
     private $childOrganizations;
+
+    /**
+     * @Groups({"read", "write"})
+     * @ORM\OneToOne(targetEntity=Template::class, cascade={"persist", "remove"})
+     * @MaxDepth(1)
+     */
+    private $termsAndConditions;
 
     public function __construct()
     {
@@ -575,6 +586,18 @@ class Organization
                 $childOrganization->setParentOrganization(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTermsAndConditions(): ?Template
+    {
+        return $this->termsAndConditions;
+    }
+
+    public function setTermsAndConditions(?Template $termsAndConditions): self
+    {
+        $this->termsAndConditions = $termsAndConditions;
 
         return $this;
     }

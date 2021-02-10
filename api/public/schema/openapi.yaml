@@ -10,7 +10,7 @@ info:
     - Version: V1.0
     - Repository: [online](https://github.com/ConductionNL/webresourcecatalogus) / [zip](https://github.com/ConductionNL/webresourcecatalogus/archive/master.zip)
     - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/wrc-php) 
-    - Datamodel: [postman](/schema/wrc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [modelio (zip)](/schema/Datamodel_Modelio.zip) 
+    - Datamodel: [postman](schema/wrc.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
     
     Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
     
@@ -294,7 +294,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Application:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -304,7 +304,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Application:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -1287,7 +1287,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Application:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -1297,7 +1297,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Application:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -1581,7 +1581,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/AuditTrail:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -1591,7 +1591,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/AuditTrail:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -2585,6 +2585,1062 @@ paths:
             schema:
               $ref: '#/components/schemas/AuditTrail-write'
         description: 'The updated AuditTrail resource'
+  /categories:
+    get:
+      tags:
+        - Category
+      operationId: getCategoryCollection
+      summary: 'Retrieves the collection of Category resources.'
+      responses:
+        200:
+          description: 'Category collection response'
+          content:
+            application/ld+json:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Category:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/json+ld:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Category:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/hal+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category-read'
+            application/json+hal:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category-read'
+            application/vnd.api+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category-read'
+            application/json+vnd.api:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category-read'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category-read'
+            application/health+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category-read'
+            application/json+health:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category-read'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category-read'
+            application/x-yaml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category-read'
+            text/csv:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category-read'
+            text/html:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category-read'
+      parameters:
+        -
+          name: 'order[id]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[name]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[icon]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[description]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[lft]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[lvl]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[rgt]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateCreated]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateModified]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'dateCreated[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'id[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: description
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: organization.id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: parent.id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: parent.name
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: resources.resource
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: page
+          in: query
+          required: false
+          description: 'The collection page number'
+          schema:
+            type: integer
+            default: 1
+        -
+          name: limit
+          in: query
+          required: false
+          description: 'The number of items per page'
+          schema:
+            type: integer
+            default: 30
+            minimum: 0
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      produces:
+        - application/health+json
+    post:
+      tags:
+        - Category
+      operationId: postCategoryCollection
+      summary: 'Creates a Category resource.'
+      responses:
+        201:
+          description: 'Category resource created'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Category:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Category:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+          links:
+            GetCategoryItem:
+              parameters:
+                id: '$response.body#/id'
+              operationId: getCategoryItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /categories/{id}`.'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Category:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/Category:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+        description: 'The new Category resource'
+      parameters:
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/categories/{id}':
+    get:
+      tags:
+        - Category
+      operationId: getCategoryItem
+      summary: 'Retrieves a Category resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Category resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Category:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Category:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+    put:
+      tags:
+        - Category
+      operationId: putCategoryItem
+      summary: 'Replaces the Category resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+      responses:
+        200:
+          description: 'Category resource updated'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Category:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Category:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Category:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/Category:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Category-write'
+        description: 'The updated Category resource'
+    delete:
+      tags:
+        - Category
+      operationId: deleteCategoryItem
+      summary: 'Removes the Category resource.'
+      responses:
+        204:
+          description: 'Category resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/categories/{id}/audit_trail':
+    get:
+      tags:
+        - Category
+      operationId: get_audit_trailCategoryItem
+      summary: 'Retrieves a Category resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Category resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Category:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Category:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+  '/categories/{id}/change_log':
+    get:
+      tags:
+        - Category
+      operationId: get_change_logsCategoryItem
+      summary: 'Retrieves a Category resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Category resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Category:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Category:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Category-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
   /change_logs:
     get:
       tags:
@@ -2602,7 +3658,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/ChangeLog:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -2612,7 +3668,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/ChangeLog:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -3508,7 +4564,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Configuration:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -3518,7 +4574,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Configuration:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -4266,6 +5322,992 @@ paths:
           name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
+  /documents:
+    get:
+      tags:
+        - Document
+      operationId: getDocumentCollection
+      summary: 'Retrieves the collection of Document resources.'
+      responses:
+        200:
+          description: 'Document collection response'
+          content:
+            application/ld+json:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Document:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/json+ld:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Document:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/hal+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document-read'
+            application/json+hal:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document-read'
+            application/vnd.api+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document-read'
+            application/json+vnd.api:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document-read'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document-read'
+            application/health+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document-read'
+            application/json+health:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document-read'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document-read'
+            application/x-yaml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document-read'
+            text/csv:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document-read'
+            text/html:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document-read'
+      parameters:
+        -
+          name: 'order[id]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[name]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[description]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[base64]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[contact]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateCreated]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateModified]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'dateCreated[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: page
+          in: query
+          required: false
+          description: 'The collection page number'
+          schema:
+            type: integer
+            default: 1
+        -
+          name: limit
+          in: query
+          required: false
+          description: 'The number of items per page'
+          schema:
+            type: integer
+            default: 30
+            minimum: 0
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      produces:
+        - application/health+json
+    post:
+      tags:
+        - Document
+      operationId: postDocumentCollection
+      summary: 'Creates a Document resource.'
+      responses:
+        201:
+          description: 'Document resource created'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Document:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Document:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+          links:
+            GetDocumentItem:
+              parameters:
+                id: '$response.body#/id'
+              operationId: getDocumentItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /documents/{id}`.'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Document:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/Document:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+        description: 'The new Document resource'
+      parameters:
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/documents/{id}':
+    get:
+      tags:
+        - Document
+      operationId: getDocumentItem
+      summary: 'Retrieves a Document resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Document resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Document:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Document:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+    put:
+      tags:
+        - Document
+      operationId: putDocumentItem
+      summary: 'Replaces the Document resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+      responses:
+        200:
+          description: 'Document resource updated'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Document:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Document:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Document:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/Document:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Document-write'
+        description: 'The updated Document resource'
+    delete:
+      tags:
+        - Document
+      operationId: deleteDocumentItem
+      summary: 'Removes the Document resource.'
+      responses:
+        204:
+          description: 'Document resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/documents/{id}/audit_trail':
+    get:
+      tags:
+        - Document
+      operationId: get_audit_trailDocumentItem
+      summary: 'Retrieves a Document resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Document resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Document:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Document:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+  '/documents/{id}/change_log':
+    get:
+      tags:
+        - Document
+      operationId: get_change_logsDocumentItem
+      summary: 'Retrieves a Document resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Document resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Document:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Document:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Document-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
   /images:
     get:
       tags:
@@ -4283,7 +6325,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Image:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -4293,7 +6335,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Image:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -5136,7 +7178,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/MenuItem:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -5146,7 +7188,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/MenuItem:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -5922,7 +7964,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Menu:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -5932,7 +7974,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Menu:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -6672,7 +8714,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Organization:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -6682,7 +8724,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Organization:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -6889,158 +8931,6 @@ paths:
           schema:
             type: string
         -
-          name: id
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'id[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: rsin
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'rsin[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: chamberOfComerce
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'chamberOfComerce[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: name
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'name[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: description
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'description[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: technicalContact
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'technicalContact[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: privacyContact
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'privacyContact[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: administrationContact
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'administrationContact[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: dateCreated
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: dateModified
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
           name: contact
           in: query
           required: false
@@ -7056,6 +8946,18 @@ paths:
               type: string
           style: form
           explode: true
+        -
+          name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: description
+          in: query
+          required: false
+          schema:
+            type: string
         -
           name: page
           in: query
@@ -7583,6 +9485,1017 @@ paths:
           name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
+  '/organizations/{id}/audit_trail':
+    get:
+      tags:
+        - Organization
+      operationId: get_audit_trailOrganizationItem
+      summary: 'Retrieves a Organization resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Organization resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Organization:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Organization:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+  '/organizations/{id}/change_log':
+    get:
+      tags:
+        - Organization
+      operationId: get_change_logsOrganizationItem
+      summary: 'Retrieves a Organization resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Organization resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Organization:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Organization:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Organization-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+  /resource_categories:
+    get:
+      tags:
+        - ResourceCategory
+      operationId: getResourceCategoryCollection
+      summary: 'Retrieves the collection of ResourceCategory resources.'
+      responses:
+        200:
+          description: 'ResourceCategory collection response'
+          content:
+            application/ld+json:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/ResourceCategory:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/json+ld:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/ResourceCategory:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/hal+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceCategory-read'
+            application/json+hal:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceCategory-read'
+            application/vnd.api+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceCategory-read'
+            application/json+vnd.api:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceCategory-read'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceCategory-read'
+            application/health+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceCategory-read'
+            application/json+health:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceCategory-read'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceCategory-read'
+            application/x-yaml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceCategory-read'
+            text/csv:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceCategory-read'
+            text/html:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceCategory-read'
+      parameters:
+        -
+          name: 'order[id]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[resource]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateCreated]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateModified]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'dateCreated[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: resource
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: categories.id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'categories.id[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: categories.name
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: categories.organization.id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: categories.parent.id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: categories.parent.name
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: categories.resources.resource
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: page
+          in: query
+          required: false
+          description: 'The collection page number'
+          schema:
+            type: integer
+            default: 1
+        -
+          name: limit
+          in: query
+          required: false
+          description: 'The number of items per page'
+          schema:
+            type: integer
+            default: 30
+            minimum: 0
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      produces:
+        - application/health+json
+    post:
+      tags:
+        - ResourceCategory
+      operationId: postResourceCategoryCollection
+      summary: 'Creates a ResourceCategory resource.'
+      responses:
+        201:
+          description: 'ResourceCategory resource created'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+          links:
+            GetResourceCategoryItem:
+              parameters:
+                id: '$response.body#/id'
+              operationId: getResourceCategoryItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /resource_categories/{id}`.'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+        description: 'The new ResourceCategory resource'
+      parameters:
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/resource_categories/{id}':
+    get:
+      tags:
+        - ResourceCategory
+      operationId: getResourceCategoryItem
+      summary: 'Retrieves a ResourceCategory resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'ResourceCategory resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+    put:
+      tags:
+        - ResourceCategory
+      operationId: putResourceCategoryItem
+      summary: 'Replaces the ResourceCategory resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+      responses:
+        200:
+          description: 'ResourceCategory resource updated'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/ResourceCategory-read'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/ResourceCategory-write'
+        description: 'The updated ResourceCategory resource'
+    delete:
+      tags:
+        - ResourceCategory
+      operationId: deleteResourceCategoryItem
+      summary: 'Removes the ResourceCategory resource.'
+      responses:
+        204:
+          description: 'ResourceCategory resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
   /slugs:
     get:
       tags:
@@ -7600,7 +10513,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Slug:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -7610,7 +10523,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Slug:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -8622,7 +11535,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Style:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -8632,7 +11545,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Style:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -9355,7 +12268,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/TemplateGroup:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -9365,7 +12278,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/TemplateGroup:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -10367,7 +13280,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Template:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/json+ld:
@@ -10377,7 +13290,7 @@ paths:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Template:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string, nullable: true }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
             application/hal+json:
@@ -12050,6 +14963,198 @@ components:
         '@type':
           readOnly: true
           type: string
+    Category-read:
+      type: object
+      description: 'An category.'
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this resource'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        name:
+          description: 'The name of this organization.'
+          type: string
+        icon:
+          description: 'The (e.g. font awsome) icon for this group.'
+          type: string
+          nullable: true
+        description:
+          description: 'The description of this organisation.'
+          type: string
+          nullable: true
+        organization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization-read'
+        root:
+          readOnly: true
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Category-read'
+        parent:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Category-read'
+        resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceCategory-read'
+        dateCreated:
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+          nullable: true
+        dateModified:
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
+          nullable: true
+      required:
+        - name
+        - icon
+    Category-write:
+      type: object
+      description: 'An category.'
+      required:
+        - name
+        - icon
+      properties:
+        name:
+          description: 'The name of this organization.'
+          type: string
+        icon:
+          description: 'The (e.g. font awsome) icon for this group.'
+          type: string
+          nullable: true
+        description:
+          description: 'The description of this organisation.'
+          type: string
+          nullable: true
+        organization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization-write'
+        parent:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Category-write'
+        resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceCategory-write'
+    'Category:jsonld-read':
+      type: object
+      description: 'An category.'
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this resource'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        name:
+          description: 'The name of this organization.'
+          type: string
+        icon:
+          description: 'The (e.g. font awsome) icon for this group.'
+          type: string
+          nullable: true
+        description:
+          description: 'The description of this organisation.'
+          type: string
+          nullable: true
+        organization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization:jsonld-read'
+        root:
+          readOnly: true
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Category:jsonld-read'
+        parent:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Category:jsonld-read'
+        resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceCategory:jsonld-read'
+        dateCreated:
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+          nullable: true
+        dateModified:
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
+          nullable: true
+      required:
+        - name
+        - icon
+    'Category:jsonld-write':
+      type: object
+      description: 'An category.'
+      required:
+        - name
+        - icon
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        name:
+          description: 'The name of this organization.'
+          type: string
+        icon:
+          description: 'The (e.g. font awsome) icon for this group.'
+          type: string
+          nullable: true
+        description:
+          description: 'The description of this organisation.'
+          type: string
+          nullable: true
+        organization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization:jsonld-write'
+        parent:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Category:jsonld-write'
+        resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceCategory:jsonld-write'
     ChangeLog-read:
       type: object
       description: 'An resource representing a log line.'
@@ -12192,6 +15297,7 @@ components:
             -
               $ref: '#/components/schemas/Application-read'
         configuration:
+          description: 'array of configurations that will be provided to the application'
           type: array
           items:
             type: string
@@ -12205,16 +15311,9 @@ components:
           type: string
           format: date-time
           nullable: true
-      required:
-        - name
-        - description
     Configuration-write:
       type: object
       description: 'Configurations hold a specific organisation configruation for an application.'
-      required:
-        - name
-        - description
-        - organization
       properties:
         name:
           description: 'The name of this application.'
@@ -12232,9 +15331,12 @@ components:
         organization:
           $ref: '#/components/schemas/Organization-write'
         configuration:
+          description: 'array of configurations that will be provided to the application'
           type: array
           items:
             type: string
+      required:
+        - organization
     'Configuration:jsonld-read':
       type: object
       description: 'Configurations hold a specific organisation configruation for an application.'
@@ -12269,6 +15371,7 @@ components:
             -
               $ref: '#/components/schemas/Application:jsonld-read'
         configuration:
+          description: 'array of configurations that will be provided to the application'
           type: array
           items:
             type: string
@@ -12282,16 +15385,9 @@ components:
           type: string
           format: date-time
           nullable: true
-      required:
-        - name
-        - description
     'Configuration:jsonld-write':
       type: object
       description: 'Configurations hold a specific organisation configruation for an application.'
-      required:
-        - name
-        - description
-        - organization
       properties:
         '@context':
           readOnly: true
@@ -12318,9 +15414,176 @@ components:
         organization:
           $ref: '#/components/schemas/Organization:jsonld-write'
         configuration:
+          description: 'array of configurations that will be provided to the application'
           type: array
           items:
             type: string
+      required:
+        - organization
+    Document-read:
+      type: object
+      description: 'Documents hold a document encoded in base64'
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this resource'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        name:
+          description: 'The internal name of this document'
+          type: string
+        description:
+          description: 'The description of this document.'
+          type: string
+          nullable: true
+        base64:
+          description: 'the base64 version of the image'
+          type: string
+          nullable: true
+        organization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization-read'
+        contact:
+          description: 'The contact of this document'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        dateCreated:
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+          nullable: true
+        dateModified:
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
+          nullable: true
+      required:
+        - name
+    Document-write:
+      type: object
+      description: 'Documents hold a document encoded in base64'
+      required:
+        - name
+      properties:
+        name:
+          description: 'The internal name of this document'
+          type: string
+        description:
+          description: 'The description of this document.'
+          type: string
+          nullable: true
+        base64:
+          description: 'the base64 version of the image'
+          type: string
+          nullable: true
+        organization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization-write'
+        contact:
+          description: 'The contact of this document'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+    'Document:jsonld-read':
+      type: object
+      description: 'Documents hold a document encoded in base64'
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this resource'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        name:
+          description: 'The internal name of this document'
+          type: string
+        description:
+          description: 'The description of this document.'
+          type: string
+          nullable: true
+        base64:
+          description: 'the base64 version of the image'
+          type: string
+          nullable: true
+        organization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization:jsonld-read'
+        contact:
+          description: 'The contact of this document'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
+        dateCreated:
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+          nullable: true
+        dateModified:
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
+          nullable: true
+      required:
+        - name
+    'Document:jsonld-write':
+      type: object
+      description: 'Documents hold a document encoded in base64'
+      required:
+        - name
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        name:
+          description: 'The internal name of this document'
+          type: string
+        description:
+          description: 'The description of this document.'
+          type: string
+          nullable: true
+        base64:
+          description: 'the base64 version of the image'
+          type: string
+          nullable: true
+        organization:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Organization:jsonld-write'
+        contact:
+          description: 'The contact of this document'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
     Image-read:
       type: object
       description: 'Image speaks for itself.'
@@ -12339,7 +15602,7 @@ components:
           description: 'The description of this organisation.'
           type: string
         alt:
-          description: 'The alt of of this image for people with poor eyesight'
+          description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
           type: string
           nullable: true
         href:
@@ -12347,6 +15610,7 @@ components:
           type: string
           nullable: true
         base64:
+          description: 'the base64 version of the image'
           type: string
           nullable: true
         organization:
@@ -12381,7 +15645,7 @@ components:
           description: 'The description of this organisation.'
           type: string
         alt:
-          description: 'The alt of of this image for people with poor eyesight'
+          description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
           type: string
           nullable: true
         href:
@@ -12389,6 +15653,7 @@ components:
           type: string
           nullable: true
         base64:
+          description: 'the base64 version of the image'
           type: string
           nullable: true
         organization:
@@ -12423,7 +15688,7 @@ components:
           description: 'The description of this organisation.'
           type: string
         alt:
-          description: 'The alt of of this image for people with poor eyesight'
+          description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
           type: string
           nullable: true
         href:
@@ -12431,6 +15696,7 @@ components:
           type: string
           nullable: true
         base64:
+          description: 'the base64 version of the image'
           type: string
           nullable: true
         organization:
@@ -12474,7 +15740,7 @@ components:
           description: 'The description of this organisation.'
           type: string
         alt:
-          description: 'The alt of of this image for people with poor eyesight'
+          description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
           type: string
           nullable: true
         href:
@@ -12482,6 +15748,7 @@ components:
           type: string
           nullable: true
         base64:
+          description: 'the base64 version of the image'
           type: string
           nullable: true
         organization:
@@ -12640,7 +15907,7 @@ components:
           type: string
           nullable: true
         order:
-          description: 'The order in wichs this menu item is shown in relation to other items of the same menu'
+          description: 'The order in which this menu item is shown in relation to other items of the same menu'
           type: integer
           nullable: true
         icon:
@@ -12666,14 +15933,12 @@ components:
           nullable: true
       required:
         - name
-        - order
         - href
     MenuItem-write:
       type: object
       description: 'MenuItem is a part of a menu and can be a link or submenu.'
       required:
         - name
-        - order
         - href
         - menu
       properties:
@@ -12685,7 +15950,7 @@ components:
           type: string
           nullable: true
         order:
-          description: 'The order in wichs this menu item is shown in relation to other items of the same menu'
+          description: 'The order in which this menu item is shown in relation to other items of the same menu'
           type: integer
           nullable: true
         icon:
@@ -12729,7 +15994,7 @@ components:
           type: string
           nullable: true
         order:
-          description: 'The order in wichs this menu item is shown in relation to other items of the same menu'
+          description: 'The order in which this menu item is shown in relation to other items of the same menu'
           type: integer
           nullable: true
         icon:
@@ -12755,14 +16020,12 @@ components:
           nullable: true
       required:
         - name
-        - order
         - href
     'MenuItem:jsonld-write':
       type: object
       description: 'MenuItem is a part of a menu and can be a link or submenu.'
       required:
         - name
-        - order
         - href
         - menu
       properties:
@@ -12783,7 +16046,7 @@ components:
           type: string
           nullable: true
         order:
-          description: 'The order in wichs this menu item is shown in relation to other items of the same menu'
+          description: 'The order in which this menu item is shown in relation to other items of the same menu'
           type: integer
           nullable: true
         icon:
@@ -12873,17 +16136,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization-read'
+        termsAndConditions:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Template-read'
       required:
-        - rsin
-        - chamberOfComerce
         - name
     Organization-write:
       type: object
       description: 'An organization as active on commonground.'
-      required:
-        - rsin
-        - chamberOfComerce
-        - name
       properties:
         rsin:
           description: 'The rsin of this organisations.'
@@ -12934,6 +16196,13 @@ components:
           anyOf:
             -
               $ref: '#/components/schemas/Organization-write'
+        termsAndConditions:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Template-write'
+      required:
+        - name
     'Organization:jsonld-read':
       type: object
       description: 'An organization as active on commonground.'
@@ -13017,17 +16286,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization:jsonld-read'
+        termsAndConditions:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Template:jsonld-read'
       required:
-        - rsin
-        - chamberOfComerce
         - name
     'Organization:jsonld-write':
       type: object
       description: 'An organization as active on commonground.'
-      required:
-        - rsin
-        - chamberOfComerce
-        - name
       properties:
         '@context':
           readOnly: true
@@ -13087,6 +16355,117 @@ components:
           anyOf:
             -
               $ref: '#/components/schemas/Organization:jsonld-write'
+        termsAndConditions:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Template:jsonld-write'
+      required:
+        - name
+    ResourceCategory-read:
+      type: object
+      description: 'An resource atachhed to one or more categoires.'
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this resource'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        resource:
+          description: 'The common ground resource bound to groups'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category-read'
+        dateCreated:
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+          nullable: true
+        dateModified:
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
+          nullable: true
+    ResourceCategory-write:
+      type: object
+      description: 'An resource atachhed to one or more categoires.'
+      properties:
+        resource:
+          description: 'The common ground resource bound to groups'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category-write'
+    'ResourceCategory:jsonld-read':
+      type: object
+      description: 'An resource atachhed to one or more categoires.'
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this resource'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        resource:
+          description: 'The common ground resource bound to groups'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category:jsonld-read'
+        dateCreated:
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+          nullable: true
+        dateModified:
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
+          nullable: true
+    'ResourceCategory:jsonld-write':
+      type: object
+      description: 'An resource atachhed to one or more categoires.'
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        resource:
+          description: 'The common ground resource bound to groups'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category:jsonld-write'
     Slug-read:
       type: object
       description: 'Your slug connects your application with your pages.'
@@ -13249,6 +16628,7 @@ components:
           description: 'The description of this style.'
           type: string
         css:
+          description: 'the css body of this style'
           type: string
         favicon:
           $ref: '#/components/schemas/Image-read'
@@ -13287,6 +16667,7 @@ components:
           description: 'The description of this style.'
           type: string
         css:
+          description: 'the css body of this style'
           type: string
         favicon:
           $ref: '#/components/schemas/Image-write'
@@ -13325,6 +16706,7 @@ components:
           description: 'The description of this style.'
           type: string
         css:
+          description: 'the css body of this style'
           type: string
         favicon:
           $ref: '#/components/schemas/Image:jsonld-read'
@@ -13372,6 +16754,7 @@ components:
           description: 'The description of this style.'
           type: string
         css:
+          description: 'the css body of this style'
           type: string
         favicon:
           $ref: '#/components/schemas/Image:jsonld-write'
@@ -13441,7 +16824,6 @@ components:
           nullable: true
       required:
         - name
-        - description
         - content
         - templateEngine
     Template-write:
@@ -13449,7 +16831,6 @@ components:
       description: 'Templates holds information your pages or include in messages.'
       required:
         - name
-        - description
         - content
         - templateEngine
       properties:
@@ -13558,7 +16939,6 @@ components:
           nullable: true
       required:
         - name
-        - description
         - content
         - templateEngine
     'Template:jsonld-write':
@@ -13566,7 +16946,6 @@ components:
       description: 'Templates holds information your pages or include in messages.'
       required:
         - name
-        - description
         - content
         - templateEngine
       properties:
@@ -13657,13 +17036,11 @@ components:
           nullable: true
       required:
         - name
-        - description
     TemplateGroup-write:
       type: object
       description: 'Groups are a way of orginzing templates.'
       required:
         - name
-        - description
       properties:
         name:
           description: 'The internal name of this menu'
@@ -13735,13 +17112,11 @@ components:
           nullable: true
       required:
         - name
-        - description
     'TemplateGroup:jsonld-write':
       type: object
       description: 'Groups are a way of orginzing templates.'
       required:
         - name
-        - description
       properties:
         '@context':
           readOnly: true
@@ -13841,6 +17216,65 @@ definitions:
       - description
       - domain
       - organization
+  Category-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this resource'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      name:
+        description: 'The name of this organization.'
+        type: string
+        example: About
+        maxLength: 255
+      icon:
+        description: 'The (e.g. font awsome) icon for this group.'
+        type: string
+        example: fa-builing
+        maxLength: 255
+      description:
+        description: 'The description of this organisation.'
+        type: string
+        example: 'This is the manucipality of Utrecht'
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
+      organization: []
+      root: []
+      parent: []
+      children: []
+      resources: []
+    required:
+      - name
+      - icon
+  Category-write:
+    properties:
+      name:
+        description: 'The name of this organization.'
+        type: string
+        example: About
+        maxLength: 255
+      icon:
+        description: 'The (e.g. font awsome) icon for this group.'
+        type: string
+        example: fa-builing
+        maxLength: 255
+      description:
+        description: 'The description of this organisation.'
+        type: string
+        example: 'This is the manucipality of Utrecht'
+        maxLength: 255
+      organization: []
+      parent: []
+      resources: []
+    required:
+      - name
+      - icon
   Configuration-read:
     properties:
       id:
@@ -13858,7 +17292,9 @@ definitions:
         type: string
         example: 'Is the best site ever'
         maxLength: 255
-      configuration: []
+      configuration:
+        description: 'array of configurations that will be provided to the application'
+        type: array
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
@@ -13866,9 +17302,7 @@ definitions:
         description: 'The moment this request last Modified'
         type: \Datetime
       application: []
-    required:
-      - name
-      - description
+    required: []
   Configuration-write:
     properties:
       name:
@@ -13881,13 +17315,70 @@ definitions:
         type: string
         example: 'Is the best site ever'
         maxLength: 255
-      configuration: []
+      configuration:
+        description: 'array of configurations that will be provided to the application'
+        type: array
       application: []
       organization: []
     required:
-      - name
-      - description
       - organization
+  Document-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this resource'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      name:
+        description: 'The internal name of this document'
+        type: string
+        example: specialdocument
+        maxLength: 255
+      description:
+        description: 'The description of this document.'
+        type: string
+        example: 'This paragraph holds info about this document'
+        maxLength: 255
+      base64:
+        description: 'the base64 version of the image'
+        type: string
+      contact:
+        description: 'The contact of this document'
+        type: string
+        format: url
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
+      organization: []
+    required:
+      - name
+  Document-write:
+    properties:
+      name:
+        description: 'The internal name of this document'
+        type: string
+        example: specialdocument
+        maxLength: 255
+      description:
+        description: 'The description of this document.'
+        type: string
+        example: 'This paragraph holds info about this document'
+        maxLength: 255
+      base64:
+        description: 'the base64 version of the image'
+        type: string
+      contact:
+        description: 'The contact of this document'
+        type: string
+        format: url
+        maxLength: 255
+      organization: []
+    required:
+      - name
   Image-read:
     properties:
       id:
@@ -13906,7 +17397,7 @@ definitions:
         example: 'This is the manucipality of Utrecht'
         maxLength: 255
       alt:
-        description: 'The alt of of this image for people with poor eyesight'
+        description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
         type: string
         example: flowers
         maxLength: 255
@@ -13915,7 +17406,9 @@ definitions:
         type: string
         example: app_img_flowers
         maxLength: 255
-      base64: []
+      base64:
+        description: 'the base64 version of the image'
+        type: string
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
@@ -13939,7 +17432,7 @@ definitions:
         example: 'This is the manucipality of Utrecht'
         maxLength: 255
       alt:
-        description: 'The alt of of this image for people with poor eyesight'
+        description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
         type: string
         example: flowers
         maxLength: 255
@@ -13948,7 +17441,9 @@ definitions:
         type: string
         example: app_img_flowers
         maxLength: 255
-      base64: []
+      base64:
+        description: 'the base64 version of the image'
+        type: string
       organization: []
     required:
       - name
@@ -14016,7 +17511,7 @@ definitions:
         example: 'This MenuItem links to the about page'
         maxLength: 2555
       order:
-        description: 'The order in wichs this menu item is shown in relation to other items of the same menu'
+        description: 'The order in which this menu item is shown in relation to other items of the same menu'
         type: int
         example: '1'
         maxLength: 3
@@ -14043,7 +17538,6 @@ definitions:
         type: \Datetime
     required:
       - name
-      - order
       - href
   MenuItem-write:
     properties:
@@ -14058,7 +17552,7 @@ definitions:
         example: 'This MenuItem links to the about page'
         maxLength: 2555
       order:
-        description: 'The order in wichs this menu item is shown in relation to other items of the same menu'
+        description: 'The order in which this menu item is shown in relation to other items of the same menu'
         type: int
         example: '1'
         maxLength: 3
@@ -14080,7 +17574,6 @@ definitions:
       menu: []
     required:
       - name
-      - order
       - href
       - menu
   Organization-read:
@@ -14093,12 +17586,12 @@ definitions:
       rsin:
         description: 'The rsin of this organisations.'
         type: string
-        example: About
+        example: '44123124'
         maxLength: 255
       chamberOfComerce:
         description: 'The Chamber of Comerce ID of this organisations.'
         type: string
-        example: About
+        example: '4123124'
         maxLength: 255
       name:
         description: 'The name of this organization.'
@@ -14139,21 +17632,20 @@ definitions:
       style: []
       parentOrganization: []
       childOrganizations: []
+      termsAndConditions: []
     required:
-      - rsin
-      - chamberOfComerce
       - name
   Organization-write:
     properties:
       rsin:
         description: 'The rsin of this organisations.'
         type: string
-        example: About
+        example: '44123124'
         maxLength: 255
       chamberOfComerce:
         description: 'The Chamber of Comerce ID of this organisations.'
         type: string
-        example: About
+        example: '4123124'
         maxLength: 255
       name:
         description: 'The name of this organization.'
@@ -14187,10 +17679,38 @@ definitions:
         maxLength: 255
       style: []
       parentOrganization: []
+      termsAndConditions: []
     required:
-      - rsin
-      - chamberOfComerce
       - name
+  ResourceCategory-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this resource'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      resource:
+        description: 'The common ground resource bound to groups'
+        type: string
+        format: url
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
+      categories: []
+    required: []
+  ResourceCategory-write:
+    properties:
+      resource:
+        description: 'The common ground resource bound to groups'
+        type: string
+        format: url
+        maxLength: 255
+      categories: []
+    required: []
   Slug-read:
     properties:
       id:
@@ -14253,7 +17773,9 @@ definitions:
         type: string
         example: 'This page holds info about this style'
         maxLength: 255
-      css: []
+      css:
+        description: 'the css body of this style'
+        type: \text
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
@@ -14278,7 +17800,9 @@ definitions:
         type: string
         example: 'This page holds info about this style'
         maxLength: 255
-      css: []
+      css:
+        description: 'the css body of this style'
+        type: \text
       favicon: []
       organizations: []
       applications: []
@@ -14326,7 +17850,6 @@ definitions:
       templateGroups: []
     required:
       - name
-      - description
       - content
       - templateEngine
   Template-write:
@@ -14359,7 +17882,6 @@ definitions:
       templateGroups: []
     required:
       - name
-      - description
       - content
       - templateEngine
   TemplateGroup-read:
@@ -14389,7 +17911,6 @@ definitions:
       organization: []
     required:
       - name
-      - description
   TemplateGroup-write:
     properties:
       name:
@@ -14407,7 +17928,6 @@ definitions:
       organization: []
     required:
       - name
-      - description
   AuditTrail-read:
     properties:
       id:
@@ -14512,12 +18032,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-12-09 13:53:49'
+        example: '2021-02-10 15:55:32'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-12-09 13:53:49'
+        example: '2021-02-10 15:55:32'
     required: []
   AuditTrail-write:
     properties:
@@ -14565,12 +18085,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-12-09 13:53:49'
+        example: '2021-02-10 15:55:32'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-12-09 13:53:49'
+        example: '2021-02-10 15:55:32'
     required: []
   ChangeLog-write:
     properties:
@@ -14588,9 +18108,21 @@ tags:
       
       
   -
+    name: Category
+    description: |
+      An category.
+      
+      
+  -
     name: Configuration
     description: |
       Configurations hold a specific organisation configruation for an application.
+      
+      
+  -
+    name: Document
+    description: |
+      Documents hold a document encoded in base64
       
       
   -
@@ -14615,6 +18147,12 @@ tags:
     name: Organization
     description: |
       An organization as active on commonground.
+      
+      
+  -
+    name: ResourceCategory
+    description: |
+      An resource atachhed to one or more categoires.
       
       
   -

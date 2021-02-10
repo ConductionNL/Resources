@@ -3,17 +3,17 @@ publiccodeYmlVersion: "0.2"
 name: wrc
 applicationSuite: commonground
 url: "https://github.com/ConductionNL/webresourcecatalogus"
-landingURL: "wrc.zaakonline.nl" 
-isBasedOn: "https://github.com/ConductionNL/Proto-component-commonground.git" 
+landingURL: "wrc.zaakonline.nl"
+isBasedOn: "https://github.com/ConductionNL/Proto-component-commonground.git"
 softwareVersion: "V1.0"
-releaseDate: "2020-09-12"
-logo: wrc.zaakonline.nl 
+releaseDate: "2021-10-02"
+logo: wrc.zaakonline.nl
 monochromeLogo: img/logo-mono.svg
 
 inputTypes:
   - application/json
   - application/xml
-  
+
 outputTypes:
   - application/json
   - application/ld+json
@@ -32,13 +32,13 @@ platforms:
     - gaia-x
 
 categories:
-  - it-development 
+  - it-development
 
 usedBy:
   - Gemeente Utrecht
   - Gemeente Den Haag
   - Gemeente Hoorn
-  
+
 
 roadmap: "https://github.com/ConductionNL/webresourcecatalogus/blob/master/ROADMAP.md"
 
@@ -119,4 +119,4 @@ dependsOn:
 
 installations:
     - type: helm
-      url: "https://raw.githubusercontent.com/ConductionNL/webresourcecatalogus/master/api/helm"
+      url: "https://raw.githubusercontent.com/ConductionNL/webresourcecatalogus/master/api/helm/"
