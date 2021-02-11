@@ -4,13 +4,9 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use App\Repository\ResourceCategoryRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\Uuid;
@@ -19,52 +15,45 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * An resource atachhed to one or more categoires.
+ * Documents hold a document encoded in base64.
  *
  * @ApiResource(
- *     attributes={"pagination_items_per_page"=30},
- *     normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
- *     denormalizationContext={"groups"={"write"}, "enable_max_depth"=true},
+ *      attributes={"pagination_items_per_page"=30},
+ *     	normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
+ *     	denormalizationContext={"groups"={"write"}, "enable_max_depth"=true},
  *     itemOperations={
- *          "get",
- *          "put",
- *          "delete",
- *          "get_change_logs"={
- *              "path"="/adresses/{id}/change_log",
+ * 		"get",
+ * 	    "put",
+ * 	   "delete",
+ *     "get_change_logs"={
+ *              "path"="/documents/{id}/change_log",
  *              "method"="get",
  *              "swagger_context" = {
  *                  "summary"="Changelogs",
  *                  "description"="Gets al the change logs for this resource"
  *              }
  *          },
- *          "get_audit_trail"={
- *              "path"="/adresses/{id}/audit_trail",
+ *     "get_audit_trail"={
+ *              "path"="/documents/{id}/audit_trail",
  *              "method"="get",
  *              "swagger_context" = {
  *                  "summary"="Audittrail",
  *                  "description"="Gets the audit trail for this resource"
  *              }
  *          }
- *     }
+ * 		}
  * )
- * @ORM\Entity(repositoryClass=ResourceCategoryRepository::class)
- * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")
+ * @ORM\Entity(repositoryClass="App\Repository\DocumentRepository")
+ * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")*
  *
- * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
  * @ApiFilter(SearchFilter::class, properties={
- *     "resource": "ipartial",
- *     "categories.id":"exact",
- *     "categories.name":"ipartial",
- *     "categories.id":"exact",
- *     "categories.organization.id": "ipartial",
- *     "categories.parent.id": "ipartial",
- *     "categories.parent.name": "ipartial",
- *     "categories.resources.resource": "ipartial"
+ *     "organizaiton": "exact",
+ *     "person": "exact"
  * })
  */
-class ResourceCategory
+class Document
 {
     /**
      * @var UuidInterface The UUID identifier of this resource
@@ -81,22 +70,62 @@ class ResourceCategory
     private $id;
 
     /**
-     * @var string The common ground resource bound to groups
+     * @var string The internal name of this document
+     *
+     * @example specialdocument
+     *
+     * @Gedmo\Versioned
+     * @Assert\NotNull
+     * @Assert\Length(
+     *      max = 255
+     * )
+     * @Groups({"read","write"})
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string The description of this document.
+     *
+     * @example This paragraph holds info about this document
+     *
+     * @Gedmo\Translatable
+     * @Gedmo\Versioned
+     * @Assert\Length(
+     *     max = 255
+     * )
+     * @Groups({"read","write"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string the base64 version of the image
+     *
+     * @Gedmo\Versioned
+     * @Groups({"read","write"})
+     * @ORM\Column(type="text")
+     */
+    private $base64;
+
+    /**
+     * @Groups({"read","write"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Organization", inversedBy="images")
+     * @ORM\JoinColumn()
+     */
+    private $organization;
+
+    /**
+     * @var string The contact of this document
      *
      * @Groups({"read", "write"})
      * @Assert\Url
      * @Assert\Length(
      *     max=255
      * )
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $resource;
-
-    /**
-     * @Groups({"read", "write"})
-     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="resources")
-     */
-    private $categories;
+    private $contact;
 
     /**
      * @var Datetime The moment this request was created
@@ -116,12 +145,7 @@ class ResourceCategory
      */
     private $dateModified;
 
-    public function __construct()
-    {
-        $this->categories = new ArrayCollection();
-    }
-
-    public function getId(): ?Uuid
+    public function getId(): Uuid
     {
         return $this->id;
     }
@@ -133,45 +157,69 @@ class ResourceCategory
         return $this;
     }
 
-    public function getResource(): ?string
+    public function getName(): ?string
     {
-        return $this->resource;
+        return $this->name;
     }
 
-    public function setResource(string $resource): self
+    public function setName(string $name): self
     {
-        $this->resource = $resource;
+        $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return Collection|Category[]
-     */
-    public function getCategories(): Collection
+    public function getDescription(): ?string
     {
-        return $this->categories;
+        return $this->description;
     }
 
-    public function addCategory(Category $category): self
+    public function setDescription(?string $description): self
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-        }
+        $this->description = $description;
 
         return $this;
     }
 
-    public function removeCategory(Category $category): self
+    public function getBase64(): ?string
     {
-        $this->categories->removeElement($category);
+        return $this->base64;
+    }
+
+    public function setBase64(string $base64): self
+    {
+        $this->base64 = $base64;
+
+        return $this;
+    }
+
+    public function getOrganization(): ?Organization
+    {
+        return $this->organization;
+    }
+
+    public function setOrganization(?Organization $organization): self
+    {
+        $this->organization = $organization;
+
+        return $this;
+    }
+
+    public function getContact(): ?string
+    {
+        return $this->contact;
+    }
+
+    public function setContact(?string $contact): self
+    {
+        $this->contact = $contact;
 
         return $this;
     }
 
     public function getDateCreated(): ?\DateTimeInterface
     {
-        return $this->dateCreated;
+        return $this->dateModified;
     }
 
     public function setDateCreated(\DateTimeInterface $dateCreated): self
