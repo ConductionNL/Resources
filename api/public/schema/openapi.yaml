@@ -15441,7 +15441,6 @@ components:
         base64:
           description: 'the base64 version of the image'
           type: string
-          nullable: true
         organization:
           nullable: true
           anyOf:
@@ -15481,7 +15480,6 @@ components:
         base64:
           description: 'the base64 version of the image'
           type: string
-          nullable: true
         organization:
           nullable: true
           anyOf:
@@ -15523,7 +15521,6 @@ components:
         base64:
           description: 'the base64 version of the image'
           type: string
-          nullable: true
         organization:
           nullable: true
           anyOf:
@@ -15572,7 +15569,6 @@ components:
         base64:
           description: 'the base64 version of the image'
           type: string
-          nullable: true
         organization:
           nullable: true
           anyOf:
@@ -18032,12 +18028,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-10 15:55:32'
+        example: '2021-02-11 10:38:56'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-10 15:55:32'
+        example: '2021-02-11 10:38:56'
     required: []
   AuditTrail-write:
     properties:
@@ -18085,12 +18081,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-10 15:55:32'
+        example: '2021-02-11 10:38:56'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-10 15:55:32'
+        example: '2021-02-11 10:38:56'
     required: []
   ChangeLog-write:
     properties:
