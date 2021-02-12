@@ -1,56 +1,78 @@
-Additional Information
-----
-
-For deployment to kubernetes clusters we use Helm 3.
-
-For an in depth installation guide you can refer to the [installation guide](INSTALLATION.md).
-
-- [Contributing](CONTRIBUTING.md)
-
-- [ChangeLogs](CHANGELOG.md)
-
-- [RoadMap](ROADMAP.md)
-
-- [Security](SECURITY.md)
-
-- [Licence](LICENSE.md)
+# web Resource Catalogus
 
 Description
 ----
-Het WRC bevat de resources die nodig zijn voor het draaien van een applicatie zoals sjablonen, routing, menu’s en afbeeldingen. Het heeft hierbij de doelstelling om te fungeren als een “headless CMS” ofwel een CMS als API die losstaat van enige vorm van weergave. Voor het bewerken van de CMS content leunt het WRC dan ook op de Dashboard (een implementatie van de Proto Applicatie), en het fungeert zelf als een bron voor een Applicatie.
+The WRC contains the resources needed to run an application such as templates, routing, menus and images. Its objective is to act as a "headless CMS" or a CMS as an API that is independent of any form of display. The WRC therefore relies on the Dashboard (an implementation of the Proto Application) for editing the CMS content, and it itself functions as a source for an Application.
 
-Door het gescheiden houden van opslag en bewerking, is het mogelijk om vanuit één dashboard de inhoud van meerdere applicaties te beheren. Dat levert meer overzicht op, zo zou een sjabloon ook kunnen worden gebruikt in verschillende applicaties en websites. Dit is bijvoorbeeld handig bij algemene informatie of FAQ’s. 
+By keeping storage and editing separate, it is possible to manage the content of multiple applications from one dashboard. This provides a better overview, so a template could also be used in various applications and websites. This is useful, for example, with general information or FAQ’s
 
-Een extra handigheid van het WRC is dat het meertaligheid op resources ondersteunt en dat maakt het mogelijk om content in meerdere talen aan te maken en te beheren. Het maakt tevens inzichtelijk welke content al wel en welke content nog niet vertaald is en wordt er compliancy aan de WCAG norm voor tweetaligheid opgevolgd.
+An added advantage of the WRC is that it supports multilingualism on resources and that makes it possible to create and manage content in multiple languages. It also provides insight into which content has already been translated and which content has not yet been translated, and compliance with the WCAG standard for bilingualism is monitored.
 
-Met betrekking tot vormgeving biedt het WRC twee belangrijke functionaliteiten aan applicaties, om te beginnen kunnen templates worden “verlengd en uitgebreid”. Dat betekent bijvoorbeeld dat een applicatie gebruik zou kunnen maken van NL Design, maar hier via het WRC een eigen smaak aan toe kan voegen. Doordat het WRC kan delen tussen applicaties, is het hiermee voor een organisatie tevens mogelijk om één consistente huisstijl te voeren voor meerdere applicaties. Daarnaast biedt het WRC een mogelijkheid tot CDN, ofwel het verplaatsen van statische content van een applicatie naar een externe bron. Hiermee wordt het dataverkeer op een applicatie zelf lager en daarmee sneller. Het betekent ook dat op applicatie niveau, logica en statische content uit elkaar kunnen worden getrokken en fysiek op andere (gespecialiseerde) machines kunnen worden geplaatst. 
+With regard to design, the WRC offers two important functionalities to applications, first of all, templates can be “extended”. This means, for example, that an application could make use of NL Design, but can add its own flavor to it via the WRC. Because the WRC can share between applications, it is also possible for an organization to use one consistent corporate identity for multiple applications. In addition, the WRC offers the possibility of CDN, or moving static content from an application to an external source. This makes the data traffic on an application itself lower and therefore faster. It also means that at application level, logic and static content can be pulled apart and physically placed on other (specialized) machines.
 
-Tutorial
+Additional Information
 ----
 
-For information on how to work with the component you can refer to the tutorial [here](TUTORIAL.md).
+- [Contributing](CONTRIBUTING.md)
+- [ChangeLogs](CHANGELOG.md)
+- [RoadMap](ROADMAP.md)
+- [Security](SECURITY.md)
+- [Licence](LICENSE.md)
 
-#### Setup your local environment
-Before we can spin up our component we must first get a local copy from our repository, we can either do this through the command line or use a Git client. 
 
-For this example we're going to use [GitKraken](https://www.gitkraken.com/) but you can use any tool you like, feel free to skip this part if you are already familiar with setting up a local clone of your repository.
+Installation
+----
+We differentiate between two way's of installing this component, a local installation as part of the provided developers toolkit or an [helm](https://helm.sh/) installation on an development or production environment.
 
-Open gitkraken press "clone a repo" and fill in the form (select where on your local machine you want the repository to be stored, and fill in the link of your repository on github), press "clone a repo" and you should then see GitKraken downloading your code. After it's done press "open now" (in the box on top) and voilá your codebase (you should see an initial commit on a master branch).
-
-You can now navigate to the folder where you just installed your code, it should contain some folders and files and generally look like this. We will get into the files later, lets first spin up our component!
-
-Next make sure you have [docker desktop](https://www.docker.com/products/docker-desktop) running on your computer.
-
-Open a command window (example) and browse to the folder where you just stuffed your code, navigating in a command window is done by cd, so for our example we could type 
-cd c:\repos\common-ground\my-component (if you installed your code on a different disk then where the cmd window opens first type <diskname>: for example D: and hit enter to go to that disk, D in this case). We are now in our folder, so let's go! Type docker-compose up and hit enter. From now on whenever we describe a command line command we will document it as follows (the $ isn't actually typed but represents your folder structure):
-
+#### Local installation
+First make sure you have [docker desktop](https://www.docker.com/products/docker-desktop) running on your computer. Then clone the repository to a directory on your local machine through a [git command](https://github.com/git-guides/git-clone) or [git kraken](https://www.gitkraken.com) (ui for git). If successful you can now navigate to the directory of your cloned repository in a command prompt and execute docker-compose up.
 ```CLI
 $ docker-compose up
 ```
+This will build the docker image and run the used containers and when seeing the log from the php container: "NOTICE: ready to handle connections", u are ready to view the documentation at localhost on your preferred browser.
 
-Your computer should now start up your local development environment. Don't worry about al the code coming by, let's just wait until it finishes. You're free to watch along and see what exactly docker is doing, you will know when it's finished when it tells you that it is ready to handle connections. 
+#### Instalation on Kubernetes or Haven
+As a haven compliant commonground component this component is installable on kubernetes trough helm. The helm files can be found in the api/helm folder. For installing this component trough helm simply open your (still) favorite command line interface and run
+```CLI
+$ helm install [name] ./api/helm --kubeconfig kubeconfig.yaml --namespace [name] --set settings.env=prod,settings.debug=0,settings.cache=1
+```
+For an in depth installation guide you can refer to the [installation guide](INSTALLATION.md), it also contains a short tutorial on getting your cluster ready to expose your installation to the world
 
-Open your browser type [<http://localhost/>](https://localhost) as address and hit enter, you should now see your common ground component up and running.
+Standards
+----
+
+This component adheres to international, national and local standards (in that order), notable standards are:
+
+- Any applicable [W3C](https://www.w3.org) standard, including but not limited to [rest](https://www.w3.org/2001/sw/wiki/REST), [JSON-LD](https://www.w3.org/TR/json-ld11/) and [WEBSUB](https://www.w3.org/TR/websub/)
+- Any applicable [schema](https://schema.org/) standard
+- [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md)
+- [GAIA-X](https://www.data-infrastructure.eu/GAIAX/Navigation/EN/Home/home.html)
+- [Publiccode](https://docs.italia.it/italia/developers-italia/publiccodeyml-en/en/master/index.html), see the [publiccode](api/public/schema/publiccode.yaml) for further information
+- [Forum Stanaardisatie](https://www.forumstandaardisatie.nl/open-standaarden)
+- [NL API Strategie](https://docs.geostandaarden.nl/api/API-Strategie/)
+- [Common Ground Realisatieprincipes](https://componentencatalogus.commonground.nl/20190130_-_Common_Ground_-_Realisatieprincipes.pdf)
+- [Haven](https://haven.commonground.nl/docs/de-standaard)
+- [NLX](https://docs.nlx.io/understanding-the-basics/introduction)
+- [Standard for Public Code](https://standard.publiccode.net/), see the [compliancy scan](publiccode.md) for further information.
+
+Developers toolkit and technical information
+----
+We make our datamodels with the tool [modelio](https://www.modelio.org) which can be found along the OAS documentation and the postman collection in api/public/schema.
+If you need development support we provide that through the [samenorganiseren slack channel](https://join.slack.com/t/samenorganiseren/shared_invite/zt-dex1d7sk-wy11sKYWCF0qQYjJHSMW5Q).
+
+Couple of quick tips when you start developing
+- If you haven't setup the component locally read the Installion part for setting up your local environment.
+- You can find the other components on [Github](https://github.com/ConductionNL).
+- Take a look at the [commonground componenten catalogus](https://componentencatalogus.commonground.nl/componenten?) to prevent development collitions.
+- Use [Commongroun.conduction.nl](https://commonground.conduction.nl/) for easy deployment of test environments to deploy your development to.
+- For information on how to work with the component you can refer to the tutorial [here](TUTORIAL.md).
+
+
+Contributing
+----
+First of al please read the [Contributing](CONTRIBUTING.md) guideline's ;)
+
+But most imporantly, welcome! We strife to keep an active community at [commonground.nl](https://commonground.nl/), please drop by and tell is what you are thinking about so that we can help you along.
 
 
 Credits
@@ -58,10 +80,7 @@ Credits
 
 Information about the authors of this component can be found [here](AUTHORS.md)
 
-This component uses the following [schema.org](https://schema.org) sources:
-- [Organization](https://schema.org/Organization)
-- [Menu](https://schema.org/Menu)
-- [MenuItem](https://schema.org/MenuItem)
+
 
 
 
