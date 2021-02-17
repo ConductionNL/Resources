@@ -1112,7 +1112,7 @@ class ZuiddrechtFixtures extends Fixture
         $template->setTemplateEngine('twig');
         $manager->persist($template);
         $date = new \DateTime();
-        $date->sub(new \DateInterval('P2D'));
+        $date->sub(new \DateInterval('P6D'));
         $template->setDateCreated($date);
         $template->setDateModified($date);
         $template->setId($id);
@@ -1138,7 +1138,7 @@ class ZuiddrechtFixtures extends Fixture
         $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/Zuiddrecht/website/nieuws/vrijbrp.html.twig', 'r'));
         $template->setTemplateEngine('twig');
         $date = new \DateTime();
-        $date->sub(new \DateInterval('P6D'));
+        $date->sub(new \DateInterval('P1D'));
         $template->setDateCreated($date);
         $template->setDateModified($date);
         $manager->persist($template);
@@ -1165,7 +1165,7 @@ class ZuiddrechtFixtures extends Fixture
         $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/Zuiddrecht/website/nieuws/zaaksysteem.html.twig', 'r'));
         $template->setTemplateEngine('twig');
         $date = new \DateTime();
-        $date->sub(new \DateInterval('P6D'));
+        $date->sub(new \DateInterval('P2D'));
         $template->setDateCreated($date);
         $template->setDateModified($date);
         $manager->persist($template);
@@ -1192,7 +1192,7 @@ class ZuiddrechtFixtures extends Fixture
         $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/Zuiddrecht/website/nieuws/huwelijksplanner.html.twig', 'r'));
         $template->setTemplateEngine('twig');
         $date = new \DateTime();
-        $date->sub(new \DateInterval('P4D'));
+        $date->sub(new \DateInterval('P5D'));
         $template->setDateCreated($date);
         $template->setDateModified($date);
         $manager->persist($template);
@@ -1219,7 +1219,7 @@ class ZuiddrechtFixtures extends Fixture
         $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/Zuiddrecht/website/nieuws/corona.html.twig', 'r'));
         $template->setTemplateEngine('twig');
         $date = new \DateTime();
-        $date->sub(new \DateInterval('P1D'));
+        $date->sub(new \DateInterval('P3D'));
         $template->setDateCreated($date);
         $template->setDateModified($date);
         $manager->persist($template);
@@ -1246,7 +1246,7 @@ class ZuiddrechtFixtures extends Fixture
         $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/Zuiddrecht/website/nieuws/groene-stroom.html.twig', 'r'));
         $template->setTemplateEngine('twig');
         $date = new \DateTime();
-        $date->sub(new \DateInterval('P3D'));
+        $date->sub(new \DateInterval('P4D'));
         $template->setDateCreated($date);
         $template->setDateModified($date);
         $manager->persist($template);
@@ -1296,7 +1296,7 @@ class ZuiddrechtFixtures extends Fixture
         $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/Zuiddrecht/website/nieuws/beste-gemeente.html.twig', 'r'));
         $template->setTemplateEngine('twig');
         $date = new \DateTime();
-        $date->sub(new \DateInterval('P5D'));
+        $date->sub(new \DateInterval('P7D'));
         $template->setDateCreated($date);
         $template->setDateModified($date);
         $manager->persist($template);
