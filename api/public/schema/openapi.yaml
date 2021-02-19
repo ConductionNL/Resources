@@ -1,10 +1,10 @@
 openapi: 3.0.2
 info:
-  title: 'Web Resource Component'
+  title: ''
   version: V1.0
   description: |
     API Details
-    - Component: Web Resource Component
+    - Component: 
     - Reference: wrc
     - Enviroment: dev
     - Version: V1.0
@@ -15422,7 +15422,7 @@ components:
         - organization
     Document-read:
       type: object
-      description: 'Documents hold a document encoded in base64'
+      description: 'Documents hold a document encoded in base64.'
       properties:
         id:
           readOnly: true
@@ -15466,7 +15466,7 @@ components:
         - name
     Document-write:
       type: object
-      description: 'Documents hold a document encoded in base64'
+      description: 'Documents hold a document encoded in base64.'
       required:
         - name
       properties:
@@ -15493,7 +15493,7 @@ components:
           nullable: true
     'Document:jsonld-read':
       type: object
-      description: 'Documents hold a document encoded in base64'
+      description: 'Documents hold a document encoded in base64.'
       properties:
         '@context':
           readOnly: true
@@ -15546,7 +15546,7 @@ components:
         - name
     'Document:jsonld-write':
       type: object
-      description: 'Documents hold a document encoded in base64'
+      description: 'Documents hold a document encoded in base64.'
       required:
         - name
       properties:
@@ -18028,12 +18028,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-11 10:38:56'
+        example: '2021-02-19 08:28:38'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-11 10:38:56'
+        example: '2021-02-19 08:28:38'
     required: []
   AuditTrail-write:
     properties:
@@ -18081,12 +18081,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-11 10:38:56'
+        example: '2021-02-19 08:28:38'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-11 10:38:56'
+        example: '2021-02-19 08:28:38'
     required: []
   ChangeLog-write:
     properties:
@@ -18118,7 +18118,7 @@ tags:
   -
     name: Document
     description: |
-      Documents hold a document encoded in base64
+      Documents hold a document encoded in base64.
       
       
   -
