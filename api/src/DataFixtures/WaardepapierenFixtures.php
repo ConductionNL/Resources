@@ -40,6 +40,17 @@ class WaardepapierenFixtures extends Fixture
             return false;
         }
 
+        $id = Uuid::fromString('d435606c-1d40-4b01-abbe-a87e1ce50c14');
+        $organization = new Organization();
+        $organization->setName('Gemeente Buren');
+        $organization->setDescription('Gemeente Buren');
+        $organization->setRsin('807287684');
+        $manager->persist($organization);
+        $organization->setId($id);
+        $manager->persist($organization);
+        $manager->flush();
+        $organization = $manager->getRepository('App:Organization')->findOneBy(['id' => $id]);
+
         $id = Uuid::fromString('f42478fc-0499-4823-b79a-a1efa02fc742');
         $organization = new Organization();
         $organization->setName('Waardepapieren');
