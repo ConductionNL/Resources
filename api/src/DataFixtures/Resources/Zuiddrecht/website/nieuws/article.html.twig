@@ -2,7 +2,7 @@
 
 {% extends 'base.html.twig' %}
 
-{% block content %}
+{% block container %}
     {% set article = commonground_resource({'component':'wrc','type':'templates','id':app.request.get('id')}) %}
     <div class="row">
         <div class="col-sm-12 col-md-8">
