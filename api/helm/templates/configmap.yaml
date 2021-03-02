@@ -29,13 +29,6 @@ data:
   app-audittrail: {{ .Values.settings.audittrailEnabled | quote }}
   app-notification: {{ .Values.settings.notificationEnabled | quote }}
 
-  {{ if (eq $.Values.settings.type "application" ) }}
-  redis-host: {{ printf "%s-redis-headless" $redisServiceName | quote }}
-  redis-port: {{ .Values.redis.redisPort | toString | quote }}
-  digispoof-location: {{ .Values.commonground.digispoof.location }}
-  eherkenning-location: {{ .Values.commonground.eherkenning.location }}
-  {{ end }}
-
   cache: {{ .Values.settings.cache | quote }}
   env: {{ .Values.settings.env | quote }}
   debug: {{ .Values.settings.debug | quote }}
