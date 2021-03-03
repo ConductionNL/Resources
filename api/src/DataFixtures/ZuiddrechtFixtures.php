@@ -587,7 +587,7 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $template = $manager->getRepository('App:Template')->findOneBy(['id'=> $id]);
         $template->addTemplateGroup($groupPages);
-        $template->addTemplateGroup($groupOver);
+        $template->addTemplateGroup($groupNews);
         $manager->persist($template);
         $manager->flush();
 
@@ -635,7 +635,7 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $template = $manager->getRepository('App:Template')->findOneBy(['id'=> $id]);
         $template->addTemplateGroup($groupPages);
-        $template->addTemplateGroup($groupOver);
+        $template->addTemplateGroup($groupNews);
         $manager->persist($template);
         $manager->flush();
 
@@ -659,7 +659,7 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $template = $manager->getRepository('App:Template')->findOneBy(['id'=> $id]);
         $template->addTemplateGroup($groupPages);
-        $template->addTemplateGroup($groupOver);
+        $template->addTemplateGroup($groupNews);
         $manager->persist($template);
         $manager->flush();
 
@@ -683,7 +683,7 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $template = $manager->getRepository('App:Template')->findOneBy(['id'=> $id]);
         $template->addTemplateGroup($groupPages);
-        $template->addTemplateGroup($groupOver);
+        $template->addTemplateGroup($groupNews);
         $manager->persist($template);
         $manager->flush();
 
@@ -1160,7 +1160,7 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('c6ea48d9-dc94-4a0c-b53d-b5c3f2c3beef');
         $template = new Template();
         $template->setName('Zaaksysteem');
-        $template->setTitle('Zaaksysteem.nl integratie bij Zuid-Drecht bijna klaar!');
+        $template->setTitle('Zaaksysteem.nl integratie bij Zuid-Drecht klaar!');
         $template->setDescription('Samen hebben Conduction en Zaaksysteem.nl een werkende integratie gemaakt waarmee formulieren op basis van de Common Ground principes in het zaaksysteem afgehandeld kunnen worden. Benieuwd hoe dit eruit ziet? Kom naar Zaaksystemen in beeld 2021 en ervaar het helemaal zelf van A tot Z.');
         $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/Zuiddrecht/website/nieuws/zaaksysteem.html.twig', 'r'));
         $template->setTemplateEngine('twig');
