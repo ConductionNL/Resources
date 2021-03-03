@@ -7,6 +7,7 @@ settings:
   projectName: webresourcecatalogus
   name: webresourcecatalogus
   version: V1.0
+  majorVersion: v1
   description: 'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'
   repro: https://github.com/ConductionNL/webresourcecatalogus
   demo: wrc.zaakonline.nl
@@ -18,6 +19,8 @@ settings:
   web: false
   debug: 1
   cache: false
+  type: component
+  id: 
   replicaCount: 1
   corsAllowOrigin: ['*']
   trustedHosts: '^.+$'
@@ -48,6 +51,18 @@ php:
   env: prod
   secret: ""
   replicaCount: 2
+
+redis:
+  cluster:
+    enabled: false
+  redisPort: 6379
+  usePassword: false
+  enabled: false
+commonground:
+  eherkenning:
+    location: https://huwelijksplanner.online/eherkenning
+  digispoof:
+    location: https://huwelijksplanner.online/digispoof
 
 nginx:
   repository: docker.io/conduction/protocomponent-nginx

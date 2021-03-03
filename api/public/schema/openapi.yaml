@@ -5,12 +5,12 @@ info:
   description: |
     API Details
     - Component: 
-    - Reference: wrc
+    - Reference: webresourcecatalogus
     - Enviroment: dev
     - Version: V1.0
     - Repository: [online](https://github.com/ConductionNL/webresourcecatalogus) / [zip](https://github.com/ConductionNL/webresourcecatalogus/archive/master.zip)
-    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/wrc-php) 
-    - Datamodel: [postman](schema/wrc.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
+    - Docker Image: [online]() 
+    - Datamodel: [postman](schema/webresourcecatalogus.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
     
     Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
     
@@ -18028,12 +18028,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-19 08:28:38'
+        example: '2021-03-02 20:34:41'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-19 08:28:38'
+        example: '2021-03-02 20:34:41'
     required: []
   AuditTrail-write:
     properties:
@@ -18081,12 +18081,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-19 08:28:38'
+        example: '2021-03-02 20:34:41'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-19 08:28:38'
+        example: '2021-03-02 20:34:41'
     required: []
   ChangeLog-write:
     properties:
@@ -18206,7 +18206,7 @@ host: irc.zaakonline.nl
 servers:
   -
     name: huwelijksplanner.online
-    url: wrc.dev.huwelijksplanner.online
+    url: webresourcecatalogus.dev.huwelijksplanner.online
 externalDocs:
   -
     description: 'OAS Documentatie'
