@@ -26,8 +26,8 @@
             <div class="content-background">
                 <div class="content">
                     {% if application.defaultConfiguration.configuration.nieuws is defined %}
-                    {% set nieuws = commonground_resource(application.defaultConfiguration.configuration.nieuws) %}
-                    {% set templates = commonground_resource_list({'component': 'wrc', 'type': 'templates'},{'templateGroups.id':nieuws.id, 'order[dateCreated]':'desc'})['hydra:member'] %}
+                    {% set news = commonground_resource(application.defaultConfiguration.configuration.nieuws) %}
+                    {% set templates = commonground_resource_list({'component': 'wrc', 'type': 'templates'},{'templateGroups.id':news.id, 'order[dateCreated]':'desc'})['hydra:member'] %}
                     <ul class="list list--links list--chevrons">
                     {% for template in templates %}
                             <li><a href="/article?id={{ template.id }}">{{ template.title }}</a></li>
