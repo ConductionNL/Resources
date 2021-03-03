@@ -6,8 +6,8 @@
     <h1>Nieuws</h1>
     <div class="row">
         <div class="col-sm-12 col-lg-9">
-            {% if application.defaultConfiguration.configuration.groupPages is defined %}
-            {% set group = commonground_resource(application.defaultConfiguration.configuration.groupPages) %}
+            {% if application.defaultConfiguration.configuration.about is defined %}
+                {% set group = commonground_resource(application.defaultConfiguration.configuration.about) %}
                 {% if group.templates|default and group.templates|length > 1 %}
                     <ul class="list list--card list--card-small">
                         {% for template in group.templates %}

@@ -319,26 +319,18 @@ class ZuiddrechtFixtures extends Fixture
         $menuItem->setMenu($menu);
         $manager->persist($menuItem);
 
-        // Template group: documents
-        $id = Uuid::fromString('05666289-228a-4294-b204-21f3b6ff9690');
-        $groupPages = new TemplateGroup();
-        $groupPages->setOrganization($organization);
-        $groupPages->setApplication($application);
-        $groupPages->setName('Documents');
-        $groupPages->setDescription('Document templates');
-        $manager->persist($groupPages);
-        $groupPages->setId($id);
-        $manager->persist($groupPages);
-        $manager->flush();
-        $groupPages = $manager->getRepository('App:TemplateGroup')->findOneBy(['id'=> $id]);
-
         // Template groups
+        $id = Uuid::fromString('05666289-228a-4294-b204-21f3b6ff9690');
         $groupPages = new TemplateGroup();
         $groupPages->setOrganization($organization);
         $groupPages->setApplication($application);
         $groupPages->setName('Pages');
         $groupPages->setDescription('Webpages that are presented to visitors');
         $manager->persist($groupPages);
+        $groupPages->setId($id);
+        $manager->persist($groupPages);
+        $manager->flush();
+        $groupPages = $manager->getRepository('App:TemplateGroup')->findOneBy(['id'=> $id]);
 
         // Persoonlijk
         $template = new Template();
