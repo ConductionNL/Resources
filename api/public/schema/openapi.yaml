@@ -17059,6 +17059,10 @@ components:
           description: 'The description of this page.'
           type: string
           nullable: true
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template-read'
         application:
           nullable: true
           anyOf:
@@ -17135,6 +17139,10 @@ components:
           description: 'The description of this page.'
           type: string
           nullable: true
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template:jsonld-read'
         application:
           nullable: true
           anyOf:
@@ -17962,6 +17970,7 @@ definitions:
       dateModified:
         description: 'The moment this request last Modified'
         type: \Datetime
+      templates: []
       application: []
       organization: []
     required:
@@ -18087,12 +18096,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-01 12:21:29'
+        example: '2021-03-11 15:45:09'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-01 12:21:29'
+        example: '2021-03-11 15:45:09'
     required: []
   AuditTrail-write:
     properties:
@@ -18140,12 +18149,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-01 12:21:29'
+        example: '2021-03-11 15:45:09'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-01 12:21:29'
+        example: '2021-03-11 15:45:09'
     required: []
   ChangeLog-write:
     properties:
