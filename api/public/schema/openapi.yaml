@@ -5520,6 +5520,22 @@ paths:
           schema:
             type: string
         -
+          name: organization
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'organization[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
           name: page
           in: query
           required: false
@@ -6524,93 +6540,13 @@ paths:
           schema:
             type: string
         -
-          name: id
+          name: organization
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'id[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: name
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'name[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: description
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'description[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: alt
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'alt[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: href
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'href[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: base64
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'base64[]'
+          name: 'organization[]'
           in: query
           required: false
           schema:
@@ -6635,30 +6571,6 @@ paths:
               type: string
           style: form
           explode: true
-        -
-          name: dateCreated
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: dateModified
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[]'
-          in: query
-          required: false
-          schema:
-            type: string
         -
           name: page
           in: query
@@ -17059,6 +16971,10 @@ components:
           description: 'The description of this page.'
           type: string
           nullable: true
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template-read'
         application:
           nullable: true
           anyOf:
@@ -17135,6 +17051,10 @@ components:
           description: 'The description of this page.'
           type: string
           nullable: true
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template:jsonld-read'
         application:
           nullable: true
           anyOf:
@@ -17962,6 +17882,7 @@ definitions:
       dateModified:
         description: 'The moment this request last Modified'
         type: \Datetime
+      templates: []
       application: []
       organization: []
     required:
@@ -18087,12 +18008,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-01 12:21:29'
+        example: '2021-03-11 14:51:12'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-01 12:21:29'
+        example: '2021-03-11 14:51:12'
     required: []
   AuditTrail-write:
     properties:
@@ -18140,12 +18061,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-01 12:21:29'
+        example: '2021-03-11 14:51:12'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-01 12:21:29'
+        example: '2021-03-11 14:51:12'
     required: []
   ChangeLog-write:
     properties:
