@@ -137,6 +137,18 @@ class Image
     private $base64;
 
     /**
+     * @var string The resource this image is connected to.
+     *
+     * @Groups({"read", "write"})
+     * @Assert\Url
+     * @Assert\Length(
+     *     max=255
+     * )
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $resource;
+
+    /**
      * @Groups({"read","write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Organization", inversedBy="images")
      * @ORM\JoinColumn(nullable=true)
@@ -234,6 +246,18 @@ class Image
     public function setBase64(?string $base64): self
     {
         $this->base64 = $base64;
+
+        return $this;
+    }
+
+    public function getResource(): ?string
+    {
+        return $this->resource;
+    }
+
+    public function setResource(?string $resource): self
+    {
+        $this->resource = $resource;
 
         return $this;
     }

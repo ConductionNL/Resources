@@ -81,6 +81,20 @@ class LarpingFixtures extends Fixture
 
         $manager->flush();
 
+        $id = Uuid::fromString('f85e3808-7744-4fd4-a1e1-4b903c5f3d9d');
+        $organization = new Organization();
+        $organization->setName('Conduction');
+        $organization->setDescription('Conduction organization');
+        $organization->setRsin('');
+        $organization->setContact($this->commonGroundService->cleanUrl(['component'=>'cc', 'type'=>'organizations', 'id'=>'a2177b92-56e0-4edf-9af2-8b98eb2aea0e']));
+        $manager->persist($organization);
+        $organization->setId($id);
+        $manager->persist($organization);
+        $manager->flush();
+        $organization = $manager->getRepository('App:Organization')->findOneBy(['id'=> $id]);
+
+        $manager->flush();
+
         // Regions
         $regions = new Category();
         $regions->setName('regions');

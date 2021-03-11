@@ -6449,6 +6449,15 @@ paths:
               - asc
               - desc
         -
+          name: 'order[resource]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[dateCreated]'
           in: query
           required: false
@@ -6602,6 +6611,22 @@ paths:
             type: string
         -
           name: 'base64[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: resource
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'resource[]'
           in: query
           required: false
           schema:
@@ -15609,6 +15634,12 @@ components:
           description: 'the base64 version of the image'
           type: string
           nullable: true
+        resource:
+          description: 'The resource this image is connected to.'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
         organization:
           nullable: true
           anyOf:
@@ -15652,6 +15683,12 @@ components:
           description: 'the base64 version of the image'
           type: string
           nullable: true
+        resource:
+          description: 'The resource this image is connected to.'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
         organization:
           nullable: true
           anyOf:
@@ -15693,6 +15730,12 @@ components:
           nullable: true
         base64:
           description: 'the base64 version of the image'
+          type: string
+          nullable: true
+        resource:
+          description: 'The resource this image is connected to.'
+          externalDocs:
+            url: 'http://schema.org/url'
           type: string
           nullable: true
         organization:
@@ -15745,6 +15788,12 @@ components:
           nullable: true
         base64:
           description: 'the base64 version of the image'
+          type: string
+          nullable: true
+        resource:
+          description: 'The resource this image is connected to.'
+          externalDocs:
+            url: 'http://schema.org/url'
           type: string
           nullable: true
         organization:
@@ -17405,6 +17454,11 @@ definitions:
       base64:
         description: 'the base64 version of the image'
         type: string
+      resource:
+        description: 'The resource this image is connected to.'
+        type: string
+        format: url
+        maxLength: 255
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
@@ -17440,6 +17494,11 @@ definitions:
       base64:
         description: 'the base64 version of the image'
         type: string
+      resource:
+        description: 'The resource this image is connected to.'
+        type: string
+        format: url
+        maxLength: 255
       organization: []
     required:
       - name
@@ -18028,12 +18087,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-02 20:34:41'
+        example: '2021-03-01 12:21:29'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-02 20:34:41'
+        example: '2021-03-01 12:21:29'
     required: []
   AuditTrail-write:
     properties:
@@ -18081,12 +18140,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-02 20:34:41'
+        example: '2021-03-01 12:21:29'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-02 20:34:41'
+        example: '2021-03-01 12:21:29'
     required: []
   ChangeLog-write:
     properties:
