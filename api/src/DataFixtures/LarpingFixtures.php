@@ -150,6 +150,17 @@ class LarpingFixtures extends Fixture
         $manager->persist($category);
         $manager->flush();
 
+        $id = Uuid::fromString('6fa95bde-5b7d-4613-8220-fe9284689da7');
+        $category = new Category();
+        $category->setName('algemene ledenvergadering');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('fal fa-handshake');
+        $category->setParent($settings);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
         $id = Uuid::fromString('8dda3a5f-bfbe-4468-81cd-44910fcd4663');
         $category = new Category();
         $category->setName('post apocalypse');
@@ -393,6 +404,61 @@ class LarpingFixtures extends Fixture
         $category->setName('bungalows');
         $category->setOrganization($larpingOrg);
         $category->setIcon('fas fa-house-day');
+        $category->setParent($features);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('6fa95bde-5b7d-4613-8220-fe9284689da7');
+        $category = new Category();
+        $category->setName('indoor');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('fal fa-house');
+        $category->setParent($features);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('e82350c9-e60f-4609-9e8b-d87e04f3e63a');
+        $category = new Category();
+        $category->setName('outdoor');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('far fa-cloud-sun');
+        $category->setParent($features);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('e6618d64-a431-4c28-95c4-94360bf94279');
+        $category = new Category();
+        $category->setName('campfire');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('far fa-campfire');
+        $category->setParent($features);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('1157850b-ab71-4d0e-a1a0-49c13e3687a6');
+        $category = new Category();
+        $category->setName('pioneer wood');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('far fa-tree-alt');
+        $category->setParent($features);
+        $manager->persist($category);
+        $category->setId($id);
+        $manager->persist($category);
+        $manager->flush();
+
+        $id = Uuid::fromString('1157850b-ab71-4d0e-a1a0-49c13e3687a6');
+        $category = new Category();
+        $category->setName('nature environment');
+        $category->setOrganization($larpingOrg);
+        $category->setIcon('far fa-leaf');
         $category->setParent($features);
         $manager->persist($category);
         $category->setId($id);
