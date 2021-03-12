@@ -150,7 +150,7 @@ class LarpingFixtures extends Fixture
         $manager->persist($category);
         $manager->flush();
 
-        $id = Uuid::fromString('6fa95bde-5b7d-4613-8220-fe9284689da7');
+        $id = Uuid::fromString('bd7078ad-8531-4bc2-9c6f-4f7311f21c31');
         $category = new Category();
         $category->setName('algemene ledenvergadering');
         $category->setOrganization($larpingOrg);
