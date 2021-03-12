@@ -104,7 +104,7 @@ class TemplateGroup implements Translatable
     private $description;
 
     /**
-     * @Groups({"write"})
+     * @Groups({"write", "read"})
      * @MaxDepth(1)
      * @ORM\ManyToMany(targetEntity="App\Entity\Template", mappedBy="templateGroups")
      */

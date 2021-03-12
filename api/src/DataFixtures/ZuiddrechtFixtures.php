@@ -180,6 +180,7 @@ class ZuiddrechtFixtures extends Fixture
                 'footer3'                   => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'facad633-27a9-499a-b3fc-4687215bf82a']),
                 'footer4'                   => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'4bc966b6-e310-4bce-b459-a7cf65651ce0']),
                 'news'                      => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'template_groups', 'id'=>'5c59f238-1ce3-4c8d-8107-4bd8e2134648']),
+                'groupPages'                => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'template_groups', 'id'=>'05666289-228a-4294-b204-21f3b6ff9690']),
                 'about'                     => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'template_groups', 'id'=>'6b243aa1-5ae6-4aeb-93d5-2f509fb34cef']),
                 'newsimg'                   => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'images', 'id'=>'0e5b1531-4abb-4704-9bd3-feeb94717521']),
                 'headerimg'                 => $this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'images', 'id'=>'ff3ca823-234f-4874-9ee6-1067d47e4391']),
@@ -318,21 +319,18 @@ class ZuiddrechtFixtures extends Fixture
         $menuItem->setMenu($menu);
         $manager->persist($menuItem);
 
-        // Template group: documents
-        $groupPages = new TemplateGroup();
-        $groupPages->setOrganization($organization);
-        $groupPages->setApplication($application);
-        $groupPages->setName('Documents');
-        $groupPages->setDescription('Document templates');
-        $manager->persist($groupPages);
-
         // Template groups
+        $id = Uuid::fromString('05666289-228a-4294-b204-21f3b6ff9690');
         $groupPages = new TemplateGroup();
         $groupPages->setOrganization($organization);
         $groupPages->setApplication($application);
         $groupPages->setName('Pages');
         $groupPages->setDescription('Webpages that are presented to visitors');
         $manager->persist($groupPages);
+        $groupPages->setId($id);
+        $manager->persist($groupPages);
+        $manager->flush();
+        $groupPages = $manager->getRepository('App:TemplateGroup')->findOneBy(['id'=> $id]);
 
         // Persoonlijk
         $template = new Template();
@@ -625,7 +623,7 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('48d0af07-4895-45ee-9b4d-5acb92f1dfab');
         $template = new Template();
         $template->setName('zaaksysteem');
-        $template->setTitle('Zaaksysteem.nl integratie bij Zuid-Drecht bijna klaar!');
+        $template->setTitle('Zaaksysteem.nl integratie bij Zuid-Drecht klaar!');
         $template->setDescription('Samen hebben Conduction en Zaaksysteem.nl een werkende integratie gemaakt waarmee formulieren op basis van de Common Ground principes in het zaaksysteem afgehandeld kunnen worden. Benieuwd hoe dit eruit ziet? Kom naar Zaaksystemen in beeld 2021 en ervaar het helemaal zelf van A tot Z.');
         $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/Zuiddrecht/website/zaaksysteem.html.twig', 'r'));
         $template->setTemplateEngine('twig');
@@ -1160,7 +1158,7 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('c6ea48d9-dc94-4a0c-b53d-b5c3f2c3beef');
         $template = new Template();
         $template->setName('Zaaksysteem');
-        $template->setTitle('Zaaksysteem.nl integratie bij Zuid-Drecht bijna klaar!');
+        $template->setTitle('Zaaksysteem.nl integratie bij Zuid-Drecht klaar!');
         $template->setDescription('Samen hebben Conduction en Zaaksysteem.nl een werkende integratie gemaakt waarmee formulieren op basis van de Common Ground principes in het zaaksysteem afgehandeld kunnen worden. Benieuwd hoe dit eruit ziet? Kom naar Zaaksystemen in beeld 2021 en ervaar het helemaal zelf van A tot Z.');
         $template->setContent(file_get_contents(dirname(__FILE__).'/Resources/Zuiddrecht/website/nieuws/zaaksysteem.html.twig', 'r'));
         $template->setTemplateEngine('twig');

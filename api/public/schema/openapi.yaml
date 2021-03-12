@@ -1,16 +1,16 @@
 openapi: 3.0.2
 info:
-  title: 'Web Resource Component'
+  title: ''
   version: V1.0
   description: |
     API Details
-    - Component: Web Resource Component
-    - Reference: wrc
+    - Component: 
+    - Reference: webresourcecatalogus
     - Enviroment: dev
     - Version: V1.0
     - Repository: [online](https://github.com/ConductionNL/webresourcecatalogus) / [zip](https://github.com/ConductionNL/webresourcecatalogus/archive/master.zip)
-    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/wrc-php) 
-    - Datamodel: [postman](schema/wrc.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
+    - Docker Image: [online]() 
+    - Datamodel: [postman](schema/webresourcecatalogus.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
     
     Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
     
@@ -5520,6 +5520,22 @@ paths:
           schema:
             type: string
         -
+          name: organization
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'organization[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
           name: page
           in: query
           required: false
@@ -6449,6 +6465,15 @@ paths:
               - asc
               - desc
         -
+          name: 'order[resource]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[dateCreated]'
           in: query
           required: false
@@ -6515,13 +6540,13 @@ paths:
           schema:
             type: string
         -
-          name: id
+          name: organization
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'id[]'
+          name: 'organization[]'
           in: query
           required: false
           schema:
@@ -6531,13 +6556,13 @@ paths:
           style: form
           explode: true
         -
-          name: name
+          name: resource
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'name[]'
+          name: 'resource[]'
           in: query
           required: false
           schema:
@@ -6546,94 +6571,6 @@ paths:
               type: string
           style: form
           explode: true
-        -
-          name: description
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'description[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: alt
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'alt[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: href
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'href[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: base64
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'base64[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: dateCreated
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: dateModified
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[]'
-          in: query
-          required: false
-          schema:
-            type: string
         -
           name: page
           in: query
@@ -15422,7 +15359,7 @@ components:
         - organization
     Document-read:
       type: object
-      description: 'Documents hold a document encoded in base64'
+      description: 'Documents hold a document encoded in base64.'
       properties:
         id:
           readOnly: true
@@ -15466,7 +15403,7 @@ components:
         - name
     Document-write:
       type: object
-      description: 'Documents hold a document encoded in base64'
+      description: 'Documents hold a document encoded in base64.'
       required:
         - name
       properties:
@@ -15493,7 +15430,7 @@ components:
           nullable: true
     'Document:jsonld-read':
       type: object
-      description: 'Documents hold a document encoded in base64'
+      description: 'Documents hold a document encoded in base64.'
       properties:
         '@context':
           readOnly: true
@@ -15546,7 +15483,7 @@ components:
         - name
     'Document:jsonld-write':
       type: object
-      description: 'Documents hold a document encoded in base64'
+      description: 'Documents hold a document encoded in base64.'
       required:
         - name
       properties:
@@ -15609,6 +15546,12 @@ components:
           description: 'the base64 version of the image'
           type: string
           nullable: true
+        resource:
+          description: 'The resource this image is connected to.'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
         organization:
           nullable: true
           anyOf:
@@ -15652,6 +15595,12 @@ components:
           description: 'the base64 version of the image'
           type: string
           nullable: true
+        resource:
+          description: 'The resource this image is connected to.'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
         organization:
           nullable: true
           anyOf:
@@ -15693,6 +15642,12 @@ components:
           nullable: true
         base64:
           description: 'the base64 version of the image'
+          type: string
+          nullable: true
+        resource:
+          description: 'The resource this image is connected to.'
+          externalDocs:
+            url: 'http://schema.org/url'
           type: string
           nullable: true
         organization:
@@ -15745,6 +15700,12 @@ components:
           nullable: true
         base64:
           description: 'the base64 version of the image'
+          type: string
+          nullable: true
+        resource:
+          description: 'The resource this image is connected to.'
+          externalDocs:
+            url: 'http://schema.org/url'
           type: string
           nullable: true
         organization:
@@ -17010,6 +16971,10 @@ components:
           description: 'The description of this page.'
           type: string
           nullable: true
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template-read'
         application:
           nullable: true
           anyOf:
@@ -17086,6 +17051,10 @@ components:
           description: 'The description of this page.'
           type: string
           nullable: true
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template:jsonld-read'
         application:
           nullable: true
           anyOf:
@@ -17405,6 +17374,11 @@ definitions:
       base64:
         description: 'the base64 version of the image'
         type: string
+      resource:
+        description: 'The resource this image is connected to.'
+        type: string
+        format: url
+        maxLength: 255
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
@@ -17440,6 +17414,11 @@ definitions:
       base64:
         description: 'the base64 version of the image'
         type: string
+      resource:
+        description: 'The resource this image is connected to.'
+        type: string
+        format: url
+        maxLength: 255
       organization: []
     required:
       - name
@@ -17903,6 +17882,7 @@ definitions:
       dateModified:
         description: 'The moment this request last Modified'
         type: \Datetime
+      templates: []
       application: []
       organization: []
     required:
@@ -18028,12 +18008,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-11 10:38:56'
+        example: '2021-03-11 15:47:53'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-11 10:38:56'
+        example: '2021-03-11 15:47:53'
     required: []
   AuditTrail-write:
     properties:
@@ -18081,12 +18061,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-11 10:38:56'
+        example: '2021-03-11 15:47:53'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-11 10:38:56'
+        example: '2021-03-11 15:47:53'
     required: []
   ChangeLog-write:
     properties:
@@ -18118,7 +18098,7 @@ tags:
   -
     name: Document
     description: |
-      Documents hold a document encoded in base64
+      Documents hold a document encoded in base64.
       
       
   -
@@ -18206,7 +18186,7 @@ host: irc.zaakonline.nl
 servers:
   -
     name: huwelijksplanner.online
-    url: wrc.dev.huwelijksplanner.online
+    url: webresourcecatalogus.dev.huwelijksplanner.online
 externalDocs:
   -
     description: 'OAS Documentatie'
