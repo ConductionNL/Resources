@@ -443,7 +443,7 @@ class LarpingFixtures extends Fixture
         $manager->persist($category);
         $manager->flush();
 
-        $id = Uuid::fromString('1157850b-ab71-4d0e-a1a0-49c13e3687a6');
+        $id = Uuid::fromString('5359ef36-a74b-4415-9dd4-438e692a6e94');
         $category = new Category();
         $category->setName('pioneer wood');
         $category->setOrganization($larpingOrg);
