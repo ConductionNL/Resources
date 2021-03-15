@@ -152,7 +152,7 @@ class LarpingFixtures extends Fixture
 
         $id = Uuid::fromString('bd7078ad-8531-4bc2-9c6f-4f7311f21c31');
         $category = new Category();
-        $category->setName('algemene ledenvergadering');
+        $category->setName('ALV');
         $category->setOrganization($larpingOrg);
         $category->setIcon('fal fa-handshake');
         $category->setParent($settings);
