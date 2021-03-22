@@ -17577,7 +17577,7 @@ definitions:
         description: 'The description of this organisation.'
         type: string
         example: 'This is the manucipality of Utrecht'
-        maxLength: 255
+        maxLength: 2550
       technicalContact:
         description: 'The technicalContact of this application'
         type: string
@@ -17631,7 +17631,7 @@ definitions:
         description: 'The description of this organisation.'
         type: string
         example: 'This is the manucipality of Utrecht'
-        maxLength: 255
+        maxLength: 2550
       technicalContact:
         description: 'The technicalContact of this application'
         type: string
@@ -18008,12 +18008,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-22 12:59:55'
+        example: '2021-03-22 13:44:01'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-22 12:59:55'
+        example: '2021-03-22 13:44:01'
     required: []
   AuditTrail-write:
     properties:
@@ -18061,12 +18061,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-22 12:59:55'
+        example: '2021-03-22 13:44:01'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-22 12:59:55'
+        example: '2021-03-22 13:44:01'
     required: []
   ChangeLog-write:
     properties:
