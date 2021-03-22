@@ -1,8 +1,8 @@
 {# templates/home/index.html.twig #}
 
-{% extends 'base.html.twig' %}
+{% extends "content.html.twig" %}
 
-{% block container %}
+{% block content %}
     {% set article = commonground_resource({'component':'wrc','type':'templates','id':app.request.get('id')}) %}
     <div class="row">
         <div class="col-sm-12 col-md-8">
@@ -25,15 +25,15 @@
             <h1>Lees meer</h1>
             <div class="content-background">
                 <div class="content">
-                    {% if application.defaultConfiguration.configuration.nieuws is defined %}
-                    {% set nieuws = commonground_resource(application.defaultConfiguration.configuration.nieuws) %}
-                    {% set templates = commonground_resource_list({'component': 'wrc', 'type': 'templates'},{'templateGroups.id':nieuws.id, 'order[dateCreated]':'desc'})['hydra:member'] %}
-                    <ul class="list list--links list--chevrons">
-                    {% for template in templates %}
-                            <li><a href="/article?id={{ template.id }}">{{ template.title }}</a></li>
-                    {% endfor %}
-                    </ul>
-
+                    {% if application.defaultConfiguration.configuration.about is defined %}
+                        {% set group = commonground_resource(application.defaultConfiguration.configuration.about) %}
+                        {% if group.templates|default and group.templates|length > 1 %}
+                            <ul class="list list--links list--chevrons">
+                                {% for template in group.templates %}
+                                    <li><a href="/article?id={{ template.id }}">{{ template.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>

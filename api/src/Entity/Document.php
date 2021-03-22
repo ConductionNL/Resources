@@ -49,7 +49,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
  * @ApiFilter(SearchFilter::class, properties={
- *     "organizaiton": "exact",
+ *     "organization": "exact",
  *     "person": "exact"
  * })
  */
