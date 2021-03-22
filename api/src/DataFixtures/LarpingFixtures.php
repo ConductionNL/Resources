@@ -20,6 +20,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 class LarpingFixtures extends Fixture
 {
     private $params;
+    private $commonGroundService;
 
     /**
      * @var CommonGroundService
