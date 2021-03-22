@@ -125,7 +125,7 @@ class Organization
      *
      * @Gedmo\Versioned
      * @Assert\Length(
-     *     max = 255
+     *     max = 2550
      * )
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
