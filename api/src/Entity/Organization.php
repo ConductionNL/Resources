@@ -252,6 +252,13 @@ class Organization
      */
     private $termsAndConditions;
 
+    /**
+     * @Groups({"read", "write"})
+     * @ORM\OneToOne(targetEntity=Template::class, cascade={"persist", "remove"})
+     * @MaxDepth(1)
+     */
+    private $privacyPolicy;
+
     public function __construct()
     {
         $this->applications = new ArrayCollection();
@@ -598,6 +605,18 @@ class Organization
     public function setTermsAndConditions(?Template $termsAndConditions): self
     {
         $this->termsAndConditions = $termsAndConditions;
+
+        return $this;
+    }
+
+    public function getPrivacyPolicy(): ?Template
+    {
+        return $this->privacyPolicy;
+    }
+
+    public function setPrivacyPolicy(?Template $privacyPolicy): self
+    {
+        $this->privacyPolicy = $privacyPolicy;
 
         return $this;
     }
