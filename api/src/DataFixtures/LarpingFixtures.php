@@ -87,6 +87,7 @@ class LarpingFixtures extends Fixture
        $organization->setName('Conduction');
        $organization->setDescription('Conduction organization');
        $organization->setRsin('');
+       $organization->setContact($this->commonGroundService->cleanUrl(['component'=>'cc', 'type'=>'organizations', 'id'=>'a2177b92-56e0-4edf-9af2-8b98eb2aea0e']));
        $manager->persist($organization);
        $organization->setId($id);
        $manager->persist($organization);
