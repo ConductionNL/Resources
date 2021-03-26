@@ -128,7 +128,7 @@ class Organization
      *     max = 2550
      * )
      * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=2550, nullable=true)
      */
     private $description;
 
