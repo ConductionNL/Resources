@@ -125,10 +125,10 @@ class Organization
      *
      * @Gedmo\Versioned
      * @Assert\Length(
-     *     max = 255
+     *     max = 2550
      * )
      * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=2550, nullable=true)
      */
     private $description;
 
@@ -251,6 +251,13 @@ class Organization
      * @MaxDepth(1)
      */
     private $termsAndConditions;
+
+    /**
+     * @Groups({"read", "write"})
+     * @ORM\OneToOne(targetEntity=Template::class, cascade={"persist", "remove"})
+     * @MaxDepth(1)
+     */
+    private $privacyPolicy;
 
     public function __construct()
     {
@@ -598,6 +605,18 @@ class Organization
     public function setTermsAndConditions(?Template $termsAndConditions): self
     {
         $this->termsAndConditions = $termsAndConditions;
+
+        return $this;
+    }
+
+    public function getPrivacyPolicy(): ?Template
+    {
+        return $this->privacyPolicy;
+    }
+
+    public function setPrivacyPolicy(?Template $privacyPolicy): self
+    {
+        $this->privacyPolicy = $privacyPolicy;
 
         return $this;
     }
