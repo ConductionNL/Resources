@@ -15,9 +15,6 @@ use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Twig_Environment as Environment;
 
-//use App\Service\MailService;
-//use App\Service\MessageService;
-
 class TemplateSubscriber implements EventSubscriberInterface
 {
     private $params;
@@ -54,9 +51,8 @@ class TemplateSubscriber implements EventSubscriberInterface
 
         $request = new Request();
 
-        /*@todo onderstaande verhaal moet uiteraard wel worden gedocumenteerd in redoc */
         $query = $request->query->all();
-        $body = json_decode($request->getContent(), true); /*@todo hier zouden we eigenlijk ook xml moeten ondersteunen */
+        $body = json_decode($request->getContent(), true);
 
         $variables = array_merge($query, $result->getVariables());
 

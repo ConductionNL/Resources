@@ -12,9 +12,6 @@ use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Twig_Environment as Environment;
 
-//use App\Service\MailService;
-//use App\Service\MessageService;
-
 class TemplateSlugSubscriber implements EventSubscriberInterface
 {
     private $params;
