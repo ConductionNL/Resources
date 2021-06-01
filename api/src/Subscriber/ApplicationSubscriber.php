@@ -37,63 +37,45 @@ class ApplicationSubscriber implements EventSubscriberInterface
 
     public function IngeschrevenpersoonOnBsn(ViewEvent $event)
     {
-        $result = $event->getControllerResult();
         $id = $event->getRequest()->attributes->get('id');
         $slug = $event->getRequest()->attributes->get('slug');
-        $contentType = $event->getRequest()->headers->get('accept');
-        if (!$contentType) {
-            $contentType = $event->getRequest()->headers->get('Accept');
-        }
-        $method = $event->getRequest()->getMethod();
 
-        // Lats make sure that some one posts correctly
-        if (Request::METHOD_GET !== $method || $event->getRequest()->get('_route') != 'api_applications_get_page_on_slug_collection') {
+        if (Request::METHOD_GET !== $event->getRequest()->getMethod() || $event->getRequest()->get('_route') != 'api_applications_get_page_on_slug_collection') {
             return;
         }
 
-        // Lets set a return content type
-        switch ($contentType) {
-            case 'application/json':
-                $renderType = 'json';
-                break;
-            case 'application/ld+json':
-                $renderType = 'jsonld';
-                break;
-            case 'application/hal+json':
-                $renderType = 'jsonhal';
-                break;
-            default:
-                $contentType = 'application/json';
-                $renderType = 'json';
-        }
-
-        // Fallback options of establishing
-        if ($locale = $event->getRequest()->query->get('_locale')) {
-        } elseif ($locale = $event->getRequest()->request->get('_locale')) {
-        } else {
-            $locale = 'en';
-        }
+        $locale = $this->getLocale($event);
 
         $application = $this->em->getRepository(Application::class)->findOneBy(['id' => $id]);
         $slug = $this->em->getRepository(Slug::class)->findOneBy(['application' => $application, 'slug'=>$slug]);
         if ($slug == null) {
             throw new NotFoundHttpException('Page not found');
         }
-        $result = $slug->getTemplate();
 
-        // now we need to overide the normal subscriber
+        $event->setResponse($this->setResponse($slug->getTemplate()));
+    }
+
+    public function getLocale($event) {
+        if ($locale = $event->getRequest()->query->get('_locale')) {
+        } elseif ($locale = $event->getRequest()->request->get('_locale')) {
+        } else {
+            $locale = 'en';
+        }
+
+        return $locale;
+    }
+
+    public function setResponse($result) {
         $json = $this->serializer->serialize(
             $result,
-            $renderType,
+            'json',
             ['enable_max_depth' => true]
         );
 
-        $response = new Response(
+        return new Response(
             $json,
             Response::HTTP_OK,
-            ['content-type' => $contentType]
+            ['content-type' => 'application/json']
         );
-
-        $event->setResponse($response);
     }
 }
