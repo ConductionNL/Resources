@@ -55,7 +55,8 @@ class ApplicationSubscriber implements EventSubscriberInterface
         $event->setResponse($this->setResponse($slug->getTemplate()));
     }
 
-    public function getLocale($event) {
+    public function getLocale($event)
+    {
         if ($locale = $event->getRequest()->query->get('_locale')) {
         } elseif ($locale = $event->getRequest()->request->get('_locale')) {
         } else {
@@ -65,7 +66,8 @@ class ApplicationSubscriber implements EventSubscriberInterface
         return $locale;
     }
 
-    public function setResponse($result) {
+    public function setResponse($result)
+    {
         $json = $this->serializer->serialize(
             $result,
             'json',
