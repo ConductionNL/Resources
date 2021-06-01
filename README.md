@@ -1,8 +1,18 @@
-# wrc
+# Web Resource Catalogus
+[![StyleCI](https://github.styleci.io/repos/206145646/shield?branch=master)](https://github.styleci.io/repos/206145646?branch=master)
+[![Docker Image CI](https://github.com/ConductionNL/webresourcecatalogus/workflows/Docker%20Image%20CI/badge.svg?branch=master)](https://github.com/ConductionNL/webresourcecatalogus/actions?query=workflow%3A"Docker+Image+CI")
+[![Artifacthub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/webresourcecatalogus)](https://artifacthub.io/packages/helm/webresourcecatalogus/webresourcecatalogus)
+[![BCH compliance](https://bettercodehub.com/edge/badge/ConductionNL/webresourcecatalogus?branch=master)](https://bettercodehub.com/)
 
 Description
 ----
-Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.
+De Web Resource Catalogus (WRC) bevat de resources die nodig zijn voor het draaien van een applicatie zoals sjablonen, routing, menu’s en afbeeldingen. Het heeft hierbij de doelstelling om te fungeren als een “headless CMS” ofwel een CMS als API, die losstaat van enige vorm van weergave. Voor het bewerken van de CMS content leunt het WRC dan ook op het Dashboard (een implementatie van de Proto Applicatie), en het fungeert zelf als een bron voor een applicatie.
+
+Door het gescheiden houden van opslag en bewerking, is het mogelijk om vanuit één dashboard de inhoud van meerdere applicaties te beheren. Heel praktisch en levert ook meer overzicht op, zo zou een sjabloon kunnen worden gebruikt in verschillende applicaties en websites. Dit is bijvoorbeeld handig bij algemene informatie of FAQ’s.
+
+Een extra handigheid van het WRC is dat het meertaligheid op resources ondersteunt en dat maakt het mogelijk om content in meerdere talen aan te maken en te beheren. Het maakt tevens inzichtelijk welke content al wel en welke content nog niet vertaald is. Waarmee compliancy aan de WCAG norm voor tweetaligheid kan worden opgevolgd.
+
+Met betrekking tot vormgeving biedt het WRC twee belangrijke functionaliteiten aan applicaties. Om te beginnen kunnen templates worden “verlengd en uitgebreid”. Dat betekent bijvoorbeeld dat een applicatie gebruik zou kunnen maken van NL Design, maar hier via het WRC een eigen smaak aan toe kan voegen. Doordat het WRC kan delen tussen applicaties, is het hiermee voor een organisatie tevens mogelijk om één consistente huisstijl te voeren voor meerdere applicaties. Daarnaast biedt het WRC een mogelijkheid tot CDN, ofwel het verplaatsen van statische content van een applicatie naar een externe bron. Hiermee wordt het dataverkeer op een applicatie zelf lager en daarmee sneller. Het betekent ook dat op applicatie niveau, logica en statische content uit elkaar kunnen worden getrokken en fysiek op andere (gespecialiseerde) machines kunnen worden geplaatst.
 
 Additional Information
 ----
