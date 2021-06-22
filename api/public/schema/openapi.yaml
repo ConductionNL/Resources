@@ -12,15 +12,15 @@ info:
     - Docker Image: [online]() 
     - Datamodel: [postman](schema/webresourcecatalogus.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
     
-    Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
+    Het WRC bevat de resources die nodig zijn voor het draaien van een applicatie, zoals sjablonen, routing, menu’s en afbeeldingen. Het heeft hierbij de doelstelling om te fungeren als een “headless CMS” ofwel een CMS als API die losstaat van enige vorm van weergave. Voor het bewerken van de CMS content leunt het WRC dan ook op het Dashboard (een implementatie van de Proto Applicatie), en het fungeert zelf als een bron voor een applicatie.         
     
 paths:
   '/adresses/{id}/audit_trail':
     get:
       tags:
-        - Style
-      operationId: get_audit_trailStyleItem
-      summary: 'Retrieves a Style resource.'
+        - ResourceCategory
+      operationId: get_audit_trailResourceCategoryItem
+      summary: 'Retrieves a ResourceCategory resource.'
       parameters:
         -
           name: id
@@ -101,47 +101,47 @@ paths:
           in: query
       responses:
         200:
-          description: 'Style resource response'
+          description: 'ResourceCategory resource response'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Style:jsonld-read'
+                $ref: '#/components/schemas/ResourceCategory:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Style:jsonld-read'
+                $ref: '#/components/schemas/ResourceCategory:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
         404:
           description: 'Resource not found'
       produces:
@@ -149,9 +149,9 @@ paths:
   '/adresses/{id}/change_log':
     get:
       tags:
-        - Style
-      operationId: get_change_logsStyleItem
-      summary: 'Retrieves a Style resource.'
+        - ResourceCategory
+      operationId: get_change_logsResourceCategoryItem
+      summary: 'Retrieves a ResourceCategory resource.'
       parameters:
         -
           name: id
@@ -232,47 +232,47 @@ paths:
           in: query
       responses:
         200:
-          description: 'Style resource response'
+          description: 'ResourceCategory resource response'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Style:jsonld-read'
+                $ref: '#/components/schemas/ResourceCategory:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Style:jsonld-read'
+                $ref: '#/components/schemas/ResourceCategory:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Style-read'
+                $ref: '#/components/schemas/ResourceCategory-read'
         404:
           description: 'Resource not found'
       produces:
@@ -5527,6 +5527,22 @@ paths:
             type: string
         -
           name: 'organization[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: contact
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'contact[]'
           in: query
           required: false
           schema:
@@ -17140,67 +17156,6 @@ components:
       description: 'Value for the Authorization header'
       name: Authorization
 definitions:
-  Application-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this resource'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      name:
-        description: 'The name of this application.'
-        type: string
-        example: Webshop
-        maxLength: 255
-      description:
-        description: 'The description of this application.'
-        type: string
-        example: 'Is the best site ever'
-        maxLength: 255
-      domain:
-        description: 'The domain of this application.'
-        type: string
-        example: 'https://www.example.org'
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: \Datetime
-      organization: []
-      defaultConfiguration: []
-      style: []
-    required:
-      - name
-      - description
-      - domain
-      - organization
-  Application-write:
-    properties:
-      name:
-        description: 'The name of this application.'
-        type: string
-        example: Webshop
-        maxLength: 255
-      description:
-        description: 'The description of this application.'
-        type: string
-        example: 'Is the best site ever'
-        maxLength: 255
-      domain:
-        description: 'The domain of this application.'
-        type: string
-        example: 'https://www.example.org'
-        maxLength: 255
-      organization: []
-      defaultConfiguration: []
-      style: []
-    required:
-      - name
-      - description
-      - domain
-      - organization
   Category-read:
     properties:
       id:
@@ -17307,270 +17262,6 @@ definitions:
       organization: []
     required:
       - organization
-  Document-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this resource'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      name:
-        description: 'The internal name of this document'
-        type: string
-        example: specialdocument
-        maxLength: 255
-      description:
-        description: 'The description of this document.'
-        type: string
-        example: 'This paragraph holds info about this document'
-        maxLength: 255
-      base64:
-        description: 'the base64 version of the image'
-        type: string
-      contact:
-        description: 'The contact of this document'
-        type: string
-        format: url
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: \Datetime
-      organization: []
-    required:
-      - name
-  Document-write:
-    properties:
-      name:
-        description: 'The internal name of this document'
-        type: string
-        example: specialdocument
-        maxLength: 255
-      description:
-        description: 'The description of this document.'
-        type: string
-        example: 'This paragraph holds info about this document'
-        maxLength: 255
-      base64:
-        description: 'the base64 version of the image'
-        type: string
-      contact:
-        description: 'The contact of this document'
-        type: string
-        format: url
-        maxLength: 255
-      organization: []
-    required:
-      - name
-  Image-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this resource'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      name:
-        description: 'The name of this image'
-        type: string
-        example: Flowers
-        maxLength: 255
-      description:
-        description: 'The description of this organisation.'
-        type: string
-        example: 'This is the manucipality of Utrecht'
-        maxLength: 255
-      alt:
-        description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
-        type: string
-        example: flowers
-        maxLength: 255
-      href:
-        description: 'The href of this image'
-        type: string
-        example: app_img_flowers
-        maxLength: 255
-      base64:
-        description: 'the base64 version of the image'
-        type: string
-      resource:
-        description: 'The resource this image is connected to.'
-        type: string
-        format: url
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: \Datetime
-      organization: []
-    required:
-      - name
-      - description
-  Image-write:
-    properties:
-      name:
-        description: 'The name of this image'
-        type: string
-        example: Flowers
-        maxLength: 255
-      description:
-        description: 'The description of this organisation.'
-        type: string
-        example: 'This is the manucipality of Utrecht'
-        maxLength: 255
-      alt:
-        description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
-        type: string
-        example: flowers
-        maxLength: 255
-      href:
-        description: 'The href of this image'
-        type: string
-        example: app_img_flowers
-        maxLength: 255
-      base64:
-        description: 'the base64 version of the image'
-        type: string
-      resource:
-        description: 'The resource this image is connected to.'
-        type: string
-        format: url
-        maxLength: 255
-      organization: []
-    required:
-      - name
-      - description
-  Menu-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this resource'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      name:
-        description: 'The name of this menu'
-        type: string
-        example: 'webshop menu'
-        maxLength: 255
-      description:
-        description: 'The description of this menuItems'
-        type: string
-        example: 'This menuItems links to the about page'
-        maxLength: 2555
-      dateCreated:
-        description: 'The moment this request was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: \Datetime
-      menuItems: []
-      application: []
-    required:
-      - name
-      - application
-  Menu-write:
-    properties:
-      name:
-        description: 'The name of this menu'
-        type: string
-        example: 'webshop menu'
-        maxLength: 255
-      description:
-        description: 'The description of this menuItems'
-        type: string
-        example: 'This menuItems links to the about page'
-        maxLength: 2555
-      menuItems: []
-      application: []
-    required:
-      - name
-      - application
-  MenuItem-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this resource'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      name:
-        description: 'The name of this MenuItem'
-        type: string
-        example: about-menu-link
-        maxLength: 255
-      description:
-        description: 'The description of this MenuItem'
-        type: string
-        example: 'This MenuItem links to the about page'
-        maxLength: 2555
-      order:
-        description: 'The order in which this menu item is shown in relation to other items of the same menu'
-        type: int
-        example: '1'
-        maxLength: 3
-      icon:
-        description: 'the icon to display with this menu item'
-        type: string
-        example: 'fa fa-cart'
-        maxLength: 255
-      type:
-        description: 'the type of the menu item'
-        type: string
-        example: slug
-        maxLength: 255
-      href:
-        description: 'The href of this MenuItem that links to another page'
-        type: string
-        example: app_home_about
-        maxLength: 2555
-      dateCreated:
-        description: 'The moment this request was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: \Datetime
-    required:
-      - name
-      - href
-  MenuItem-write:
-    properties:
-      name:
-        description: 'The name of this MenuItem'
-        type: string
-        example: about-menu-link
-        maxLength: 255
-      description:
-        description: 'The description of this MenuItem'
-        type: string
-        example: 'This MenuItem links to the about page'
-        maxLength: 2555
-      order:
-        description: 'The order in which this menu item is shown in relation to other items of the same menu'
-        type: int
-        example: '1'
-        maxLength: 3
-      icon:
-        description: 'the icon to display with this menu item'
-        type: string
-        example: 'fa fa-cart'
-        maxLength: 255
-      type:
-        description: 'the type of the menu item'
-        type: string
-        example: slug
-        maxLength: 255
-      href:
-        description: 'The href of this MenuItem that links to another page'
-        type: string
-        example: app_home_about
-        maxLength: 2555
-      menu: []
-    required:
-      - name
-      - href
-      - menu
   Organization-read:
     properties:
       id:
@@ -17679,17 +17370,180 @@ definitions:
       privacyPolicy: []
     required:
       - name
-  ResourceCategory-read:
+  Template-read:
     properties:
       id:
         description: 'The UUID identifier of this resource'
         type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
-      resource:
-        description: 'The common ground resource bound to groups'
+      name:
+        description: 'The internal name of this menu'
         type: string
-        format: url
+        example: 'webshop menu'
+        maxLength: 255
+      title:
+        description: 'The external name of this menu'
+        type: string
+        example: 'webshop menu'
+        maxLength: 255
+      description:
+        description: 'The description of this page.'
+        type: string
+        example: 'This page holds info about this application'
+        maxLength: 255
+      content:
+        description: 'The Content of this template.'
+        type: string
+        example: 'A lot of random info over any topic'
+      templateEngine:
+        description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
+        type: string
+        example: twig
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
+      slugs: []
+      organization: []
+      templateGroups: []
+    required:
+      - name
+      - content
+      - templateEngine
+  Template-write:
+    properties:
+      name:
+        description: 'The internal name of this menu'
+        type: string
+        example: 'webshop menu'
+        maxLength: 255
+      title:
+        description: 'The external name of this menu'
+        type: string
+        example: 'webshop menu'
+        maxLength: 255
+      description:
+        description: 'The description of this page.'
+        type: string
+        example: 'This page holds info about this application'
+        maxLength: 255
+      content:
+        description: 'The Content of this template.'
+        type: string
+        example: 'A lot of random info over any topic'
+      templateEngine:
+        description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
+        type: string
+        example: twig
+      slugs: []
+      organization: []
+      templateGroups: []
+    required:
+      - name
+      - content
+      - templateEngine
+  MenuItem-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this resource'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      name:
+        description: 'The name of this MenuItem'
+        type: string
+        example: about-menu-link
+        maxLength: 255
+      description:
+        description: 'The description of this MenuItem'
+        type: string
+        example: 'This MenuItem links to the about page'
+        maxLength: 2555
+      order:
+        description: 'The order in which this menu item is shown in relation to other items of the same menu'
+        type: int
+        example: '1'
+        maxLength: 3
+      icon:
+        description: 'the icon to display with this menu item'
+        type: string
+        example: 'fa fa-cart'
+        maxLength: 255
+      type:
+        description: 'the type of the menu item'
+        type: string
+        example: slug
+        maxLength: 255
+      href:
+        description: 'The href of this MenuItem that links to another page'
+        type: string
+        example: app_home_about
+        maxLength: 2555
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
+    required:
+      - name
+      - href
+  MenuItem-write:
+    properties:
+      name:
+        description: 'The name of this MenuItem'
+        type: string
+        example: about-menu-link
+        maxLength: 255
+      description:
+        description: 'The description of this MenuItem'
+        type: string
+        example: 'This MenuItem links to the about page'
+        maxLength: 2555
+      order:
+        description: 'The order in which this menu item is shown in relation to other items of the same menu'
+        type: int
+        example: '1'
+        maxLength: 3
+      icon:
+        description: 'the icon to display with this menu item'
+        type: string
+        example: 'fa fa-cart'
+        maxLength: 255
+      type:
+        description: 'the type of the menu item'
+        type: string
+        example: slug
+        maxLength: 255
+      href:
+        description: 'The href of this MenuItem that links to another page'
+        type: string
+        example: app_home_about
+        maxLength: 2555
+      menu: []
+    required:
+      - name
+      - href
+      - menu
+  TemplateGroup-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this resource'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      name:
+        description: 'The internal name of this menu'
+        type: string
+        example: 'webshop menu'
+        maxLength: 255
+      description:
+        description: 'The description of this page.'
+        type: string
+        example: 'This page holds info about this application'
         maxLength: 255
       dateCreated:
         description: 'The moment this request was created'
@@ -17697,17 +17551,89 @@ definitions:
       dateModified:
         description: 'The moment this request last Modified'
         type: \Datetime
-      categories: []
-    required: []
-  ResourceCategory-write:
+      templates: []
+      application: []
+      organization: []
+    required:
+      - name
+  TemplateGroup-write:
     properties:
-      resource:
-        description: 'The common ground resource bound to groups'
+      name:
+        description: 'The internal name of this menu'
         type: string
-        format: url
+        example: 'webshop menu'
         maxLength: 255
-      categories: []
-    required: []
+      description:
+        description: 'The description of this page.'
+        type: string
+        example: 'This page holds info about this application'
+        maxLength: 255
+      templates: []
+      application: []
+      organization: []
+    required:
+      - name
+  Application-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this resource'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      name:
+        description: 'The name of this application.'
+        type: string
+        example: Webshop
+        maxLength: 255
+      description:
+        description: 'The description of this application.'
+        type: string
+        example: 'Is the best site ever'
+        maxLength: 255
+      domain:
+        description: 'The domain of this application.'
+        type: string
+        example: 'https://www.example.org'
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
+      organization: []
+      defaultConfiguration: []
+      style: []
+    required:
+      - name
+      - description
+      - domain
+      - organization
+  Application-write:
+    properties:
+      name:
+        description: 'The name of this application.'
+        type: string
+        example: Webshop
+        maxLength: 255
+      description:
+        description: 'The description of this application.'
+        type: string
+        example: 'Is the best site ever'
+        maxLength: 255
+      domain:
+        description: 'The domain of this application.'
+        type: string
+        example: 'https://www.example.org'
+        maxLength: 255
+      organization: []
+      defaultConfiguration: []
+      style: []
+    required:
+      - name
+      - description
+      - domain
+      - organization
   Slug-read:
     properties:
       id:
@@ -17806,7 +17732,7 @@ definitions:
     required:
       - name
       - description
-  Template-read:
+  Document-read:
     properties:
       id:
         description: 'The UUID identifier of this resource'
@@ -17814,74 +17740,56 @@ definitions:
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       name:
-        description: 'The internal name of this menu'
+        description: 'The internal name of this document'
         type: string
-        example: 'webshop menu'
-        maxLength: 255
-      title:
-        description: 'The external name of this menu'
-        type: string
-        example: 'webshop menu'
+        example: specialdocument
         maxLength: 255
       description:
-        description: 'The description of this page.'
+        description: 'The description of this document.'
         type: string
-        example: 'This page holds info about this application'
+        example: 'This paragraph holds info about this document'
         maxLength: 255
-      content:
-        description: 'The Content of this template.'
+      base64:
+        description: 'the base64 version of the image'
         type: string
-        example: 'A lot of random info over any topic'
-      templateEngine:
-        description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
+      contact:
+        description: 'The contact of this document'
         type: string
-        example: twig
+        format: url
+        maxLength: 255
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
       dateModified:
         description: 'The moment this request last Modified'
         type: \Datetime
-      slugs: []
       organization: []
-      templateGroups: []
     required:
       - name
-      - content
-      - templateEngine
-  Template-write:
+  Document-write:
     properties:
       name:
-        description: 'The internal name of this menu'
+        description: 'The internal name of this document'
         type: string
-        example: 'webshop menu'
-        maxLength: 255
-      title:
-        description: 'The external name of this menu'
-        type: string
-        example: 'webshop menu'
+        example: specialdocument
         maxLength: 255
       description:
-        description: 'The description of this page.'
+        description: 'The description of this document.'
         type: string
-        example: 'This page holds info about this application'
+        example: 'This paragraph holds info about this document'
         maxLength: 255
-      content:
-        description: 'The Content of this template.'
+      base64:
+        description: 'the base64 version of the image'
         type: string
-        example: 'A lot of random info over any topic'
-      templateEngine:
-        description: 'The template engine used to render this template. Schould be either twig (Twig), md (Markdown) or rst (reStructuredText)'
+      contact:
+        description: 'The contact of this document'
         type: string
-        example: twig
-      slugs: []
+        format: url
+        maxLength: 255
       organization: []
-      templateGroups: []
     required:
       - name
-      - content
-      - templateEngine
-  TemplateGroup-read:
+  Menu-read:
     properties:
       id:
         description: 'The UUID identifier of this resource'
@@ -17889,14 +17797,77 @@ definitions:
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       name:
-        description: 'The internal name of this menu'
+        description: 'The name of this menu'
         type: string
         example: 'webshop menu'
         maxLength: 255
       description:
-        description: 'The description of this page.'
+        description: 'The description of this menuItems'
         type: string
-        example: 'This page holds info about this application'
+        example: 'This menuItems links to the about page'
+        maxLength: 2555
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
+      menuItems: []
+      application: []
+    required:
+      - name
+      - application
+  Menu-write:
+    properties:
+      name:
+        description: 'The name of this menu'
+        type: string
+        example: 'webshop menu'
+        maxLength: 255
+      description:
+        description: 'The description of this menuItems'
+        type: string
+        example: 'This menuItems links to the about page'
+        maxLength: 2555
+      menuItems: []
+      application: []
+    required:
+      - name
+      - application
+  Image-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this resource'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      name:
+        description: 'The name of this image'
+        type: string
+        example: Flowers
+        maxLength: 255
+      description:
+        description: 'The description of this organisation.'
+        type: string
+        example: 'This is the manucipality of Utrecht'
+        maxLength: 255
+      alt:
+        description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
+        type: string
+        example: flowers
+        maxLength: 255
+      href:
+        description: 'The href of this image'
+        type: string
+        example: app_img_flowers
+        maxLength: 255
+      base64:
+        description: 'the base64 version of the image'
+        type: string
+      resource:
+        description: 'The resource this image is connected to.'
+        type: string
+        format: url
         maxLength: 255
       dateCreated:
         description: 'The moment this request was created'
@@ -17904,28 +17875,126 @@ definitions:
       dateModified:
         description: 'The moment this request last Modified'
         type: \Datetime
-      templates: []
-      application: []
       organization: []
     required:
       - name
-  TemplateGroup-write:
+      - description
+  Image-write:
     properties:
       name:
-        description: 'The internal name of this menu'
+        description: 'The name of this image'
         type: string
-        example: 'webshop menu'
+        example: Flowers
         maxLength: 255
       description:
-        description: 'The description of this page.'
+        description: 'The description of this organisation.'
         type: string
-        example: 'This page holds info about this application'
+        example: 'This is the manucipality of Utrecht'
         maxLength: 255
-      templates: []
-      application: []
+      alt:
+        description: 'The alt attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)'
+        type: string
+        example: flowers
+        maxLength: 255
+      href:
+        description: 'The href of this image'
+        type: string
+        example: app_img_flowers
+        maxLength: 255
+      base64:
+        description: 'the base64 version of the image'
+        type: string
+      resource:
+        description: 'The resource this image is connected to.'
+        type: string
+        format: url
+        maxLength: 255
       organization: []
     required:
       - name
+      - description
+  ResourceCategory-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this resource'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      resource:
+        description: 'The common ground resource bound to groups'
+        type: string
+        format: url
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
+      categories: []
+    required: []
+  ResourceCategory-write:
+    properties:
+      resource:
+        description: 'The common ground resource bound to groups'
+        type: string
+        format: url
+        maxLength: 255
+      categories: []
+    required: []
+  ChangeLog-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
+        type: string
+      objectId:
+        description: ''
+        type: string
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
+        type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2021-06-22 15:17:20'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2021-06-22 15:17:20'
+    required: []
+  ChangeLog-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+    required: []
   AuditTrail-read:
     properties:
       id:
@@ -18030,12 +18099,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-12 15:01:25'
+        example: '2021-06-22 15:17:20'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-12 15:01:25'
+        example: '2021-06-22 15:17:20'
     required: []
   AuditTrail-write:
     properties:
@@ -18045,66 +18114,7 @@ definitions:
         example: 'This log line looks suspicius'
         maxLength: 2555
     required: []
-  ChangeLog-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
-        type: string
-      objectId:
-        description: ''
-        type: string
-      objectClass:
-        description: ''
-        type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
-        type: string
-      session:
-        description: 'The moment this request was created'
-        type: string
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2021-03-12 15:01:25'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2021-03-12 15:01:25'
-    required: []
-  ChangeLog-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-    required: []
 tags:
-  -
-    name: Application
-    description: |
-      Application is the project of a website.
-      
-      
   -
     name: Category
     description: |
@@ -18118,21 +18128,15 @@ tags:
       
       
   -
-    name: Document
+    name: Organization
     description: |
-      Documents hold a document encoded in base64.
+      An organization as active on commonground.
       
       
   -
-    name: Image
+    name: Template
     description: |
-      Image speaks for itself.
-      
-      
-  -
-    name: Menu
-    description: |
-      Menu is your way of navigation inside your application.
+      Templates holds information your pages or include in messages.
       
       
   -
@@ -18142,15 +18146,15 @@ tags:
       
       
   -
-    name: Organization
+    name: TemplateGroup
     description: |
-      An organization as active on commonground.
+      Groups are a way of orginzing templates.
       
       
   -
-    name: ResourceCategory
+    name: Application
     description: |
-      An resource atachhed to one or more categoires.
+      Application is the project of a website.
       
       
   -
@@ -18166,25 +18170,37 @@ tags:
       
       
   -
-    name: Template
+    name: Document
     description: |
-      Templates holds information your pages or include in messages.
+      Documents hold a document encoded in base64.
       
       
   -
-    name: TemplateGroup
+    name: Menu
     description: |
-      Groups are a way of orginzing templates.
+      Menu is your way of navigation inside your application.
       
       
   -
-    name: AuditTrail
+    name: Image
+    description: |
+      Image speaks for itself.
+      
+      
+  -
+    name: ResourceCategory
+    description: |
+      An resource atachhed to one or more categoires.
+      
+      
+  -
+    name: ChangeLog
     description: |
       An resource representing a log line.
       
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
-    name: ChangeLog
+    name: AuditTrail
     description: |
       An resource representing a log line.
       
@@ -18195,15 +18211,15 @@ securityDefinitions:
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the ChangeLog resource'
-      write: 'write right to the ChangeLog resource'
+      read: 'read right to the AuditTrail resource'
+      write: 'write right to the AuditTrail resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the ChangeLog resource'
-      write: 'write right to the ChangeLog resource'
+      read: 'read right to the AuditTrail resource'
+      write: 'write right to the AuditTrail resource'
 host: irc.zaakonline.nl
 servers:
   -

@@ -8,7 +8,7 @@ settings:
   name: webresourcecatalogus
   version: V1.0
   majorVersion: v1
-  description: 'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'
+  description: 'Het WRC bevat de resources die nodig zijn voor het draaien van een applicatie, zoals sjablonen, routing, menu’s en afbeeldingen. Het heeft hierbij de doelstelling om te fungeren als een “headless CMS” ofwel een CMS als API die losstaat van enige vorm van weergave. Voor het bewerken van de CMS content leunt het WRC dan ook op het Dashboard (een implementatie van de Proto Applicatie), en het fungeert zelf als een bron voor een applicatie.'
   repro: https://github.com/ConductionNL/webresourcecatalogus
   demo: wrc.zaakonline.nl
   domain: huwelijksplanner.online

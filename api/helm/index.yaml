@@ -5,7 +5,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.10.0
-    created: "2021-03-12T14:58:32.3004926Z"
+    created: "2021-06-22T15:22:07.8640591Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -37,10 +37,14 @@ entries:
   webresourcecatalogus:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2021-03-12T14:58:32.2700891Z"
-    description: Naast deze JSON rest API is er ook een [graphql](/graphql) interface
-      beschikbaar.
-    digest: a202358e47b7b981b558cdd3099f9cb6463c3432e61b474bdca5efdc633163dc
+    created: "2021-06-22T15:22:07.8608205Z"
+    description: Het WRC bevat de resources die nodig zijn voor het draaien van een
+      applicatie, zoals sjablonen, routing, menu’s en afbeeldingen. Het heeft hierbij
+      de doelstelling om te fungeren als een “headless CMS” ofwel een CMS als API
+      die losstaat van enige vorm van weergave. Voor het bewerken van de CMS content
+      leunt het WRC dan ook op het Dashboard (een implementatie van de Proto Applicatie),
+      en het fungeert zelf als een bron voor een applicatie.
+    digest: 132d696a247e3a79a202a63f5933ad448a5800f133a8ab80bb3e6ccf5c422eda
     home: https://www.conduction.nl
     icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
     keywords:
@@ -60,4 +64,4 @@ entries:
     urls:
     - webresourcecatalogus-0.1.0.tgz
     version: 0.1.0
-generated: "2021-03-12T14:58:32.2355084Z"
+generated: "2021-06-22T15:22:07.8551239Z"
