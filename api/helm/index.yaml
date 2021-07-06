@@ -5,7 +5,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.10.0
-    created: "2021-07-06T20:10:37.1759448+02:00"
+    created: "2021-07-06T20:58:37.3589223+02:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -38,7 +38,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 6.0.11
-    created: "2021-07-06T20:10:37.1809456+02:00"
+    created: "2021-07-06T20:58:37.3639234+02:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -70,7 +70,7 @@ entries:
       artifacthub.io/containsSecurityUpdates: "true"
     apiVersion: v2
     appVersion: V1.0
-    created: "2021-07-06T20:10:37.1729457+02:00"
+    created: "2021-07-06T20:58:37.3569227+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -81,7 +81,7 @@ entries:
       repository: https://charts.bitnami.com/bitnami
       version: 12.7.7
     description: Het WRC bevat de resources die nodig zijn voor het draaien van een applicatie, zoals sjablonen, routing, menu’s en afbeeldingen. Het heeft hierbij de doelstelling om te fungeren als een “headless CMS” ofwel een CMS als API die losstaat van enige vorm van weergave. Voor het bewerken van de CMS content leunt het WRC dan ook op het Dashboard (een implementatie van de Proto Applicatie), en het fungeert zelf als een bron voor een applicatie.
-    digest: 972c7a5506f014650ea945973eaf4c832bc8878e680005b9c25a9a84f3ae75fb
+    digest: 358f26469a35b3fc3418e04f05f643ce4f979238ec7f832a85d7bbb9a68aac6f
     home: https://www.conduction.nl
     icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
     keywords:
@@ -103,7 +103,7 @@ entries:
     version: 1.0.0
   - apiVersion: v1
     appVersion: V1.0
-    created: "2021-07-06T20:10:37.1639646+02:00"
+    created: "2021-07-06T20:58:37.3489241+02:00"
     description: Het WRC bevat de resources die nodig zijn voor het draaien van een applicatie, zoals sjablonen, routing, menu’s en afbeeldingen. Het heeft hierbij de doelstelling om te fungeren als een “headless CMS” ofwel een CMS als API die losstaat van enige vorm van weergave. Voor het bewerken van de CMS content leunt het WRC dan ook op het Dashboard (een implementatie van de Proto Applicatie), en het fungeert zelf als een bron voor een applicatie.
     digest: b44f629db77be2819467aab6a7e6d4a0a1197b35cee0ee35cac4bd8feabdc483
     home: https://www.conduction.nl
@@ -125,4 +125,4 @@ entries:
     urls:
     - webresourcecatalogus-0.1.0.tgz
     version: 0.1.0
-generated: "2021-07-06T20:10:37.1585961+02:00"
+generated: "2021-07-06T20:58:37.3449237+02:00"
