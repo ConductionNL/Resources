@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "webresourcecatalogus.fullname" . }}
+  name: {{ include "template.fullname" . }}
   labels:
-    {{- include "webresourcecatalogus.labels" . | nindent 4 }}
+    {{- include "template.labels" . | nindent 4 }}
   annotations:
     {{- with .Values.service.annotations}}
     {{- toYaml | nindent 4 }}
@@ -20,4 +20,4 @@ spec:
       protocol: TCP
       name: https
   selector:
-    {{- include "webresourcecatalogus.selectorLabels" . | nindent 4 }}
+    {{- include "template.selectorLabels" . | nindent 4 }}

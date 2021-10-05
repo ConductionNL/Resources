@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: {{ .Chart.Name }}
   labels:
-    {{- include "webresourcecatalogus.labels" . | nindent 4 }}
+    {{- include "template.labels" . | nindent 4 }}
 data:
   app-version: {{ .Values.config.version | quote }}
   app-corsAllowOrigin: {{ .Values.config.corsAllowOrigin | quote }}
