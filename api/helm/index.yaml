@@ -5,7 +5,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.13.0
-    created: "2021-10-05T15:26:50.5767765+02:00"
+    created: "2021-10-06T10:10:19.2030133+02:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -39,7 +39,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 6.2.5
-    created: "2021-10-05T15:26:50.5934963+02:00"
+    created: "2021-10-06T10:10:19.2142805+02:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -73,7 +73,7 @@ entries:
       artifacthub.io/containsSecurityUpdates: "true"
     apiVersion: v2
     appVersion: V1.0
-    created: "2021-10-05T15:26:50.5593739+02:00"
+    created: "2021-10-06T10:10:19.1938105+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -89,7 +89,7 @@ entries:
       die losstaat van enige vorm van weergave. Voor het bewerken van de CMS content
       leunt het WRC dan ook op het Dashboard (een implementatie van de Proto Applicatie),
       en het fungeert zelf als een bron voor een applicatie.
-    digest: 801090f8123903f84fe2cc59aed0adf8990ce941393543ec321e46382f8f45c1
+    digest: 03aa26e499f47bb9f9a6653d5f22aa3a75f51c9af617cf295d190cb479f13c89
     home: https://www.conduction.nl
     icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
     keywords:
@@ -113,7 +113,7 @@ entries:
       artifacthub.io/containsSecurityUpdates: "true"
     apiVersion: v2
     appVersion: V1.0
-    created: "2021-10-05T15:26:50.5102265+02:00"
+    created: "2021-10-06T10:10:19.1735329+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -151,7 +151,7 @@ entries:
     version: 1.0.0
   - apiVersion: v1
     appVersion: V1.0
-    created: "2021-10-05T15:26:50.4681047+02:00"
+    created: "2021-10-06T10:10:19.1537645+02:00"
     description: Het WRC bevat de resources die nodig zijn voor het draaien van een
       applicatie, zoals sjablonen, routing, menu’s en afbeeldingen. Het heeft hierbij
       de doelstelling om te fungeren als een “headless CMS” ofwel een CMS als API
@@ -178,4 +178,4 @@ entries:
     urls:
     - webresourcecatalogus-0.1.0.tgz
     version: 0.1.0
-generated: "2021-10-05T15:26:50.4544468+02:00"
+generated: "2021-10-06T10:10:19.1366076+02:00"
