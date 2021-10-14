@@ -4,17 +4,17 @@ entries:
   - annotations:
       category: Database
     apiVersion: v2
-    appVersion: 11.10.0
-    created: "2021-03-26T10:41:43.6028809Z"
+    appVersion: 11.13.0
+    created: "2021-10-06T10:10:19.2030133+02:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
       version: 1.x.x
     description: Chart for PostgreSQL, an object-relational database management system
       (ORDBMS) with an emphasis on extensibility and on standards-compliance.
-    digest: eebe8f456cf98d5927a35666d1d899174dc4d3e09f26788033f761527bc90749
+    digest: 1b7c4bfba1e8257793e8d6690e02b86c0bdac99922e1fa74b6a7df9d800938ab
     home: https://github.com/bitnami/charts/tree/master/bitnami/postgresql
-    icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-110x117.png
+    icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-220x234.png
     keywords:
     - postgresql
     - postgres
@@ -32,15 +32,133 @@ entries:
     - https://github.com/bitnami/bitnami-docker-postgresql
     - https://www.postgresql.org/
     urls:
-    - charts/postgresql-10.1.1.tgz
-    version: 10.1.1
+    - charts/postgresql-10.10.3.tgz
+    version: 10.10.3
+  redis:
+  - annotations:
+      category: Database
+    apiVersion: v2
+    appVersion: 6.2.5
+    created: "2021-10-06T10:10:19.2142805+02:00"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: Open source, advanced key-value store. It is often referred to as
+      a data structure server since keys can contain strings, hashes, lists, sets
+      and sorted sets.
+    digest: f8fa3b0bdaecf7f9aa1669b027c5452f7efaab21c10b0dbcf7148e17c54ac5b7
+    home: https://github.com/bitnami/charts/tree/master/bitnami/redis
+    icon: https://bitnami.com/assets/stacks/redis/img/redis-stack-220x234.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - email: containers@bitnami.com
+      name: Bitnami
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    name: redis
+    sources:
+    - https://github.com/bitnami/bitnami-docker-redis
+    - http://redis.io/
+    urls:
+    - charts/redis-15.3.2.tgz
+    version: 15.3.2
   webresourcecatalogus:
+  - annotations:
+      artifacthub.io/containsSecurityUpdates: "true"
+    apiVersion: v2
+    appVersion: V1.0
+    created: "2021-10-06T10:10:19.1938105+02:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.10.3
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.3.2
+    description: Het WRC bevat de resources die nodig zijn voor het draaien van een
+      applicatie, zoals sjablonen, routing, menu’s en afbeeldingen. Het heeft hierbij
+      de doelstelling om te fungeren als een “headless CMS” ofwel een CMS als API
+      die losstaat van enige vorm van weergave. Voor het bewerken van de CMS content
+      leunt het WRC dan ook op het Dashboard (een implementatie van de Proto Applicatie),
+      en het fungeert zelf als een bron voor een applicatie.
+    digest: 03aa26e499f47bb9f9a6653d5f22aa3a75f51c9af617cf295d190cb479f13c89
+    home: https://www.conduction.nl
+    icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
+    keywords:
+    - commonground
+    - haven
+    - nlx
+    - component
+    maintainers:
+    - email: ruben@conduction.nl
+      name: Ruben van der Linde
+    - email: info@conduction.nl
+      name: Conduction
+    name: webresourcecatalogus
+    sources:
+    - https://commonground.conduction.nl/
+    - https://www.commonground.nl/
+    urls:
+    - webresourcecatalogus-1.1.0.tgz
+    version: 1.1.0
+  - annotations:
+      artifacthub.io/containsSecurityUpdates: "true"
+    apiVersion: v2
+    appVersion: V1.0
+    created: "2021-10-06T10:10:19.1735329+02:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.1.1
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.7.7
+    description: Het WRC bevat de resources die nodig zijn voor het draaien van een
+      applicatie, zoals sjablonen, routing, menu’s en afbeeldingen. Het heeft hierbij
+      de doelstelling om te fungeren als een “headless CMS” ofwel een CMS als API
+      die losstaat van enige vorm van weergave. Voor het bewerken van de CMS content
+      leunt het WRC dan ook op het Dashboard (een implementatie van de Proto Applicatie),
+      en het fungeert zelf als een bron voor een applicatie.
+    digest: 358f26469a35b3fc3418e04f05f643ce4f979238ec7f832a85d7bbb9a68aac6f
+    home: https://www.conduction.nl
+    icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
+    keywords:
+    - commonground
+    - haven
+    - nlx
+    - component
+    maintainers:
+    - email: ruben@conduction.nl
+      name: Ruben van der Linde
+    - email: info@conduction.nl
+      name: Conduction
+    name: webresourcecatalogus
+    sources:
+    - https://commonground.conduction.nl/
+    - https://www.commonground.nl/
+    urls:
+    - webresourcecatalogus-1.0.0.tgz
+    version: 1.0.0
   - apiVersion: v1
     appVersion: V1.0
-    created: "2021-03-26T10:41:43.5930897Z"
-    description: Naast deze JSON rest API is er ook een [graphql](/graphql) interface
-      beschikbaar.
-    digest: 60ae61f06cf2e2c838532c8a44c546884cff2232022b78b17d84c11f6719263b
+    created: "2021-10-06T10:10:19.1537645+02:00"
+    description: Het WRC bevat de resources die nodig zijn voor het draaien van een
+      applicatie, zoals sjablonen, routing, menu’s en afbeeldingen. Het heeft hierbij
+      de doelstelling om te fungeren als een “headless CMS” ofwel een CMS als API
+      die losstaat van enige vorm van weergave. Voor het bewerken van de CMS content
+      leunt het WRC dan ook op het Dashboard (een implementatie van de Proto Applicatie),
+      en het fungeert zelf als een bron voor een applicatie.
+    digest: b44f629db77be2819467aab6a7e6d4a0a1197b35cee0ee35cac4bd8feabdc483
     home: https://www.conduction.nl
     icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
     keywords:
@@ -60,4 +178,4 @@ entries:
     urls:
     - webresourcecatalogus-0.1.0.tgz
     version: 0.1.0
-generated: "2021-03-26T10:41:43.5816122Z"
+generated: "2021-10-06T10:10:19.1366076+02:00"
