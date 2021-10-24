@@ -56,7 +56,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiFilter(SearchFilter::class, properties={
  *     "contact": "exact",
  *     "name": "ipartial",
- *     "description": "ipartial"
+ *     "description": "ipartial",
+ *     "rsin": "exact"
  * })
  */
 class Organization
